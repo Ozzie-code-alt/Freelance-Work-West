@@ -8,22 +8,23 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { signIn } from "next-auth/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState } from "react";
-
+import { useRouter } from "next/navigation";
 const LoginModal = () => {
-  const [accountData, setAccountData] = useState({ name: "", password: "" });
+  const [accountData, setAccountData] = useState({ email: "", password: "" });
+  const router = useRouter();
   const [passwordData, setPasswordData] = useState({
     name: "",
     email: "",
     password: "",
   });
-  const router = useRouter()
+
   const handleLoginChange = (e) => {
     setAccountData({ ...accountData, [e.target.id]: e.target.value });
   };
@@ -32,9 +33,24 @@ const LoginModal = () => {
     setPasswordData({ ...passwordData, [e.target.id]: e.target.value });
   };
 
-  const handleLoginSubmit = (e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
-    console.log(accountData);
+    try {
+      const { email, password } = accountData;
+      const res = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
+      if (res?.error) {
+        console.log("Invalid Credentials");
+        return;
+      }
+      console.log("Login Works");
+      router.push("/OfficePage");
+    } catch (error) {
+      console.log("Login Error", error);
+    }
   };
 
   const handleRegisterSubmit = async (e) => {
@@ -53,14 +69,13 @@ const LoginModal = () => {
       });
       if (res.ok) {
         const form = e.target;
-        form.reset()
-        window.location.reload()
-      }
-      else{
-        console.log("User Registration Failed")
+        form.reset();
+        window.location.reload();
+      } else {
+        console.log("User Registration Failed");
       }
     } catch (error) {
-      console.log("Error During Registration", error)
+      console.log("Error During Registration", error);
     }
   };
 
@@ -83,8 +98,8 @@ const LoginModal = () => {
             </CardHeader>
             <CardContent className="space-y-2">
               <div className="space-y-1">
-                <Label htmlFor="name">Name</Label>
-                <Input id="name" onChange={handleLoginChange} />
+                <Label htmlFor="email">Name</Label>
+                <Input id="email" onChange={handleLoginChange} />
               </div>
               <div className="space-y-1">
                 <Label htmlFor="password">Password</Label>
@@ -97,6 +112,7 @@ const LoginModal = () => {
             </CardContent>
             <CardFooter>
               <Button>Login</Button>
+              
             </CardFooter>
           </Card>
         </form>
