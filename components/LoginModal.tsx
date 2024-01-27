@@ -16,6 +16,9 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { ToastAction } from "@/components/ui/toast"
+import { useToast } from "@/components/ui/use-toast"
+
 const LoginModal = () => {
   const [accountData, setAccountData] = useState({ email: "", password: "" });
   const router = useRouter();
@@ -24,6 +27,7 @@ const LoginModal = () => {
     email: "",
     password: "",
   });
+  const { toast } = useToast()
 
   const handleLoginChange = (e) => {
     setAccountData({ ...accountData, [e.target.id]: e.target.value });
@@ -44,9 +48,20 @@ const LoginModal = () => {
       });
       if (res?.error) {
         console.log("Invalid Credentials");
+        toast({
+          variant: "destructive",
+          title: "Invalid Credentials",
+          description: "Import correct information in the necessary fields",
+          action: <ToastAction altText="Try again">Try again</ToastAction>,
+        })
         return;
       }
       console.log("Login Works");
+      toast({
+        variant: "success",
+        title: "Success",
+        description: "Noice, Correct informaiton",
+      })
       router.push("/OfficePage");
     } catch (error) {
       console.log("Login Error", error);
