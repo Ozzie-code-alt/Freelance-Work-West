@@ -25,26 +25,26 @@ import {
 } from "@/components/ui/popover";
 
 const formSchema = z.object({
-  Date: z.date({
+  date: z.date({
     required_error: "Please select a date and time",
     invalid_type_error: "That's not a date!",
   }),
-  OfficeVisited: z.string().min(2, {
+  officeVisited: z.string().min(2, {
     message: "Office Visited must be at least 2 characters.",
   }),
-  ServicesReceived: z.string().min(2, {
+  servicesReceived: z.string().min(2, {
     message: "Services Received must be at least 2 characters.",
   }),
-  InternalClient: z.string().min(2, {
+  internalClient: z.string().min(2, {
     message: "Internal Client must be at least 2 characters.",
   }),
-  ExternalClient: z.string().min(2, {
+  externalClient: z.string().min(2, {
     message: "External Client must be at least 2 characters.",
   }),
-  Sex: z.string().min(2, {
+  sex: z.string().min(2, {
     message: "Sex must be at least 2 characters.",
   }),
-  PointOfOrigin: z.string().min(2, {
+  pointOfOrigin: z.string().min(2, {
     message: "Point Of Origin must be at least 2 characters.",
   }),
 });
@@ -56,20 +56,38 @@ const AdminOfficeandFinancePage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      OfficeVisited: "",
-      ServicesReceived: "",
-      InternalClient: "",
-      ExternalClient: "",
-      Sex: "",
-      PointOfOrigin: "",
+      officeVisited: "",
+      servicesReceived: "",
+      internalClient: "",
+      externalClient: "",
+      sex: "",
+      pointOfOrigin: "",
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values)
-  }
+    console.log(values);
+    try {
+     const res =  await fetch("/api/personal", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ...values }),
+      });
+      if (!res.ok) {
+        throw new Error(`Error: ${res.status}`);
+      }
+    
+      const data = await res.json();
+      console.log(data);
+
+    } catch (error) {
+      console.log("Error During Registration", error);
+    }
+  };
 
   return (
     <Form {...form}>
@@ -79,7 +97,7 @@ const AdminOfficeandFinancePage = () => {
       >
         <FormField
           control={form.control}
-          name="Date"
+          name="date"
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel className="text-2xl">Date</FormLabel>
@@ -121,16 +139,20 @@ const AdminOfficeandFinancePage = () => {
               <FormMessage />
             </FormItem>
           )}
-        /> 
+        />
 
         <FormField
           control={form.control}
-          name="OfficeVisited"
+          name="officeVisited"
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel className="text-2xl">Office Visited</FormLabel>
               <FormControl>
-                <Input placeholder="Office Visited" {...field} className="h-[60px]" />
+                <Input
+                  placeholder="Office Visited"
+                  {...field}
+                  className="h-[60px]"
+                />
               </FormControl>
               <FormDescription>
                 This is your public display name.
@@ -142,12 +164,16 @@ const AdminOfficeandFinancePage = () => {
 
         <FormField
           control={form.control}
-          name="ServicesReceived"
+          name="servicesReceived"
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel className="text-2xl">Services Received</FormLabel>
               <FormControl>
-                <Input placeholder="Services Received" {...field} className="h-[60px]" />
+                <Input
+                  placeholder="Services Received"
+                  {...field}
+                  className="h-[60px]"
+                />
               </FormControl>
               <FormDescription>
                 This is your public display name.
@@ -159,7 +185,7 @@ const AdminOfficeandFinancePage = () => {
 
         <FormField
           control={form.control}
-          name="InternalClient"
+          name="internalClient"
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel className="text-2xl">
@@ -178,14 +204,18 @@ const AdminOfficeandFinancePage = () => {
 
         <FormField
           control={form.control}
-          name="ExternalClient"
+          name="externalClient"
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel className="text-2xl">
                 External Client / Hinde Taga WVSU
               </FormLabel>
               <FormControl>
-                <Input placeholder="External Client" {...field} className="h-[60px]" />
+                <Input
+                  placeholder="External Client"
+                  {...field}
+                  className="h-[60px]"
+                />
               </FormControl>
               <FormDescription>
                 This is your public display name.
@@ -197,7 +227,7 @@ const AdminOfficeandFinancePage = () => {
 
         <FormField
           control={form.control}
-          name="Sex"
+          name="sex"
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel className="text-2xl">Sex / Kasarian</FormLabel>
@@ -210,11 +240,11 @@ const AdminOfficeandFinancePage = () => {
               <FormMessage />
             </FormItem>
           )}
-        /> 
+        />
 
         <FormField
           control={form.control}
-          name="PointOfOrigin"
+          name="pointOfOrigin"
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel className="text-2xl">
