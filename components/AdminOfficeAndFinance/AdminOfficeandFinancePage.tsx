@@ -2,6 +2,9 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import { cn } from "@/lib/utils";
+import { format } from "date-fns";
+import { CalendarIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -14,11 +17,14 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 const formSchema = z.object({
-  Name: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
   Date: z.date({
     required_error: "Please select a date and time",
     invalid_type_error: "That's not a date!",
@@ -41,8 +47,6 @@ const formSchema = z.object({
   PointOfOrigin: z.string().min(2, {
     message: "Point Of Origin must be at least 2 characters.",
   }),
-
-
 });
 
 const AdminOfficeandFinancePage = () => {
@@ -52,17 +56,19 @@ const AdminOfficeandFinancePage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      Date: new Date(),
-      Name: "",
+      OfficeVisited: "",
+      ServicesReceived: "",
+      InternalClient: "",
+      ExternalClient: "",
+      Sex: "",
+      PointOfOrigin: "",
     },
   });
 
-  // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values);
-    router.push("/AdministrationOfficeandFinance/ClientFeedbackForm");
+    console.log(values)
   }
 
   return (
@@ -77,16 +83,45 @@ const AdminOfficeandFinancePage = () => {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel className="text-2xl">Date</FormLabel>
-              <FormControl>
-                <Input placeholder="shadcn" {...field} className="h-[60px]" />
-              </FormControl>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <FormControl>
+                    <Button
+                      variant={"outline"}
+                      className={cn(
+                        "w-[240px] pl-3 text-left font-normal",
+                        !field.value && "text-muted-foreground"
+                      )}
+                    >
+                      {field.value ? (
+                        format(field.value, "PPP")
+                      ) : (
+                        <span>Pick a date</span>
+                      )}
+                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                    </Button>
+                  </FormControl>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="start">
+                  <Calendar
+                    mode="single"
+                    selected={field.value || null}
+                    onSelect={field.onChange}
+                    disabled={(date) =>
+                      date > new Date() || date < new Date("1900-01-01")
+                    }
+                    initialFocus
+                  />
+                </PopoverContent>
+              </Popover>
+
               <FormDescription>
                 This is your public display name.
               </FormDescription>
               <FormMessage />
             </FormItem>
           )}
-        />
+        /> 
 
         <FormField
           control={form.control}
@@ -95,23 +130,7 @@ const AdminOfficeandFinancePage = () => {
             <FormItem className="w-full">
               <FormLabel className="text-2xl">Office Visited</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} className="h-[60px]" />
-              </FormControl>
-              <FormDescription>
-                This is your public display name.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="ServicesReceived"
-          render={({ field }) => (
-            <FormItem className="w-full">
-              <FormLabel className="text-2xl">Services Received</FormLabel>
-              <FormControl>
-                <Input placeholder="shadcn" {...field} className="h-[60px]" />
+                <Input placeholder="Office Visited" {...field} className="h-[60px]" />
               </FormControl>
               <FormDescription>
                 This is your public display name.
@@ -123,7 +142,24 @@ const AdminOfficeandFinancePage = () => {
 
         <FormField
           control={form.control}
-          name="username"
+          name="ServicesReceived"
+          render={({ field }) => (
+            <FormItem className="w-full">
+              <FormLabel className="text-2xl">Services Received</FormLabel>
+              <FormControl>
+                <Input placeholder="Services Received" {...field} className="h-[60px]" />
+              </FormControl>
+              <FormDescription>
+                This is your public display name.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="InternalClient"
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel className="text-2xl">
@@ -142,14 +178,14 @@ const AdminOfficeandFinancePage = () => {
 
         <FormField
           control={form.control}
-          name="username"
+          name="ExternalClient"
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel className="text-2xl">
                 External Client / Hinde Taga WVSU
               </FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} className="h-[60px]" />
+                <Input placeholder="External Client" {...field} className="h-[60px]" />
               </FormControl>
               <FormDescription>
                 This is your public display name.
@@ -161,12 +197,12 @@ const AdminOfficeandFinancePage = () => {
 
         <FormField
           control={form.control}
-          name="username"
+          name="Sex"
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel className="text-2xl">Sex / Kasarian</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} className="h-[60px]" />
+                <Input placeholder="Sex" {...field} className="h-[60px]" />
               </FormControl>
               <FormDescription>
                 This is your public display name.
@@ -174,15 +210,16 @@ const AdminOfficeandFinancePage = () => {
               <FormMessage />
             </FormItem>
           )}
-        />
-
+        /> 
 
         <FormField
           control={form.control}
-          name="username"
+          name="PointOfOrigin"
           render={({ field }) => (
             <FormItem className="w-full">
-              <FormLabel className="text-2xl">Point of Origin / Taga Saan</FormLabel>
+              <FormLabel className="text-2xl">
+                Point of Origin / Taga Saan
+              </FormLabel>
               <FormControl>
                 <Input placeholder="shadcn" {...field} className="h-[60px]" />
               </FormControl>
