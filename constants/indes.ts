@@ -5,7 +5,7 @@ export const Offices = [
 },
 {
     title: "BAC",
-    route:"/AdminContainer/AdministrationOfficesandFinance"
+    route:"/AdminContainer/BACAdmin"
 },
 {
     title: "CSC",

@@ -1,9 +1,10 @@
 import BACForm from "@/components/BACForm/BACForm";
+import LoginModal from "@/components/LoginModal";
 
 const BACpage = () => {
   return (
     <section>
-      <BACForm />
+      <LoginModal route="/BAC/BACPersonalForm"/>
     </section>
   );
 };

@@ -19,7 +19,11 @@ import { useRouter } from "next/navigation";
 import { ToastAction } from "@/components/ui/toast"
 import { useToast } from "@/components/ui/use-toast"
 
-const LoginModal = () => {
+type LoginModalProps={
+  route: string
+}
+
+const LoginModal = ({route}:LoginModalProps) => {
   const [accountData, setAccountData] = useState({ email: "", password: "" });
   const router = useRouter();
   const [passwordData, setPasswordData] = useState({
@@ -62,7 +66,7 @@ const LoginModal = () => {
         title: "Success",
         description: "Noice, Correct informaiton",
       })
-      router.push("/OfficePage");
+      router.push(route);
     } catch (error) {
       console.log("Login Error", error);
     }
