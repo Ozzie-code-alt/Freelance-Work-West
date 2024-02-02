@@ -25,8 +25,9 @@ export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
+  console.log("Data passed to DataTable:", data); // Debugging line
   const table = useReactTable({
-    data,
+    data:data??[],
     columns,
     getCoreRowModel: getCoreRowModel(),
   })
@@ -52,6 +53,7 @@ export function DataTable<TData, TValue>({
             </TableRow>
           ))}
         </TableHeader>
+
         <TableBody>
           {table.getRowModel().rows?.length ? (
             table.getRowModel().rows.map((row) => (
