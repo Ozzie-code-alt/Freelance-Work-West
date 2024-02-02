@@ -16,11 +16,10 @@ export async function POST(req){
 }
 
 export async function GET(){
-    try {
+ 
         await connectMongo()
             const personalInfo = await PersonalInformation.find()
+            console.log("Logg Personal Information",personalInfo)
             return NextResponse.json({personalInfo}) 
-    } catch (error) {
-        return NextResponse.json({message:"An error Occured while Getting Personal Informaiton"},{status:500})
-    }
+  
 }
