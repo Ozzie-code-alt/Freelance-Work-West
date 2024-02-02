@@ -16,10 +16,8 @@ export async function POST(req){
 }
 
 export async function GET(){
- 
         await connectMongo()
             const personalInfo = await PersonalInformation.find()
             console.log("Logg Personal Information",personalInfo)
             return NextResponse.json({personalInfo}) 
-  
 }
