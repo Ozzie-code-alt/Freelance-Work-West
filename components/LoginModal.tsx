@@ -112,7 +112,7 @@ const LoginModal = ({route}:LoginModalProps) => {
             <CardHeader>
               <CardTitle>Login</CardTitle>
               <CardDescription>
-                Login to your account here. Click Submit when you're done.
+                Login to your account here. Click Submit when you&apos;re done.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-2">
