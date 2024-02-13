@@ -15,20 +15,38 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import { useToast } from "@/components/ui/use-toast"
 import { Calendar } from "@/components/ui/calendar";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { useSession } from "next-auth/react";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+} from "@/components/ui/command"
+import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
 
 const formSchema = z.object({
   date: z.date({
     required_error: "Please select a date and time",
     invalid_type_error: "That's not a date!",
   }),
+  userName: z.string().optional(),
   officeVisited: z.string().min(2, {
     message: "Office Visited must be at least 2 characters.",
   }),
@@ -50,13 +68,16 @@ const formSchema = z.object({
 });
 
 const AdminOfficeandFinancePage = () => {
-  const router = useRouter();
+  const {data:session} = useSession()
 
+  const router = useRouter()
+  const { toast } = useToast()
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       officeVisited: "",
+      userName:"",
       servicesReceived: "",
       internalClient: "",
       externalClient: "",
@@ -69,19 +90,33 @@ const AdminOfficeandFinancePage = () => {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
+    const userNameContainer = session?.user?.name || ""
+
+    console.log(userNameContainer)
+    const submissionData = {
+      ...values,
+      userName: userNameContainer
+    }
+
     try {
      const res =  await fetch("/api/personal", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ ...values }),
+        body: JSON.stringify(submissionData),
       });
       if (!res.ok) {
         throw new Error(`Error: ${res.status}`);
       }
     
       const data = await res.json();
+      toast({
+        title: "Up and Ready to Go !!",
+        variant:"success",
+        description: "Form Successfully Sent",
+      })
+      router.push("/AdministrationOfficeandFinance/ClientFeedbackForm")
       console.log(data);
 
     } catch (error) {
@@ -89,6 +124,28 @@ const AdminOfficeandFinancePage = () => {
     }
   };
 
+
+  //popover Content 
+  const languages = [
+    { label: "Student / Estudyante", value: "Student" },
+    { label: "Faculty / Titser", value: "Faculty" },
+    { label: "Staff / Kawani Na Di Nagtuturo", value: "Staff" },
+
+  ] as const
+
+
+  const externalClientOptions = [
+    { label: "General Public / Pribadong Indibidwal", value: "General Public" },
+    { label: "Goverment Employee  / Kawari ng Pamahalaan", value: "Government Employee" },
+    { label: "Private Employee / Nagtatrabaho sa Proibadong Ahensya", value: "Private Employee" },
+
+  ] as const
+
+
+
+
+
+  /*-------------------------------------------------------------------------------------------------------------------*/
   return (
     <Form {...form}>
       <form
@@ -182,7 +239,7 @@ const AdminOfficeandFinancePage = () => {
             </FormItem>
           )}
         />
-
+{/* 
         <FormField
           control={form.control}
           name="internalClient"
@@ -200,9 +257,73 @@ const AdminOfficeandFinancePage = () => {
               <FormMessage />
             </FormItem>
           )}
+        /> */}
+   <FormField
+          control={form.control}
+          name="internalClient"
+          render={({ field }) => (
+            <FormItem className="flex flex-col w-full">
+              <FormLabel className="text-2xl">Internal Client /Taga WVSU</FormLabel>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <FormControl>
+                    <Button
+                      variant="outline"
+                      role="combobox"
+                      className={cn(
+                        "w-[500px] justify-between",
+                        !field.value && "text-muted-foreground"
+                      )}
+                    >
+                      {field.value
+                        ? languages.find(
+                            (language) => language.value === field.value
+                          )?.label
+                        : "Internal Client"}
+                      <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                    </Button>
+                  </FormControl>
+                </PopoverTrigger>
+                <PopoverContent className="w-full p-0">
+                  <Command>
+                    <CommandInput
+                      placeholder="Options..."
+                      className="h-9"
+                    />
+                    <CommandEmpty>Nothing found.</CommandEmpty>
+                    <CommandGroup>
+                      {languages.map((language) => (
+                        <CommandItem
+                          value={language.label}
+                          key={language.value}
+                          onSelect={() => {
+                            form.setValue("internalClient", language.value)
+                          }}
+                        >
+                          {language.label}
+                          <CheckIcon
+                            className={cn(
+                              "ml-auto h-4 w-4",
+                              language.value === field.value
+                                ? "opacity-100"
+                                : "opacity-0"
+                            )}
+                          />
+                        </CommandItem>
+                      ))}
+                    </CommandGroup>
+                  </Command>
+                </PopoverContent>
+              </Popover>
+              <FormDescription>
+                This is the language that will be used in the dashboard.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
         />
 
-        <FormField
+        {/* <FormField
           control={form.control}
           name="externalClient"
           render={({ field }) => (
@@ -223,8 +344,73 @@ const AdminOfficeandFinancePage = () => {
               <FormMessage />
             </FormItem>
           )}
-        />
+        /> */}
 
+
+<FormField
+          control={form.control}
+          name="externalClient"
+          render={({ field }) => (
+            <FormItem className="flex flex-col w-full">
+              <FormLabel className="text-2xl">External Client /HindeTaga WVSU</FormLabel>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <FormControl>
+                    <Button
+                      variant="outline"
+                      role="combobox"
+                      className={cn(
+                        "w-[500px] justify-between",
+                        !field.value && "text-muted-foreground"
+                      )}
+                    >
+                      {field.value
+                        ? externalClientOptions.find(
+                            (options) => options.value === field.value
+                          )?.label
+                        : "External Client"}
+                      <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                    </Button>
+                  </FormControl>
+                </PopoverTrigger>
+                <PopoverContent className="w-full p-0">
+                  <Command>
+                    <CommandInput
+                      placeholder="Options..."
+                      className="h-9"
+                    />
+                    <CommandEmpty>Nothing found.</CommandEmpty>
+                    <CommandGroup>
+                      {externalClientOptions.map((options) => (
+                        <CommandItem
+                          value={options.label}
+                          key={options.value}
+                          onSelect={() => {
+                            form.setValue("externalClient", options.value)
+                          }}
+                        >
+                          {options.label}
+                          <CheckIcon
+                            className={cn(
+                              "ml-auto h-4 w-4",
+                              options.value === field.value
+                                ? "opacity-100"
+                                : "opacity-0"
+                            )}
+                          />
+                        </CommandItem>
+                      ))}
+                    </CommandGroup>
+                  </Command>
+                </PopoverContent>
+              </Popover>
+              <FormDescription>
+                This is the language that will be used in the dashboard.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <FormField
           control={form.control}
           name="sex"
@@ -242,7 +428,7 @@ const AdminOfficeandFinancePage = () => {
           )}
         />
 
-        <FormField
+        {/* <FormField
           control={form.control}
           name="pointOfOrigin"
           render={({ field }) => (
@@ -259,8 +445,30 @@ const AdminOfficeandFinancePage = () => {
               <FormMessage />
             </FormItem>
           )}
+        /> */}
+      <FormField
+          control={form.control}
+          name="pointOfOrigin"
+          render={({ field }) => (
+            <FormItem className="w-full">
+              <FormLabel className="text-2xl">Point Of Origin</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select Point Of Origin" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="luzon">Luzon</SelectItem>
+                  <SelectItem value="visayas">Visayas</SelectItem>
+                  <SelectItem value="mindanao">Mindanao</SelectItem>
+                  <SelectItem value="abroad">Abroad</SelectItem>
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
         />
-
         <Button type="submit">Submit</Button>
       </form>
     </Form>
