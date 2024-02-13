@@ -1,10 +1,14 @@
 import mongoose, { Schema, models } from "mongoose";
+import { string } from "zod";
 
 const PersonalInformationSchema = new Schema(
     {
       date: {
         type: Date,
         required: true,
+      },
+      userName:{
+        type:String,
       },
       servicesReceived: {
         type: String,

@@ -9,6 +9,9 @@ import * as z from "zod";
     required_error: "Please select a date and time",
     invalid_type_error: "That's not a date!",
   }),
+  userName: z.string().min(2, {
+    message: "Office Visited must be at least 2 characters.",
+  }),
   officeVisited: z.string().min(2, {
     message: "Office Visited must be at least 2 characters.",
   }),
@@ -35,6 +38,10 @@ export const columns: ColumnDef<FormData>[] = [
   {
     accessorKey: "date",
     header: "Date",
+  },
+  {
+    accessorKey:"userName",
+    header:"Name"
   },
   {
     accessorKey: "officeVisited",
