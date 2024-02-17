@@ -5,35 +5,72 @@ const PersonalInformationSchema = new Schema(
     {
       date: {
         type: Date,
-        required: true,
+     
       },
       userName:{
         type:String,
       },
       servicesReceived: {
         type: String,
-        required: true,
+
       },
       externalClient: {
         type: String,
-        required: true,
+
       },
       pointOfOrigin: {
         type: String,
-        required: true,
+  
       },
       officeVisited: {
         type: String,
-        required: true,
+   
       },
       internalClient: {
         type: String,
-        required: true,
+    
       },
       sex: {
         type: String,
-        required: true,
+ 
       },
+      responsiveness:{
+        type: String,
+       
+      },
+      reliability:{
+        type: String,
+   
+      },
+      access:{
+        type: String,
+ 
+      },
+      communication:{
+        type: String,
+      
+      },
+      costs:{
+        type: String,
+      
+      },
+      integrity:{
+        type: String,
+   
+      },
+      assurance:{
+        type: String,
+   
+      },    
+      outcome:{
+        type: String,
+    
+      },
+      message:{
+        type: String,
+      }
+
+
     },
     { timestamps: true }
   );
