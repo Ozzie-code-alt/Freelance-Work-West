@@ -1,10 +1,22 @@
-"use client"
+"use client";
 
-import { ColumnDef } from "@tanstack/react-table"
+import { ColumnDef } from "@tanstack/react-table";
 import * as z from "zod";
+import { MoreHorizontal } from "lucide-react";
+import { SpringModal } from "@/components/OpenMoreModal";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
- const formSchema = z.object({
+const formSchema = z.object({
   date: z.date({
     required_error: "Please select a date and time",
     invalid_type_error: "That's not a date!",
@@ -40,8 +52,8 @@ export const columns: ColumnDef<FormData>[] = [
     header: "Date",
   },
   {
-    accessorKey:"userName",
-    header:"Name"
+    accessorKey: "userName",
+    header: "Name",
   },
   {
     accessorKey: "officeVisited",
@@ -67,4 +79,37 @@ export const columns: ColumnDef<FormData>[] = [
     accessorKey: "pointOfOrigin",
     header: "Point Of Origin",
   },
-]
+
+  {
+    id: "actions",
+    cell: ({ row }) => {
+      const form = row.original;
+      const [isOpen, setIsOpen] = useState(false);
+
+      return (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className="h-8 w-8 p-0">
+              <span className="sr-only">Open menu</span>
+              <MoreHorizontal className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            <DropdownMenuItem
+              onClick={() => navigator.clipboard.writeText(form.userName)}
+            >
+              Delete
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>View customer</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setIsOpen(true)}>
+              View More
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+          <SpringModal isOpen={isOpen} setIsOpen={setIsOpen} />
+        </DropdownMenu>
+      );
+    },
+  },
+];
