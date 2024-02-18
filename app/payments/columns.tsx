@@ -44,9 +44,13 @@ const formSchema = z.object({
   }),
 });
 
-export type FormData = z.infer<typeof formSchema>;
+export type FormData = z.infer<typeof formSchema> & {_id:string};
 
 export const columns: ColumnDef<FormData>[] = [
+  {
+    accessorKey: "_id",
+    header: "ID",
+  },
   {
     accessorKey: "date",
     header: "Date",
@@ -86,6 +90,11 @@ export const columns: ColumnDef<FormData>[] = [
       const form = row.original;
       const [isOpen, setIsOpen] = useState(false);
 
+          // Assuming you have a function to handle the delete action
+          const handleDelete = (id) => {
+            console.log(`ID for this one: ${id}`);
+          };
+
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -97,7 +106,7 @@ export const columns: ColumnDef<FormData>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(form.userName)}
+              onClick={() => handleDelete(form._id)}
             >
               Delete
             </DropdownMenuItem>
@@ -107,7 +116,7 @@ export const columns: ColumnDef<FormData>[] = [
               View More
             </DropdownMenuItem>
           </DropdownMenuContent>
-          <SpringModal isOpen={isOpen} setIsOpen={setIsOpen} />
+          <SpringModal isOpen={isOpen} setIsOpen={setIsOpen} formIDValue ={form._id} />
         </DropdownMenu>
       );
     },

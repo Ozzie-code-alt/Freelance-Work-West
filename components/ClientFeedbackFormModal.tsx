@@ -722,7 +722,7 @@ export const AdministrationOfficeAndFinanceModal = ({
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Leave a Message :></FormLabel>
+                      <FormLabel>Leave a Message :</FormLabel>
                       <FormControl>
                         <Input placeholder="shadcn" {...field} />
                       </FormControl>
