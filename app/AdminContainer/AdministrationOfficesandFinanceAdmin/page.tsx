@@ -36,6 +36,7 @@ export default function DemoPage() {
     fetchData();
   }, []); // Empty dependency array ensures this effect runs once on mount
 
+  
   if (!data.length) {
     return <div className="w-screen h-screen flex justify-center items-center "><Example/></div>;
   }

@@ -1,6 +1,6 @@
 import mongoose, { Schema, models } from "mongoose";
 // Everything From Personal To 
-const BACSchema = new Schema(
+const AccountingSchema = new Schema(
   {
     date: {
       type: Date,
@@ -74,5 +74,5 @@ const BACSchema = new Schema(
   { timestamps: true }
   );
   
-  const BAC = models.BAC || mongoose.model("BAC", BACSchema);
-  export default BAC;
+  const Accounting = models.Accounting || mongoose.model("Accounting", AccountingSchema);
+  export default Accounting;

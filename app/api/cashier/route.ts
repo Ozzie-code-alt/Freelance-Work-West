@@ -1,5 +1,5 @@
 import { connectMongo } from "@/lib/connection";
-import BAC from "@/models/bac";
+import Cashier from "@/models/cashier";
 import { NextResponse } from "next/server";
 
 
@@ -7,9 +7,9 @@ export async function POST(req){
     try {
         const {date, userName, servicesReceived, externalClient, pointOfOrigin, officeVisited, internalClient, sex, reliability,responsiveness,access,communication,costs,integrity,assurance,outcome, message} = await req.json(); 
         await connectMongo();
-        await BAC.create({date, userName, servicesReceived, externalClient, pointOfOrigin, officeVisited, internalClient, sex ,reliability,responsiveness,access,communication,costs,integrity,assurance,outcome, message})
-        console.log("BAC Information Sent")
-        return NextResponse.json({message:"BAC Information Sent"}, {status:201})
+        await Cashier.create({date, userName, servicesReceived, externalClient, pointOfOrigin, officeVisited, internalClient, sex ,reliability,responsiveness,access,communication,costs,integrity,assurance,outcome, message})
+        console.log("Cashier Information Sent")
+        return NextResponse.json({message:"Cashier Information Sent"}, {status:201})
     } catch (error) {
         return NextResponse.json({message:"An Error Occured While Sending Personal Informaton"},{status:500})
     }
@@ -17,7 +17,7 @@ export async function POST(req){
 
 export async function GET(){
         await connectMongo()
-            const bacs = await BAC.find()
-            console.log("Logg BAC Information",bacs)
-            return NextResponse.json({bacs}) 
+            const cashiers = await Cashier.find()
+            console.log("Logg BAC Information",cashiers)
+            return NextResponse.json({cashiers}) 
 }
