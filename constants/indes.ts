@@ -8,8 +8,8 @@ export const Offices = [
     route:"/AdminContainer/BACAdmin"
 },
 {
-    title: "CSC",
-    route:"/AdminContainer/AdministrationOfficesandFinance"
+    title: "Accounting",
+    route:"/AdminContainer/AccountingAdmin"
 },
 {
     title: "Library",

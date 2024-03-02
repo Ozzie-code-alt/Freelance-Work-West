@@ -41,8 +41,7 @@ import {
   CommandItem,
 } from "@/components/ui/command";
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
-import { AdministrationOfficeAndFinanceModal } from "../ClientFeedbackFormModal";
-import { BACFormModal } from "./BACFormModal";
+import { AccountingFormModal } from "./AccountingFormModal";
 const formSchema = z.object({
   date: z.date({
     required_error: "Please select a date and time",
@@ -69,7 +68,7 @@ const formSchema = z.object({
   }),
 });
 
-const BACFormPage = () => {
+const AccountingPage = () => {
   const [isOpen, setIsOpen] = useState(false);
   // const { data: session } = useSession();
 
@@ -91,41 +90,6 @@ const BACFormPage = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsOpen(true);
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    // console.log(values);
-    // const userNameContainer = session?.user?.name || "";
-    // console.log(userNameContainer);
-    // const submissionData = {
-    //   ...values,
-    //   // userName: userNameContainer,
-    // };
-    // try {
-    //   const res = await fetch("/api/personal", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(submissionData),
-    //   });
-    //   if (!res.ok) {
-    //     throw new Error(`Error: ${res.status}`);
-    //   }
-
-    //   const data = await res.json();
-    //   toast({
-    //     title: "Up and Ready to Go !!",
-    //     variant: "success",
-    //     description: "Form Successfully Sent",
-    //   });
-
-    //   // router.push("/AdministrationOfficeandFinance/ClientFeedbackForm")
-    //   console.log(data);
-    // } catch (error) {
-    //   console.log("Error During Registration", error);
-    // }
-
-    // <AdministrationOfficeAndFinanceModal isOpen={isOpen} setIsOpen={setIsOpen} valueProps={submissionData}  />
   };
 
   const submissionData = form.getValues();
@@ -417,7 +381,7 @@ const BACFormPage = () => {
           <Button type="submit">Submit</Button>
         </form>
       </Form>
-      <BACFormModal
+      <AccountingFormModal
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         adminProps={submissionData}
@@ -426,4 +390,4 @@ const BACFormPage = () => {
   );
 };
 
-export default BACFormPage;
+export default AccountingPage;

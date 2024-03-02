@@ -2,33 +2,27 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FiAlertCircle } from "react-icons/fi";
 import { Dispatch, SetStateAction, useState, useEffect } from "react";
 
-interface CashierModalOpenMoreProps {
-  isOpen: boolean;
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
-  formIDValue: string;
-}
-
-export const SpringModal = ({ isOpen, setIsOpen, formIDValue }:CashierModalOpenMoreProps) => {
+export const AccountingModalOpenMore = ({ isOpen, setIsOpen, formIDValue }) => {
   const [adminInfo, setAdminInfo] = useState({});
 
   useEffect(() => {
     async function fetchTopics() {
       try {
-        const response = await fetch(`/api/personal/${formIDValue}`); // Make sure this URL is correct
+        const response = await fetch(`/api/accounting/${formIDValue}`); // Make sure this URL is correct
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
         console.log("this is data", data);
 
-        if (!data.hasOwnProperty("adminInfo")) {
+        if (!data.hasOwnProperty("accountingInfo")) {
           throw new Error(
             "Expected property adminInfo not found in the response"
           );
         }
-        const { adminInfo } = data;
+        const { accountingInfo } = data;
 
-        setAdminInfo(adminInfo);
+        setAdminInfo(accountingInfo);
       } catch (error) {
         console.error("Fetching topics failed:", error);
       }
@@ -63,7 +57,7 @@ export const SpringModal = ({ isOpen, setIsOpen, formIDValue }:CashierModalOpenM
               >
               
                   <h2 className="font-bold text-lg text-white">{key}</h2>
-                  <p className="text-white">{String(value)}</p>
+                  <p className="text-white">{value}</p>
            
               </div>
             ))}

@@ -3,7 +3,6 @@
 import { ColumnDef } from "@tanstack/react-table";
 import * as z from "zod";
 import { MoreHorizontal } from "lucide-react";
-import { SpringModal } from "@/components/OpenMoreModal";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -14,6 +13,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { BACModalOpenMore } from "@/components/BACForm/OpenMoreBAC";
 import { Row } from "@tanstack/react-table"; // Import the Row type from @tanstack/react-table
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -47,6 +47,8 @@ const formSchema = z.object({
 
 export type FormData = z.infer<typeof formSchema> & {_id:string};
 
+
+
 type ActionsCellProps = {
   row: Row<FormData>;
 };
@@ -79,7 +81,7 @@ const ActionsCell: React.FC<ActionsCellProps> = ({ row }) => {
           View More
         </DropdownMenuItem>
       </DropdownMenuContent>
-      <SpringModal
+      <BACModalOpenMore
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         formIDValue={form._id}
@@ -87,7 +89,8 @@ const ActionsCell: React.FC<ActionsCellProps> = ({ row }) => {
     </DropdownMenu>
   );
 };
-export const columns: ColumnDef<FormData>[] = [
+
+export const BACcolumns: ColumnDef<FormData>[] = [
   {
     accessorKey: "_id",
     header: "ID",

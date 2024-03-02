@@ -3,7 +3,6 @@
 import { ColumnDef } from "@tanstack/react-table";
 import * as z from "zod";
 import { MoreHorizontal } from "lucide-react";
-import { SpringModal } from "@/components/OpenMoreModal";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,6 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Row } from "@tanstack/react-table"; // Import the Row type from @tanstack/react-table
+import { CashierModalOpenMore } from "@/components/Cashier/OpenMoreCashier";
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
 const formSchema = z.object({
@@ -79,7 +79,7 @@ const ActionsCell: React.FC<ActionsCellProps> = ({ row }) => {
           View More
         </DropdownMenuItem>
       </DropdownMenuContent>
-      <SpringModal
+      <CashierModalOpenMore
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         formIDValue={form._id}
@@ -87,7 +87,7 @@ const ActionsCell: React.FC<ActionsCellProps> = ({ row }) => {
     </DropdownMenu>
   );
 };
-export const columns: ColumnDef<FormData>[] = [
+export const Cashiercolumns: ColumnDef<FormData>[] = [
   {
     accessorKey: "_id",
     header: "ID",

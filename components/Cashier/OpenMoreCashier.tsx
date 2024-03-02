@@ -8,27 +8,29 @@ interface CashierModalOpenMoreProps {
   formIDValue: string;
 }
 
-export const SpringModal = ({ isOpen, setIsOpen, formIDValue }:CashierModalOpenMoreProps) => {
-  const [adminInfo, setAdminInfo] = useState({});
+
+
+export const CashierModalOpenMore = ({ isOpen, setIsOpen, formIDValue }:CashierModalOpenMoreProps) => {
+  const [cashierInfo, setAdminInfo] = useState({});
 
   useEffect(() => {
     async function fetchTopics() {
       try {
-        const response = await fetch(`/api/personal/${formIDValue}`); // Make sure this URL is correct
+        const response = await fetch(`/api/cashier/${formIDValue}`); // Make sure this URL is correct
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
         console.log("this is data", data);
 
-        if (!data.hasOwnProperty("adminInfo")) {
+        if (!data.hasOwnProperty("cashierInfo")) {
           throw new Error(
             "Expected property adminInfo not found in the response"
           );
         }
-        const { adminInfo } = data;
+        const { cashierInfo } = data;
 
-        setAdminInfo(adminInfo);
+        setAdminInfo(cashierInfo);
       } catch (error) {
         console.error("Fetching topics failed:", error);
       }
@@ -56,7 +58,7 @@ export const SpringModal = ({ isOpen, setIsOpen, formIDValue }:CashierModalOpenM
           >
             <FiAlertCircle className="text-white/10 rotate-12 text-[250px] absolute z-0 -top-24 -left-24" />
             <div className="w-full grid grid-cols-3 place-items-center">
-            {Object.entries(adminInfo).map(([key, value]) => (
+            {Object.entries(cashierInfo).map(([key, value]) => (
               <div
                 key={key}
                 className="p-4 border border-slate-300 my-3 w-[300px] flex justify-between gap-5 items-start"
