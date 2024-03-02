@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/AdministrationOfficeandFinance/ClientFeedbackForm", "app/api/auth/[...nextauth]/route.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/AdministrationOfficeandFinance/ClientFeedbackForm", "app/api/auth/[...nextauth]/route.ts"],
   "exclude": ["node_modules"]
 }
