@@ -33,15 +33,15 @@ const LoginModal = ({route}:LoginModalProps) => {
   });
   const { toast } = useToast()
 
-  const handleLoginChange = (e) => {
+  const handleLoginChange = (e:any) => {
     setAccountData({ ...accountData, [e.target.id]: e.target.value });
   };
 
-  const handlePasswordChange = (e) => {
+  const handlePasswordChange = (e:any) => {
     setPasswordData({ ...passwordData, [e.target.id]: e.target.value });
   };
 
-  const handleLoginSubmit = async (e) => {
+  const handleLoginSubmit = async (e:any) => {
     e.preventDefault();
     try {
       const { email, password } = accountData;
@@ -72,7 +72,7 @@ const LoginModal = ({route}:LoginModalProps) => {
     }
   };
 
-  const handleRegisterSubmit = async (e) => {
+  const handleRegisterSubmit = async (e:any) => {
     e.preventDefault();
     console.log(passwordData); // This will log the password form data to the console
 

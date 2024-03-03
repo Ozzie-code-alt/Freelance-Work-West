@@ -2,9 +2,11 @@ import { connectMongo } from "@/lib/connection";
 import User from "@/models/user";
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs"
+import { NextApiRequest } from "next";
 
-export async function POST(req){
+export async function POST(req:NextApiRequest){
     try {
+        //@ts-ignore
            const {name, email, password} = await req.json(); 
             const hashedPassword = await bcrypt.hash(password, 10) //Hash Password for security
            await connectMongo();
