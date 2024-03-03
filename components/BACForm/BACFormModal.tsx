@@ -85,7 +85,7 @@ export const BACFormModal = ({
   isOpen,
   setIsOpen,
   adminProps,
-}) => {
+}:any) => {
   const { data: session } = useSession();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),

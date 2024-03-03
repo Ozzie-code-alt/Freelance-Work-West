@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FiAlertCircle } from "react-icons/fi";
 import { Dispatch, SetStateAction, useState, useEffect } from "react";
 
-export const AccountingModalOpenMore = ({ isOpen, setIsOpen, formIDValue }) => {
+export const AccountingModalOpenMore = ({ isOpen, setIsOpen, formIDValue }:any) => {
   const [adminInfo, setAdminInfo] = useState({});
 
   useEffect(() => {
@@ -57,7 +57,7 @@ export const AccountingModalOpenMore = ({ isOpen, setIsOpen, formIDValue }) => {
               >
               
                   <h2 className="font-bold text-lg text-white">{key}</h2>
-                  <p className="text-white">{value}</p>
+                  <p className="text-white">{String(value)}</p>
            
               </div>
             ))}

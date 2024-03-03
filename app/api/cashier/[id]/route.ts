@@ -3,7 +3,7 @@ import { connectMongo } from "@/lib/connection";
 import Cashier from "@/models/cashier";
 import { NextResponse } from "next/server"
 
-export async function GET(req, {params}){
+export async function GET({params}:any){
     const {id} = params // we grab id from link - desctructure
     await connectMongo();
    const cashierInfo = await Cashier.findById({_id:id})

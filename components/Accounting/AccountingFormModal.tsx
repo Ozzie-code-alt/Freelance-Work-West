@@ -81,11 +81,15 @@ import { FiAlertCircle } from "react-icons/fi";
 {
   /*Modal Function Here -------------------------------------------- */
 }
+
+
+
 export const AccountingFormModal = ({
+ 
   isOpen,
   setIsOpen,
   adminProps,
-}) => {
+}:any) => {
   const { data: session } = useSession();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),

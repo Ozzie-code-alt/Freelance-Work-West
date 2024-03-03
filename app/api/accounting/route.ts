@@ -1,10 +1,12 @@
 import { connectMongo } from "@/lib/connection";
 import Accounting from "@/models/accounting";
+import { NextApiRequest } from "next";
 import { NextResponse } from "next/server";
 
 
-export async function POST(req){
+export async function POST(req:NextApiRequest){
     try {
+        //@ts-ignore
         const {date, userName, servicesReceived, externalClient, pointOfOrigin, officeVisited, internalClient, sex, reliability,responsiveness,access,communication,costs,integrity,assurance,outcome, message} = await req.json(); 
         await connectMongo();
         await Accounting.create({date, userName, servicesReceived, externalClient, pointOfOrigin, officeVisited, internalClient, sex ,reliability,responsiveness,access,communication,costs,integrity,assurance,outcome, message})
