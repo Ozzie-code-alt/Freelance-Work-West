@@ -9,7 +9,7 @@ export default function DemoPage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch("http://localhost:3000/api/bac");
+        const res = await fetch("/api/bac");
         if (!res.ok) {
           throw new Error(
             `API call failed with status: ${res.status} ${res.statusText}`
