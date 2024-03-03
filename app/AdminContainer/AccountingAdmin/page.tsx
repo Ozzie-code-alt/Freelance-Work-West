@@ -10,7 +10,7 @@ export default function DemoPage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch("http://localhost:3000/api/accounting");
+        const res = await fetch("/api/accounting");
         if (!res.ok) {
           throw new Error(
             `API call failed with status: ${res.status} ${res.statusText}`
