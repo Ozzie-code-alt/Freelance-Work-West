@@ -11,7 +11,9 @@ export async function POST(req:NextApiRequest){
         await connectMongo();
         await BAC.create({date, userName, servicesReceived, externalClient, pointOfOrigin, officeVisited, internalClient, sex ,reliability,responsiveness,access,communication,costs,integrity,assurance,outcome, message})
         console.log("BAC Information Sent")
-        return NextResponse.json({message:"BAC Information Sent"}, {status:201})
+        return NextResponse.json({message:"BAC Information Sent it work now"}, {status:201})
+
+
     } catch (error) {
         return NextResponse.json({message:"An Error Occured While Sending Personal Informaton"},{status:500})
     }
