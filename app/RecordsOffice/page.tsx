@@ -3,7 +3,6 @@ import LoginModal from "@/components/LoginModal";
 import ParticleRing from "@/components/ParticleRing";
 const Medicalpage = () => {
   return (
-
       <div className="border border-blue-500 bg-purple-500 w-screen h-screen flex flex-col justify-center  items-center px-10 py-20">
       <div className="absolute w-screen h-full z-0">
         <ParticleRing />
@@ -16,10 +15,10 @@ const Medicalpage = () => {
       </div>
       {/*Pass Props Here then*/}
       <div className="z-10">
-        <LoginModal route="/MedicalOfficeandFinance/MedicalPersonalForm" />
+      <LoginModal route="/RecordsOffice/RecordsOfficePersonalForm"/>
       </div>
     </div>
- 
+  
   );
 };
 
