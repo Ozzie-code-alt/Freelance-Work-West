@@ -11,7 +11,7 @@ const OSApage = () => {
 
       <div className="w-full pb-20 h-auto text-center text-white z-10">
         <h1 className="text-4xl lg:text-7xl">
-          Aministration Office and Finance <br />
+         OSA <br />
         </h1>
       </div>
       {/*Pass Props Here then*/}
