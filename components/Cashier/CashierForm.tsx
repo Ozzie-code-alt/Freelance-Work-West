@@ -225,7 +225,7 @@ const CashierFormPage = () => {
                         variant="outline"
                         role="combobox"
                         className={cn(
-                          "w-[500px] justify-between",
+                          "w-[300px] md:w-[500px]  justify-between",
                           !field.value && "text-muted-foreground"
                         )}
                       >
@@ -289,7 +289,7 @@ const CashierFormPage = () => {
                         variant="outline"
                         role="combobox"
                         className={cn(
-                          "w-[500px] justify-between",
+                          "w-[300px] md:w-[500px]  justify-between",
                           !field.value && "text-muted-foreground"
                         )}
                       >
@@ -298,7 +298,7 @@ const CashierFormPage = () => {
                               (options) => options.value === field.value
                             )?.label
                           : "External Client"}
-                        <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                        <CaretSortIcon className="ml-2 h-4 w-4 overflow-hidden shrink-0 opacity-50" />
                       </Button>
                     </FormControl>
                   </PopoverTrigger>

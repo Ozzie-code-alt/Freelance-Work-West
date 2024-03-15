@@ -212,7 +212,7 @@ const BACFormPage = () => {
                   <Input
                     placeholder="Office Visited"
                     {...field}
-                    className="h-[60px]"
+                    className="h-[60px] w-[300px] md:w-full"
                   />
                 </FormControl>
                 <FormDescription>
@@ -233,7 +233,7 @@ const BACFormPage = () => {
                   <Input
                     placeholder="Services Received"
                     {...field}
-                    className="h-[60px]"
+                    className="h-[60px] w-[300px] md:w-full"
                   />
                 </FormControl>
                 <FormDescription>
@@ -252,6 +252,8 @@ const BACFormPage = () => {
                 <FormLabel className="text-2xl">
                   Internal Client /Taga WVSU
                 </FormLabel>
+
+
                 <Popover>
                   <PopoverTrigger asChild>
                     <FormControl>
@@ -259,7 +261,7 @@ const BACFormPage = () => {
                         variant="outline"
                         role="combobox"
                         className={cn(
-                          "w-[500px] justify-between",
+                          "w-[300px] md:w-[500px] justify-between",
                           !field.value && "text-muted-foreground"
                         )}
                       >
@@ -272,7 +274,8 @@ const BACFormPage = () => {
                       </Button>
                     </FormControl>
                   </PopoverTrigger>
-                  <PopoverContent className="w-full p-0">
+
+                  <PopoverContent className="w-[300px] md:w-full p-0">
                     <Command>
                       <CommandInput placeholder="Options..." className="h-9" />
                       <CommandEmpty>Nothing found.</CommandEmpty>
@@ -323,7 +326,7 @@ const BACFormPage = () => {
                         variant="outline"
                         role="combobox"
                         className={cn(
-                          "w-[500px] justify-between",
+                          " w-[300px] md:w-[500px] overflow-hidden justify-between",
                           !field.value && "text-muted-foreground"
                         )}
                       >
@@ -336,7 +339,7 @@ const BACFormPage = () => {
                       </Button>
                     </FormControl>
                   </PopoverTrigger>
-                  <PopoverContent className="w-full p-0">
+                  <PopoverContent className="w-[300px] md:w-full p-0">
                     <Command>
                       <CommandInput placeholder="Options..." className="h-9" />
                       <CommandEmpty>Nothing found.</CommandEmpty>
