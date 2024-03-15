@@ -258,7 +258,7 @@ const AdminOfficeandFinancePage = () => {
                         variant="outline"
                         role="combobox"
                         className={cn(
-                          "w-[500px] justify-between",
+                          "w-[300px] md:w-[500px] justify-between",
                           !field.value && "text-muted-foreground"
                         )}
                       >
@@ -322,7 +322,7 @@ const AdminOfficeandFinancePage = () => {
                         variant="outline"
                         role="combobox"
                         className={cn(
-                          "w-[500px] justify-between",
+                          "w-[300px] md:w-[500px] overflow-hidden justify-between",
                           !field.value && "text-muted-foreground"
                         )}
                       >
