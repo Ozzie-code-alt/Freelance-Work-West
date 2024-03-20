@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { Puff } from "react-loader-spinner";
 import {
   Card,
   CardContent,
@@ -16,33 +17,36 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { ToastAction } from "@/components/ui/toast"
-import { useToast } from "@/components/ui/use-toast"
+import { ToastAction } from "@/components/ui/toast";
+import { useToast } from "@/components/ui/use-toast";
+import { set } from "mongoose";
 
-type LoginModalProps={
-  route: string
-}
+type LoginModalProps = {
+  route: string;
+};
 
-const LoginModal = ({route}:LoginModalProps) => {
+const LoginModal = ({ route }: LoginModalProps) => {
   const [accountData, setAccountData] = useState({ email: "", password: "" });
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const [passwordData, setPasswordData] = useState({
     name: "",
     email: "",
     password: "",
   });
-  const { toast } = useToast()
+  const { toast } = useToast();
 
-  const handleLoginChange = (e:any) => {
+  const handleLoginChange = (e: any) => {
     setAccountData({ ...accountData, [e.target.id]: e.target.value });
   };
 
-  const handlePasswordChange = (e:any) => {
+  const handlePasswordChange = (e: any) => {
     setPasswordData({ ...passwordData, [e.target.id]: e.target.value });
   };
 
-  const handleLoginSubmit = async (e:any) => {
+  const handleLoginSubmit = async (e: any) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const { email, password } = accountData;
       const res = await signIn("credentials", {
@@ -57,7 +61,7 @@ const LoginModal = ({route}:LoginModalProps) => {
           title: "Invalid Credentials",
           description: "Import correct information in the necessary fields",
           action: <ToastAction altText="Try again">Try again</ToastAction>,
-        })
+        });
         return;
       }
       console.log("Login Works");
@@ -65,19 +69,22 @@ const LoginModal = ({route}:LoginModalProps) => {
         variant: "success",
         title: "Success",
         description: "Noice, Correct informaiton",
-      })
+      });
       router.push(route);
     } catch (error) {
       console.log("Login Error", error);
     }
+
+    setLoading(false);
   };
 
-  const handleRegisterSubmit = async (e:any) => {
+  const handleRegisterSubmit = async (e: any) => {
+    setLoading(true);
     e.preventDefault();
     console.log(passwordData); // This will log the password form data to the console
 
     try {
-      const res = await fetch("api/register", {
+      const res = await fetch("/api/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -87,15 +94,32 @@ const LoginModal = ({route}:LoginModalProps) => {
         }),
       });
       if (res.ok) {
+        toast({
+          variant: "success",
+          title: "Success",
+          description: "User Registered Successfully",
+        });
         const form = e.target;
         form.reset();
         window.location.reload();
       } else {
         console.log("User Registration Failed");
+        toast({
+          variant: "destructive",
+          title: "Error",
+          description: "User Registration Failed, Please try again.",
+        });
       }
     } catch (error) {
       console.log("Error During Registration", error);
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "User Registration Failed, Network Error.",
+      });
     }
+
+    setLoading(false);
   };
 
   return (
@@ -117,7 +141,7 @@ const LoginModal = ({route}:LoginModalProps) => {
             </CardHeader>
             <CardContent className="space-y-2">
               <div className="space-y-1">
-                <Label htmlFor="email">Name</Label>
+                <Label htmlFor="email">Email</Label>
                 <Input id="email" onChange={handleLoginChange} />
               </div>
               <div className="space-y-1">
@@ -130,8 +154,21 @@ const LoginModal = ({route}:LoginModalProps) => {
               </div>
             </CardContent>
             <CardFooter>
-              <Button>Login</Button>
-              
+              {loading ? (
+                <div>
+                  <Puff
+                    visible={true}
+                    height="80"
+                    width="80"
+                    color="#4fa94d"
+                    ariaLabel="puff-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                  />
+                </div>
+              ) : (
+                <Button>Login</Button>
+              )}{" "}
             </CardFooter>
           </Card>
         </form>
@@ -176,9 +213,23 @@ const LoginModal = ({route}:LoginModalProps) => {
             </CardContent>
 
             <CardFooter>
-              <Button type="submit" value="Submit">
-                Register
-              </Button>
+              {loading ? (
+                <div>
+                  <Puff
+                    visible={true}
+                    height="80"
+                    width="80"
+                    color="#4fa94d"
+                    ariaLabel="puff-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                  />
+                </div>
+              ) : (
+                <Button type="submit" value="Submit">
+                  Register
+                </Button>
+              )}
             </CardFooter>
           </Card>
         </form>
