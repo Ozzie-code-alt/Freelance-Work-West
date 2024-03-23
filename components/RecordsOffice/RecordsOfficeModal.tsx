@@ -175,7 +175,7 @@ export const RecordsOfficeFormModal = ({
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className=" py-0 md:py-20 grid gap-10 lg:grid-cols-2 overflow-hidden border w-full space-y-8 h-auto border-red-500 place-items-center"
+                className=" py-0 md:py-20 grid gap-10 lg:grid-cols-2 overflow-y-scroll border w-full space-y-8 h-auto border-red-500 place-items-center"
               >
                 <FormField
                   control={form.control}

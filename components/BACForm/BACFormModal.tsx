@@ -30,31 +30,8 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { useSession } from "next-auth/react";
-
+import sendEmail from "@/lib/emailjs";
 const formSchema = z.object({
-  // date: z.date({
-  //     required_error: "Please select a date and time",
-  //     invalid_type_error: "That's not a date!",
-  //   }),
-  //   userName: z.string().optional(),
-  //   officeVisited: z.string().min(2, {
-  //     message: "Office Visited must be at least 2 characters.",
-  //   }),
-  //   servicesReceived: z.string().min(2, {
-  //     message: "Services Received must be at least 2 characters.",
-  //   }),
-  //   internalClient: z.string().min(2, {
-  //     message: "Internal Client must be at least 2 characters.",
-  //   }),
-  //   externalClient: z.string().min(2, {
-  //     message: "External Client must be at least 2 characters.",
-  //   }),
-  //   sex: z.string().min(2, {
-  //     message: "Sex must be at least 2 characters.",
-  //   }),
-  //   pointOfOrigin: z.string().min(2, {
-  //     message: "Point Of Origin must be at least 2 characters.",
-  //   }),
   responsiveness: z.string().min(1),
   reliability: z.string().min(1),
   access: z.string().min(1),
@@ -81,22 +58,11 @@ import { FiAlertCircle } from "react-icons/fi";
 {
   /*Modal Function Here -------------------------------------------- */
 }
-export const BACFormModal = ({
-  isOpen,
-  setIsOpen,
-  adminProps,
-}:any) => {
+export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
   const { data: session } = useSession();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      //   officeVisited: "",
-      //   userName: "",
-      //   servicesReceived: "",
-      //   internalClient: "",
-      //   externalClient: "",
-      //   sex: "",
-      //   pointOfOrigin: "",
       responsiveness: "",
       reliability: "",
       access: "",
@@ -110,9 +76,6 @@ export const BACFormModal = ({
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    // console.log(values);
     console.log("Submitted");
     const userNameContainer = session?.user?.name || "";
     const submittedValues = {
@@ -120,7 +83,7 @@ export const BACFormModal = ({
       userName: userNameContainer,
       ...values,
     };
-    // console.log(submittedValues)
+
     try {
       const res = await fetch("/api/bac", {
         method: "POST",
@@ -133,11 +96,21 @@ export const BACFormModal = ({
         throw new Error(`Error: ${res.status}`);
       }
       const data = await res.json();
+
       toast({
         title: "Up and Ready to Go !!",
         variant: "success",
         description: "Form Successfully Sent",
       });
+      sendEmail({
+        to_name: "Justin For Now",
+        contact: "contact Value Here",
+        user_email: "justinsantos731@gmail.com",
+        type: "Form Type Here",
+        subject: "Wedding Inquiry Here",
+        message: "it is DONE"
+      });
+
       console.log(data);
     } catch (error) {
       console.log("Error During Registration", error);
@@ -158,14 +131,14 @@ export const BACFormModal = ({
             animate={{ scale: 1, rotate: "0deg" }}
             exit={{ scale: 0, rotate: "0deg" }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-gradient-to-br from-violet-600 to-indigo-600 text-white p-6 rounded-lg w-full max-w-lg h-full shadow-xl cursor-default relative overflow-hidden"
+            className="bg-gradient-to-br from-violet-600 to-indigo-600 text-white p-6 rounded-lg w-full max-w-lg h-full shadow-xl cursor-default relative "
           >
             <FiAlertCircle className="text-white/10 rotate-12 text-[250px] absolute z-0 -top-24 -left-24" />
 
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className=" py-0  md:py-20 grid md:gap-10 lg:grid-cols-2 border mt overflow-scroll w-full space-y-8 h-full md:h-auto border-red-500 place-items-center"
+                className=" py-0  md:py-20 grid md:gap-10 lg:grid-cols-2 border mt overflow-y-scroll w-full space-y-8 h-full md:h-auto border-red-500 place-items-center"
               >
                 <FormField
                   control={form.control}
@@ -228,7 +201,7 @@ export const BACFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -301,7 +274,7 @@ export const BACFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -370,7 +343,7 @@ export const BACFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -440,7 +413,7 @@ export const BACFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -507,7 +480,7 @@ export const BACFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -574,7 +547,7 @@ export const BACFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -640,7 +613,7 @@ export const BACFormModal = ({
                           </Command>
                         </PopoverContent>
                       </Popover>
-                      <FormDescription >
+                      <FormDescription>
                         <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
@@ -708,7 +681,7 @@ export const BACFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -726,10 +699,13 @@ export const BACFormModal = ({
                       <FormControl>
                         <Input placeholder="shadcn" {...field} />
                       </FormControl>
-                      <FormDescription>    <p className="text-yellow-500">
+                      <FormDescription>
+                        {" "}
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
-                        </p></FormDescription>
+                        </p>
+                      </FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
