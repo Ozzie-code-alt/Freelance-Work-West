@@ -168,14 +168,14 @@ export const MedicalFormModal = ({
             animate={{ scale: 1, rotate: "0deg" }}
             exit={{ scale: 0, rotate: "0deg" }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-gradient-to-br from-violet-600 to-indigo-600 text-white p-6 rounded-lg w-full h-full max-w-lg shadow-xl cursor-default relative overflow-hidden"
+            className="bg-gradient-to-br from-violet-600 to-indigo-600 text-white p-6 rounded-lg w-full h-full max-w-lg shadow-xl cursor-default relative"
           >
             <FiAlertCircle className="text-white/10 rotate-12 text-[250px] absolute z-0 -top-24 -left-24" />
 
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="py-0 md:py-20 grid gap-10 lg:grid-cols-2 border w-full overflow-hidden space-y-8 h-auto border-red-500 place-items-center"
+                className="py-0 md:py-20 grid gap-10 lg:grid-cols-2 border w-full overflow-y-scroll space-y-8 h-auto border-red-500 place-items-center"
               >
                 <FormField
                   control={form.control}

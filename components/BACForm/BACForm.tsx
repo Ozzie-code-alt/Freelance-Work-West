@@ -91,41 +91,6 @@ const BACFormPage = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsOpen(true);
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    // console.log(values);
-    // const userNameContainer = session?.user?.name || "";
-    // console.log(userNameContainer);
-    // const submissionData = {
-    //   ...values,
-    //   // userName: userNameContainer,
-    // };
-    // try {
-    //   const res = await fetch("/api/personal", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(submissionData),
-    //   });
-    //   if (!res.ok) {
-    //     throw new Error(`Error: ${res.status}`);
-    //   }
-
-    //   const data = await res.json();
-    //   toast({
-    //     title: "Up and Ready to Go !!",
-    //     variant: "success",
-    //     description: "Form Successfully Sent",
-    //   });
-
-    //   // router.push("/AdministrationOfficeandFinance/ClientFeedbackForm")
-    //   console.log(data);
-    // } catch (error) {
-    //   console.log("Error During Registration", error);
-    // }
-
-    // <AdministrationOfficeAndFinanceModal isOpen={isOpen} setIsOpen={setIsOpen} valueProps={submissionData}  />
   };
 
   const submissionData = form.getValues();
