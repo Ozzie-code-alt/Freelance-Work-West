@@ -16,8 +16,8 @@ export const Offices = [
     route:"/AdminContainer/AdministrationOfficesandFinance"
 },
 {
-    title: "Medical Dental",
-    route:"/AdminContainer/AdministrationOfficesandFinance"
+    title: "Medical and Dental Clinic",
+    route:"/AdminContainer/MedicalAdmin"
 },
 {
     title: "OD Educ",
@@ -41,7 +41,7 @@ export const Offices = [
 },
 {
     title: "OSA",
-    route:"/AdminContainer/AdministrationOfficesandFinance"
+    route:"/AdminContainer/OSAAdmin"
 },
 {
     title: "Planning and Development Unit",
