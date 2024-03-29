@@ -52,7 +52,7 @@ const criteria = [
 ] as const;
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Dispatch, SetStateAction, useState } from "react";
+
 import { FiAlertCircle } from "react-icons/fi";
 
 {
@@ -153,7 +153,7 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
                               variant="outline"
                               role="combobox"
                               className={cn(
-                                "w-[200px] justify-between text-black",
+                                "w-[200px] justify-between ",
                                 !field.value && "bg-white text-black"
                               )}
                             >
@@ -210,6 +210,8 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
                     </FormItem>
                   )}
                 />
+
+
                 <FormField
                   control={form.control}
                   name="reliability"
@@ -283,6 +285,9 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
                     </FormItem>
                   )}
                 />
+
+
+
                 <FormField
                   control={form.control}
                   name="access"
