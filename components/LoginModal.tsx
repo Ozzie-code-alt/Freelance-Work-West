@@ -56,6 +56,7 @@ const LoginModal = ({ route }: LoginModalProps) => {
       });
       if (res?.error) {
         console.log("Invalid Credentials");
+        setLoading(false);
         toast({
           variant: "destructive",
           title: "Invalid Credentials",
@@ -72,6 +73,7 @@ const LoginModal = ({ route }: LoginModalProps) => {
       });
       router.push(route);
     } catch (error) {
+      setLoading(false);
       console.log("Login Error", error);
     }
 
@@ -104,6 +106,7 @@ const LoginModal = ({ route }: LoginModalProps) => {
         window.location.reload();
       } else {
         console.log("User Registration Failed");
+        setLoading(false);
         toast({
           variant: "destructive",
           title: "Error",
@@ -111,6 +114,7 @@ const LoginModal = ({ route }: LoginModalProps) => {
         });
       }
     } catch (error) {
+      setLoading(false);
       console.log("Error During Registration", error);
       toast({
         variant: "destructive",
