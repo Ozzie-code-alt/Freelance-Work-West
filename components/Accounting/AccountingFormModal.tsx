@@ -30,31 +30,8 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { useSession } from "next-auth/react";
-
+import sendEmail from "@/lib/emailjs";
 const formSchema = z.object({
-  // date: z.date({
-  //     required_error: "Please select a date and time",
-  //     invalid_type_error: "That's not a date!",
-  //   }),
-  //   userName: z.string().optional(),
-  //   officeVisited: z.string().min(2, {
-  //     message: "Office Visited must be at least 2 characters.",
-  //   }),
-  //   servicesReceived: z.string().min(2, {
-  //     message: "Services Received must be at least 2 characters.",
-  //   }),
-  //   internalClient: z.string().min(2, {
-  //     message: "Internal Client must be at least 2 characters.",
-  //   }),
-  //   externalClient: z.string().min(2, {
-  //     message: "External Client must be at least 2 characters.",
-  //   }),
-  //   sex: z.string().min(2, {
-  //     message: "Sex must be at least 2 characters.",
-  //   }),
-  //   pointOfOrigin: z.string().min(2, {
-  //     message: "Point Of Origin must be at least 2 characters.",
-  //   }),
   responsiveness: z.string().min(1),
   reliability: z.string().min(1),
   access: z.string().min(1),
@@ -94,13 +71,6 @@ export const AccountingFormModal = ({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      //   officeVisited: "",
-      //   userName: "",
-      //   servicesReceived: "",
-      //   internalClient: "",
-      //   externalClient: "",
-      //   sex: "",
-      //   pointOfOrigin: "",
       responsiveness: "",
       reliability: "",
       access: "",
@@ -114,9 +84,6 @@ export const AccountingFormModal = ({
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    // console.log(values);
     console.log("Submitted");
     const userNameContainer = session?.user?.name || "";
     const submittedValues = {
@@ -142,6 +109,16 @@ export const AccountingFormModal = ({
         variant: "success",
         description: "Form Successfully Sent",
       });
+
+      sendEmail({
+        to_name: "Justin For Now",
+        contact: "contact Value Here",
+        user_email: "justinsantos731@gmail.com",
+        type: "Form Type Here",
+        subject: "Wedding Inquiry Here",
+        message: "it is DONE"
+      });
+      
       console.log(data);
     } catch (error) {
       console.log("Error During Registration", error);

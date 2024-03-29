@@ -31,6 +31,9 @@ import {
 } from "@/components/ui/popover";
 import { useSession } from "next-auth/react";
 import sendEmail from "@/lib/emailjs";
+
+
+
 const formSchema = z.object({
   responsiveness: z.string().min(1),
   reliability: z.string().min(1),
@@ -102,6 +105,7 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
         variant: "success",
         description: "Form Successfully Sent",
       });
+
       sendEmail({
         to_name: "Justin For Now",
         contact: "contact Value Here",

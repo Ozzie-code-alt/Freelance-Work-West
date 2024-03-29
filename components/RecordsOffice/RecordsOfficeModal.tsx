@@ -77,7 +77,7 @@ const criteria = [
 import { AnimatePresence, motion } from "framer-motion";
 import { Dispatch, SetStateAction, useState } from "react";
 import { FiAlertCircle } from "react-icons/fi";
-
+import sendEmail from "@/lib/emailjs";
 {
   /*Modal Function Here -------------------------------------------- */
 }
@@ -147,6 +147,14 @@ export const RecordsOfficeFormModal = ({
         title: "Up and Ready to Go !!",
         variant: "success",
         description: "Form Successfully Sent",
+      });
+      sendEmail({
+        to_name: "Justin For Now",
+        contact: "contact Value Here",
+        user_email: "justinsantos731@gmail.com",
+        type: "Form Type Here",
+        subject: "Wedding Inquiry Here",
+        message: "it is DONE"
       });
       console.log(data);
     } catch (error) {
