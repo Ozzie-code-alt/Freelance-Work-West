@@ -15,6 +15,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Puff } from "react-loader-spinner";
 import { toast } from "@/components/ui/use-toast";
 import {
   Command,
@@ -65,6 +66,7 @@ export const AdministrationOfficeAndFinanceModal = ({
   adminProps,
 }:any) => {
   const { data: session } = useSession();
+  const [loading, setLoading] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -81,6 +83,7 @@ export const AdministrationOfficeAndFinanceModal = ({
   });
   const router = useRouter();
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    setLoading(true);
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     // console.log(values);
@@ -102,6 +105,7 @@ export const AdministrationOfficeAndFinanceModal = ({
       });
       if (!res.ok) {
         throw new Error(`Error: ${res.status}`);
+        setLoading(false);
       }
       const data = await res.json();
       toast({
@@ -120,8 +124,10 @@ export const AdministrationOfficeAndFinanceModal = ({
       console.log(data);
 
       router.push("/Thankyou");
+      setLoading(false);
     } catch (error) {
       console.log("Error During Registration", error);
+      setLoading(false);
     }
   };
   return (
@@ -715,7 +721,14 @@ export const AdministrationOfficeAndFinanceModal = ({
                     </FormItem>
                   )}
                 />
-                <Button type="submit">Submit</Button>
+
+                {
+                  loading ? (
+                    <Puff color="#fff" height={50} width={50} />
+                  ) : (
+                    <Button type="submit">Submit</Button>
+                  )
+                }
               </form>
             </Form>
           </motion.div>

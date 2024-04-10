@@ -33,7 +33,6 @@ import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import sendEmail from "@/lib/emailjs";
 const formSchema = z.object({
-
   responsiveness: z.string().min(1),
   reliability: z.string().min(1),
   access: z.string().min(1),
@@ -52,7 +51,7 @@ const criteria = [
   { label: "4 - Satisfied", value: "4" },
   { label: "5 - Very Satisfied", value: "5" },
 ] as const;
-
+import { Puff } from "react-loader-spinner";
 import { AnimatePresence, motion } from "framer-motion";
 import { Dispatch, SetStateAction, useState } from "react";
 import { FiAlertCircle } from "react-icons/fi";
@@ -81,7 +80,8 @@ export const MedicalFormModal = ({
   isOpen,
   setIsOpen,
   adminProps,
-}:CashierFormProps) => {
+}: CashierFormProps) => {
+  const [load, setLoad] = useState(false);
   const { data: session } = useSession();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -99,6 +99,7 @@ export const MedicalFormModal = ({
   });
   const router = useRouter();
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    setLoad(true);
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     // console.log(values);
@@ -120,6 +121,7 @@ export const MedicalFormModal = ({
       });
       if (!res.ok) {
         throw new Error(`Error: ${res.status}`);
+        setLoad(false);
       }
       const data = await res.json();
       toast({
@@ -133,12 +135,14 @@ export const MedicalFormModal = ({
         user_email: "justinsantos731@gmail.com",
         type: "Form Type Here",
         subject: "Wedding Inquiry Here",
-        message: "it is DONE"
+        message: "it is DONE",
       });
       console.log(data);
       router.push("/Thankyou");
+      setLoad(false);
     } catch (error) {
       console.log("Error During Registration", error);
+      setLoad(false);
     }
   };
   return (
@@ -226,7 +230,7 @@ export const MedicalFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -299,7 +303,7 @@ export const MedicalFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -368,7 +372,7 @@ export const MedicalFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -438,7 +442,7 @@ export const MedicalFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -505,7 +509,7 @@ export const MedicalFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -572,7 +576,7 @@ export const MedicalFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -638,7 +642,7 @@ export const MedicalFormModal = ({
                           </Command>
                         </PopoverContent>
                       </Popover>
-                      <FormDescription >
+                      <FormDescription>
                         <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
@@ -706,7 +710,7 @@ export const MedicalFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -724,15 +728,18 @@ export const MedicalFormModal = ({
                       <FormControl>
                         <Input placeholder="shadcn" {...field} />
                       </FormControl>
-                      <FormDescription>    <p className="text-yellow-500">
+                      <FormDescription>
+                        {" "}
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
-                        </p></FormDescription>
+                        </p>
+                      </FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-                <Button type="submit">Submit</Button>
+                {load ? <Puff color="#000" height={50} width={50}  /> : <Button type="submit">Submit</Button>}
               </form>
             </Form>
           </motion.div>

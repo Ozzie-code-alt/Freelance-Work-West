@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
+import { Puff } from "react-loader-spinner";
 import {
   Form,
   FormControl,
@@ -33,7 +34,6 @@ import { useSession } from "next-auth/react";
 import sendEmail from "@/lib/emailjs";
 import { useRouter } from "next/navigation";
 const formSchema = z.object({
-
   responsiveness: z.string().min(1),
   reliability: z.string().min(1),
   access: z.string().min(1),
@@ -56,6 +56,7 @@ const criteria = [
 import { AnimatePresence, motion } from "framer-motion";
 import { Dispatch, SetStateAction, useState } from "react";
 import { FiAlertCircle } from "react-icons/fi";
+import { set } from "mongoose";
 
 {
   /*Modal Function Here -------------------------------------------- */
@@ -81,8 +82,9 @@ export const CashierFormModal = ({
   isOpen,
   setIsOpen,
   adminProps,
-}:CashierFormProps) => {
+}: CashierFormProps) => {
   const { data: session } = useSession();
+  const [loading, setLoading] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -99,6 +101,7 @@ export const CashierFormModal = ({
   });
   const router = useRouter();
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    setLoading(true);
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     // console.log(values);
@@ -120,6 +123,7 @@ export const CashierFormModal = ({
       });
       if (!res.ok) {
         throw new Error(`Error: ${res.status}`);
+        setLoading(false);
       }
       const data = await res.json();
       toast({
@@ -134,12 +138,14 @@ export const CashierFormModal = ({
         user_email: "justinsantos731@gmail.com",
         type: "Form Type Here",
         subject: "Wedding Inquiry Here",
-        message: "it is DONE"
+        message: "it is DONE",
       });
       console.log(data);
       router.push("/Thankyou");
+      setLoading(false);
     } catch (error) {
       console.log("Error During Registration", error);
+      setLoading(false);
     }
   };
   return (
@@ -227,7 +233,7 @@ export const CashierFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -300,7 +306,7 @@ export const CashierFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -369,7 +375,7 @@ export const CashierFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -439,7 +445,7 @@ export const CashierFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -506,7 +512,7 @@ export const CashierFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -573,7 +579,7 @@ export const CashierFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -639,7 +645,7 @@ export const CashierFormModal = ({
                           </Command>
                         </PopoverContent>
                       </Popover>
-                      <FormDescription >
+                      <FormDescription>
                         <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
@@ -707,7 +713,7 @@ export const CashierFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -725,15 +731,22 @@ export const CashierFormModal = ({
                       <FormControl>
                         <Input placeholder="shadcn" {...field} />
                       </FormControl>
-                      <FormDescription>    <p className="text-yellow-500">
+                      <FormDescription>
+                        {" "}
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
-                        </p></FormDescription>
+                        </p>
+                      </FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-                <Button type="submit">Submit</Button>
+                {loading ? (
+                  <Puff color="#00BFFF" height={50} width={50} />
+                ) : (
+                  <Button type="submit">Submit</Button>
+                )}
               </form>
             </Form>
           </motion.div>

@@ -50,7 +50,7 @@ const criteria = [
   { label: "4 - Satisfied", value: "4" },
   { label: "5 - Very Satisfied", value: "5" },
 ] as const;
-
+import { Puff } from "react-loader-spinner";
 import { AnimatePresence, motion } from "framer-motion";
 import { Dispatch, SetStateAction, useState } from "react";
 import { FiAlertCircle } from "react-icons/fi";
@@ -68,6 +68,7 @@ export const AccountingFormModal = ({
   adminProps,
 }:any) => {
   const { data: session } = useSession();
+  const [loadiiing, setLoadiiing] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -84,6 +85,7 @@ export const AccountingFormModal = ({
   });
   const router = useRouter();
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    setLoadiiing(true);
     console.log("Submitted");
     const userNameContainer = session?.user?.name || "";
     const submittedValues = {
@@ -102,6 +104,7 @@ export const AccountingFormModal = ({
       });
       if (!res.ok) {
         throw new Error(`Error: ${res.status}`);
+        setLoadiiing(false);
       }
       const data = await res.json();
       toast({
@@ -120,8 +123,10 @@ export const AccountingFormModal = ({
       });
       router.push("/Thankyou");
       console.log(data);
+      setLoadiiing(false);
     } catch (error) {
       console.log("Error During Registration", error);
+      setLoadiiing(false);
     }
   };
   return (
@@ -715,7 +720,12 @@ export const AccountingFormModal = ({
                     </FormItem>
                   )}
                 />
-                <Button type="submit">Submit</Button>
+
+                {loadiiing ? (
+                  <Puff color="#00BFFF" height={100} width={100} />
+                ) : (
+                  <Button type="submit">Submit</Button>
+                )}
               </form>
             </Form>
           </motion.div>
