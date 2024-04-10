@@ -31,7 +31,7 @@ import {
 } from "@/components/ui/popover";
 import { useSession } from "next-auth/react";
 import sendEmail from "@/lib/emailjs";
-
+import { useRouter } from "next/navigation";
 
 
 const formSchema = z.object({
@@ -77,7 +77,7 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
       message: "",
     },
   });
-
+  const router = useRouter();
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log("Submitted");
     const userNameContainer = session?.user?.name || "";
@@ -116,6 +116,7 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
       });
 
       console.log(data);
+      router.push("/Thankyou");
     } catch (error) {
       console.log("Error During Registration", error);
     }

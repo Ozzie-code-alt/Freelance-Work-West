@@ -29,7 +29,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-
+import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import sendEmail from "@/lib/emailjs";
 const formSchema = z.object({
@@ -97,7 +97,7 @@ export const MedicalFormModal = ({
       message: "",
     },
   });
-
+  const router = useRouter();
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
@@ -136,6 +136,7 @@ export const MedicalFormModal = ({
         message: "it is DONE"
       });
       console.log(data);
+      router.push("/Thankyou");
     } catch (error) {
       console.log("Error During Registration", error);
     }
