@@ -78,6 +78,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Dispatch, SetStateAction, useState } from "react";
 import { FiAlertCircle } from "react-icons/fi";
 import sendEmail from "@/lib/emailjs";
+import { useRouter } from "next/navigation";
 {
   /*Modal Function Here -------------------------------------------- */
 }
@@ -118,7 +119,7 @@ export const RecordsOfficeFormModal = ({
       message: "",
     },
   });
-
+  const router = useRouter();
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
@@ -157,6 +158,7 @@ export const RecordsOfficeFormModal = ({
         message: "it is DONE"
       });
       console.log(data);
+      router.push("/Thankyou");
     } catch (error) {
       console.log("Error During Registration", error);
     }

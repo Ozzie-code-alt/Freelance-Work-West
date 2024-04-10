@@ -50,7 +50,7 @@ const criteria = [
   { label: "4 - Satisfied", value: "4" },
   { label: "5 - Very Satisfied", value: "5" },
 ] as const;
-
+import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { Dispatch, SetStateAction, useState } from "react";
 import { FiAlertCircle } from "react-icons/fi";
@@ -95,7 +95,7 @@ export const OSAFormModal = ({
       message: "",
     },
   });
-
+  const router = useRouter();
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
 
     console.log("Submitted");
@@ -132,6 +132,7 @@ export const OSAFormModal = ({
         message: "it is DONE"
       });
       console.log(data);
+      router.push("/Thankyou");
     } catch (error) {
       console.log("Error During Registration", error);
     }

@@ -31,6 +31,7 @@ import {
 } from "@/components/ui/popover";
 import { useSession } from "next-auth/react";
 import sendEmail from "@/lib/emailjs";
+import { useRouter } from "next/navigation";
 const formSchema = z.object({
 
   responsiveness: z.string().min(1),
@@ -96,7 +97,7 @@ export const CashierFormModal = ({
       message: "",
     },
   });
-
+  const router = useRouter();
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
@@ -136,6 +137,7 @@ export const CashierFormModal = ({
         message: "it is DONE"
       });
       console.log(data);
+      router.push("/Thankyou");
     } catch (error) {
       console.log("Error During Registration", error);
     }

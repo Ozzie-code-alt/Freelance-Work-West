@@ -54,7 +54,7 @@ const criteria = [
 import { AnimatePresence, motion } from "framer-motion";
 import { Dispatch, SetStateAction, useState } from "react";
 import { FiAlertCircle } from "react-icons/fi";
-
+import { useRouter } from "next/navigation";
 {
   /*Modal Function Here -------------------------------------------- */
 }
@@ -82,7 +82,7 @@ export const AccountingFormModal = ({
       message: "",
     },
   });
-
+  const router = useRouter();
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log("Submitted");
     const userNameContainer = session?.user?.name || "";
@@ -118,7 +118,7 @@ export const AccountingFormModal = ({
         subject: "Wedding Inquiry Here",
         message: "it is DONE"
       });
-      
+      router.push("/Thankyou");
       console.log(data);
     } catch (error) {
       console.log("Error During Registration", error);
