@@ -16,6 +16,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { toast } from "@/components/ui/use-toast";
+import { Puff } from "react-loader-spinner";
 import {
   Command,
   CommandEmpty,
@@ -55,6 +56,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Dispatch, SetStateAction, useState } from "react";
 import { FiAlertCircle } from "react-icons/fi";
 import sendEmail from "@/lib/emailjs";
+import { is } from "@react-three/fiber/dist/declarations/src/core/utils";
+import { set } from "mongoose";
 {
   /*Modal Function Here -------------------------------------------- */
 }
@@ -79,7 +82,8 @@ export const OSAFormModal = ({
   isOpen,
   setIsOpen,
   adminProps,
-}:CashierFormProps) => {
+}: CashierFormProps) => {
+  const [loading, setLoading] = useState(false);
   const { data: session } = useSession();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -95,9 +99,10 @@ export const OSAFormModal = ({
       message: "",
     },
   });
+
   const router = useRouter();
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-
+    setLoading(true);
     console.log("Submitted");
     const userNameContainer = session?.user?.name || "";
     const submittedValues = {
@@ -116,6 +121,7 @@ export const OSAFormModal = ({
       });
       if (!res.ok) {
         throw new Error(`Error: ${res.status}`);
+        setLoading(false);
       }
       const data = await res.json();
       toast({
@@ -129,12 +135,14 @@ export const OSAFormModal = ({
         user_email: "justinsantos731@gmail.com",
         type: "Form Type Here",
         subject: "Wedding Inquiry Here",
-        message: "it is DONE"
+        message: "it is DONE",
       });
       console.log(data);
       router.push("/Thankyou");
+      setLoading(false);
     } catch (error) {
       console.log("Error During Registration", error);
+      setLoading(false);
     }
   };
   return (
@@ -222,7 +230,7 @@ export const OSAFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -295,7 +303,7 @@ export const OSAFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -364,7 +372,7 @@ export const OSAFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -434,7 +442,7 @@ export const OSAFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -501,7 +509,7 @@ export const OSAFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -568,7 +576,7 @@ export const OSAFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -634,7 +642,7 @@ export const OSAFormModal = ({
                           </Command>
                         </PopoverContent>
                       </Popover>
-                      <FormDescription >
+                      <FormDescription>
                         <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
@@ -702,7 +710,7 @@ export const OSAFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -720,15 +728,22 @@ export const OSAFormModal = ({
                       <FormControl>
                         <Input placeholder="shadcn" {...field} />
                       </FormControl>
-                      <FormDescription>    <p className="text-yellow-500">
+                      <FormDescription>
+                        {" "}
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
-                        </p></FormDescription>
+                        </p>
+                      </FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-                <Button type="submit">Submit</Button>
+                {loading ? (
+                  <Puff color="#000" height={50} width={50} />
+                ) : (
+                  <Button type="submit">Submit</Button>
+                )}
               </form>
             </Form>
           </motion.div>

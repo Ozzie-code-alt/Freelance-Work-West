@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { date, z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
@@ -6,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
+import { Puff } from "react-loader-spinner";
 import {
   Form,
   FormControl,
@@ -32,7 +34,6 @@ import {
 import { useSession } from "next-auth/react";
 import sendEmail from "@/lib/emailjs";
 import { useRouter } from "next/navigation";
-
 
 const formSchema = z.object({
   responsiveness: z.string().min(1),
@@ -63,6 +64,7 @@ import { FiAlertCircle } from "react-icons/fi";
 }
 export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
   const { data: session } = useSession();
+  const [loading, setLoading] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -79,6 +81,7 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
   });
   const router = useRouter();
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    setLoading(true);
     console.log("Submitted");
     const userNameContainer = session?.user?.name || "";
     const submittedValues = {
@@ -97,6 +100,7 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
       });
       if (!res.ok) {
         throw new Error(`Error: ${res.status}`);
+        setLoading(false);
       }
       const data = await res.json();
 
@@ -112,13 +116,15 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
         user_email: "justinsantos731@gmail.com",
         type: "Form Type Here",
         subject: "Wedding Inquiry Here",
-        message: "it is DONE"
+        message: "it is DONE",
       });
 
       console.log(data);
       router.push("/Thankyou");
+      setLoading(false);
     } catch (error) {
       console.log("Error During Registration", error);
+      setLoading(false);
     }
   };
   return (
@@ -215,8 +221,6 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
                     </FormItem>
                   )}
                 />
-
-
                 <FormField
                   control={form.control}
                   name="reliability"
@@ -290,9 +294,6 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
                     </FormItem>
                   )}
                 />
-
-
-
                 <FormField
                   control={form.control}
                   name="access"
@@ -720,7 +721,11 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
                     </FormItem>
                   )}
                 />
-                <Button type="submit">Submit</Button>
+                {loading ? (
+                  <Puff color="#00BFFF" height={50} width={50} />
+                ) : (
+                  <Button type="submit">Submit</Button>
+                )}
               </form>
             </Form>
           </motion.div>

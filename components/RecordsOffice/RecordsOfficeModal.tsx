@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
+import { Puff } from "react-loader-spinner";
 import {
   Form,
   FormControl,
@@ -32,29 +33,6 @@ import {
 import { useSession } from "next-auth/react";
 
 const formSchema = z.object({
-  // date: z.date({
-  //     required_error: "Please select a date and time",
-  //     invalid_type_error: "That's not a date!",
-  //   }),
-  //   userName: z.string().optional(),
-  //   officeVisited: z.string().min(2, {
-  //     message: "Office Visited must be at least 2 characters.",
-  //   }),
-  //   servicesReceived: z.string().min(2, {
-  //     message: "Services Received must be at least 2 characters.",
-  //   }),
-  //   internalClient: z.string().min(2, {
-  //     message: "Internal Client must be at least 2 characters.",
-  //   }),
-  //   externalClient: z.string().min(2, {
-  //     message: "External Client must be at least 2 characters.",
-  //   }),
-  //   sex: z.string().min(2, {
-  //     message: "Sex must be at least 2 characters.",
-  //   }),
-  //   pointOfOrigin: z.string().min(2, {
-  //     message: "Point Of Origin must be at least 2 characters.",
-  //   }),
   responsiveness: z.string().min(1),
   reliability: z.string().min(1),
   access: z.string().min(1),
@@ -103,7 +81,8 @@ export const RecordsOfficeFormModal = ({
   isOpen,
   setIsOpen,
   adminProps,
-}:CashierFormProps) => {
+}: CashierFormProps) => {
+  const [loading, setLoading] = useState(false);
   const { data: session } = useSession();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -121,9 +100,7 @@ export const RecordsOfficeFormModal = ({
   });
   const router = useRouter();
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    // console.log(values);
+    setLoading(true);
     console.log("Submitted");
     const userNameContainer = session?.user?.name || "";
     const submittedValues = {
@@ -155,12 +132,14 @@ export const RecordsOfficeFormModal = ({
         user_email: "justinsantos731@gmail.com",
         type: "Form Type Here",
         subject: "Wedding Inquiry Here",
-        message: "it is DONE"
+        message: "it is DONE",
       });
       console.log(data);
       router.push("/Thankyou");
+      setLoading(false);
     } catch (error) {
       console.log("Error During Registration", error);
+      setLoading(false);
     }
   };
   return (
@@ -248,7 +227,7 @@ export const RecordsOfficeFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -321,7 +300,7 @@ export const RecordsOfficeFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -390,7 +369,7 @@ export const RecordsOfficeFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -460,7 +439,7 @@ export const RecordsOfficeFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -527,7 +506,7 @@ export const RecordsOfficeFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -594,7 +573,7 @@ export const RecordsOfficeFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -660,7 +639,7 @@ export const RecordsOfficeFormModal = ({
                           </Command>
                         </PopoverContent>
                       </Popover>
-                      <FormDescription >
+                      <FormDescription>
                         <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
@@ -728,7 +707,7 @@ export const RecordsOfficeFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
                         </p>
@@ -746,15 +725,22 @@ export const RecordsOfficeFormModal = ({
                       <FormControl>
                         <Input placeholder="shadcn" {...field} />
                       </FormControl>
-                      <FormDescription>    <p className="text-yellow-500">
+                      <FormDescription>
+                        {" "}
+                        <p className="text-yellow-500">
                           This is the language that will be used in the
                           dashboard.
-                        </p></FormDescription>
+                        </p>
+                      </FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-                <Button type="submit">Submit</Button>
+                {loading ? (
+                  <Puff color="#000" height={50} width={50} />
+                ) : (
+                  <Button type="submit">Submit</Button>
+                )}
               </form>
             </Form>
           </motion.div>
