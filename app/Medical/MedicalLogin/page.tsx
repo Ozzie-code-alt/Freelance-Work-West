@@ -16,7 +16,7 @@ const Medicalpage = () => {
       </div>
       {/*Pass Props Here then*/}
       <div className="z-10">
-        <LoginModal route="/MedicalOfficeandFinance/MedicalPersonalForm" />
+        <LoginModal route="/Medical/MedicalPersonalForm" />
       </div>
     </div>
  

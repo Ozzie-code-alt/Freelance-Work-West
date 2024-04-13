@@ -149,7 +149,7 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className=" py-0  md:py-20 grid md:gap-10 lg:grid-cols-2 border mt overflow-y-scroll w-full space-y-8 h-full md:h-auto border-red-500 place-items-center"
+                className=" py-0  md:py-20 grid md:gap-10 lg:grid-cols-2  mt overflow-y-scroll w-full space-y-8 h-full md:h-auto  place-items-center"
               >
                 <FormField
                   control={form.control}
