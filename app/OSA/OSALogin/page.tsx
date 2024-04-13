@@ -15,7 +15,7 @@ const OSApage = () => {
         </h1>
       </div>
       {/*Pass Props Here then*/}
-      <div className="z-10">
+      <div className="z-10 ">
       <LoginModal route="/OSA/OSAPersonalForm"/>
       </div>
     </div>

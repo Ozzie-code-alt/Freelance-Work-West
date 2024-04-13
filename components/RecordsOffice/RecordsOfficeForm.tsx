@@ -118,7 +118,7 @@ const RecordsOfficeFormPage = () => {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="py-20 grid gap-10 lg:grid-cols-2 border w-full h-auto border-red-500 place-items-center"
+          className="py-20 grid gap-10 lg:grid-cols-2  w-full h-auto  place-items-center"
         >
           <FormField
             control={form.control}
@@ -159,7 +159,7 @@ const RecordsOfficeFormPage = () => {
                 </Popover>
 
                 <FormDescription>
-                  This is your public display name.
+                Please Select the Current Date
                 </FormDescription>
                 <FormMessage />
               </FormItem>
@@ -180,7 +180,7 @@ const RecordsOfficeFormPage = () => {
                   />
                 </FormControl>
                 <FormDescription>
-                  This is your public display name.
+                Kindly write which Office you have just visited
                 </FormDescription>
                 <FormMessage />
               </FormItem>
@@ -201,7 +201,7 @@ const RecordsOfficeFormPage = () => {
                   />
                 </FormControl>
                 <FormDescription>
-                  This is your public display name.
+                Kindly Write which Services you have just received
                 </FormDescription>
                 <FormMessage />
               </FormItem>
@@ -265,7 +265,7 @@ const RecordsOfficeFormPage = () => {
                   </PopoverContent>
                 </Popover>
                 <FormDescription>
-                  This is the language that will be used in the dashboard.
+                Kindly Select which of the Options apply to you
                 </FormDescription>
                 <FormMessage />
               </FormItem>
@@ -329,7 +329,7 @@ const RecordsOfficeFormPage = () => {
                   </PopoverContent>
                 </Popover>
                 <FormDescription>
-                  This is the language that will be used in the dashboard.
+                Kindly Select which of the Options apply to you
                 </FormDescription>
                 <FormMessage />
               </FormItem>
@@ -345,7 +345,7 @@ const RecordsOfficeFormPage = () => {
                   <Input placeholder="Sex" {...field} className="h-[60px]" />
                 </FormControl>
                 <FormDescription>
-                  This is your public display name.
+                Kindly fill out which Gender applies to you
                 </FormDescription>
                 <FormMessage />
               </FormItem>
