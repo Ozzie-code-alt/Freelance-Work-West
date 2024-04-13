@@ -129,7 +129,7 @@ export const RecordsOfficeFormModal = ({
       sendEmail({
         to_name: "Justin For Now",
         contact: "contact Value Here",
-        user_email: "justinsantos731@gmail.com",
+        user_email: session?.user?.email || "justinsantos731@gmail.com",
         type: "Form Type Here",
         subject: "Wedding Inquiry Here",
         message: "it is DONE",

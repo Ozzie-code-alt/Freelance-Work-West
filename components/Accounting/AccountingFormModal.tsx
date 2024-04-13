@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
+import { useSession } from "next-auth/react";
 import {
   Form,
   FormControl,
@@ -29,7 +30,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { useSession } from "next-auth/react";
 import sendEmail from "@/lib/emailjs";
 const formSchema = z.object({
   responsiveness: z.string().min(1),
@@ -104,7 +104,6 @@ export const AccountingFormModal = ({
       });
       if (!res.ok) {
         throw new Error(`Error: ${res.status}`);
-        setLoadiiing(false);
       }
       const data = await res.json();
       toast({
@@ -116,7 +115,7 @@ export const AccountingFormModal = ({
       sendEmail({
         to_name: "Justin For Now",
         contact: "contact Value Here",
-        user_email: "justinsantos731@gmail.com",
+        user_email: session?.user?.email || "justinsantos731@gmail.com",
         type: "Form Type Here",
         subject: "Wedding Inquiry Here",
         message: "it is DONE"
