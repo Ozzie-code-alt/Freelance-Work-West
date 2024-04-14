@@ -18,7 +18,7 @@ export default function SparklesPreview() {
         />
       </div>
       <h1 className="md:text-7xl text-3xl lg:text-6xl font-bold text-center text-white relative z-20">
-       Thank you for your feedback
+       Error Dont try and Access Routes without Logging in
       </h1>
     </div>
   );

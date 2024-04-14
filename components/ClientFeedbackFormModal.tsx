@@ -114,9 +114,9 @@ export const AdministrationOfficeAndFinanceModal = ({
         description: "Form Successfully Sent",
       });
       sendEmail({
-        to_name: "Justin For Now",
+        to_name: session?.user?.name || "User",
         contact: "contact Value Here",
-        user_email: "justinsantos731@gmail.com",
+        user_email: session?.user?.email || "justinsantos731@gmail.com",
         type: "Form Type Here",
         subject: "Wedding Inquiry Here",
         message: "it is DONE"
