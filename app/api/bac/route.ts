@@ -7,9 +7,9 @@ import { NextResponse } from "next/server";
 export async function POST(req:NextApiRequest){
     try {
         //@ts-ignore
-        const {date, userName, servicesReceived, externalClient, pointOfOrigin, officeVisited, internalClient, sex, reliability,responsiveness,access,communication,costs,integrity,assurance,outcome, message} = await req.json(); 
+        const {date, userName, servicesReceived, externalClient, pointOfOrigin, officeVisited, internalClient, sex, reliability,responsiveness,access,communication,costs,integrity,assurance,outcome, message, mean} = await req.json(); 
         await connectMongo();
-        await BAC.create({date, userName, servicesReceived, externalClient, pointOfOrigin, officeVisited, internalClient, sex ,reliability,responsiveness,access,communication,costs,integrity,assurance,outcome, message})
+        await BAC.create({date, userName, servicesReceived, externalClient, pointOfOrigin, officeVisited, internalClient, sex ,reliability,responsiveness,access,communication,costs,integrity,assurance,outcome, message, mean})
         console.log("BAC Information Sent")
         return NextResponse.json({message:"BAC Information Sent it work now"}, {status:201})
 

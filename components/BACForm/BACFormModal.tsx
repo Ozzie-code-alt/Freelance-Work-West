@@ -45,6 +45,7 @@ const formSchema = z.object({
   assurance: z.string().min(1),
   outcome: z.string().min(1),
   message: z.string().min(1).max(100),
+  mean: z.string(),
 });
 
 const criteria = [
@@ -77,18 +78,30 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
       assurance: "",
       outcome: "",
       message: "",
+      mean: "",
     },
   });
   const router = useRouter();
+
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    
+    
     setLoading(true);
+    
+    
     console.log("Submitted");
+    const total =  parseInt(values.responsiveness) + parseInt(values.reliability) + parseInt(values.access) + parseInt(values.communication) + parseInt(values.costs) + parseInt(values.integrity) + parseInt(values.assurance) + parseInt(values.outcome);
+
+
+
     const userNameContainer = session?.user?.name || "";
     const submittedValues = {
       ...adminProps,
       userName: userNameContainer,
       ...values,
+      mean: (total / 3).toString(),
     };
+      console.log("Submitted Values", submittedValues);
 
     try {
       const res = await fetch("/api/bac", {
@@ -100,7 +113,7 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
       });
       if (!res.ok) {
         throw new Error(`Error: ${res.status}`);
-        setLoading(false);
+        router.push("/Errorpage");
       }
       const data = await res.json();
 
@@ -126,6 +139,7 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
       console.log("Error During Registration", error);
       setLoading(false);
     }
+    
   };
   return (
     <AnimatePresence>
