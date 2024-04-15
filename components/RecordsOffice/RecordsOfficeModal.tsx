@@ -723,7 +723,7 @@ export const RecordsOfficeFormModal = ({
                     <FormItem>
                       <FormLabel>Leave a Message :</FormLabel>
                       <FormControl>
-                        <Input placeholder="shadcn" {...field} />
+                        <Input placeholder="shadcn" className="text-black" {...field} />
                       </FormControl>
                       <FormDescription>
                         {" "}

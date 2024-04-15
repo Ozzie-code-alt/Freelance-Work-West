@@ -711,7 +711,7 @@ export const AdministrationOfficeAndFinanceModal = ({
                     <FormItem>
                       <FormLabel>Leave a Message :</FormLabel>
                       <FormControl>
-                        <Input placeholder="shadcn" {...field} />
+                        <Input placeholder="shadcn" className="text-black" {...field} />
                       </FormControl>
                       <FormDescription>    <p className="text-yellow-500">
                           This is the language that will be used in the
