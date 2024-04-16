@@ -7,9 +7,9 @@ import { NextResponse } from "next/server";
 export async function POST(req:NextApiRequest){
     try {
         //@ts-ignore
-        const {date, userName, servicesReceived, externalClient, pointOfOrigin, officeVisited, internalClient, sex, reliability,responsiveness,access,communication,costs,integrity,assurance,outcome, message} = await req.json(); 
+        const {date, userName, servicesReceived, externalClient, pointOfOrigin, officeVisited, internalClient, sex, reliability,responsiveness,access,communication,costs,integrity,assurance,outcome, message , mean} = await req.json(); 
         await connectMongo();
-        await OSA.create({date, userName, servicesReceived, externalClient, pointOfOrigin, officeVisited, internalClient, sex ,reliability,responsiveness,access,communication,costs,integrity,assurance,outcome, message})
+        await OSA.create({date, userName, servicesReceived, externalClient, pointOfOrigin, officeVisited, internalClient, sex ,reliability,responsiveness,access,communication,costs,integrity,assurance,outcome, message , mean})
         console.log("OSA Information Sent")
         return NextResponse.json({message:"OSA Information Sent"}, {status:201})
     } catch (error) {

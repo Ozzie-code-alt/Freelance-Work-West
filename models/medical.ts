@@ -67,7 +67,10 @@ const MedicalSchema = new Schema(
     },
     message:{
       type: String,
-    }
+    },
+    mean:{
+      type: String,
+    },
 
 
   },

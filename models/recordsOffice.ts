@@ -67,7 +67,10 @@ const RecordsOfficeSchema = new Schema(
       },
       message:{
         type: String,
-      }
+      },
+      mean:{
+      type: String,
+    },
 
 
     },

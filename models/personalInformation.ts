@@ -68,7 +68,10 @@ const PersonalInformationSchema = new Schema(
       },
       message:{
         type: String,
-      }
+      },
+      mean:{
+        type: String,
+      },
 
 
     },
