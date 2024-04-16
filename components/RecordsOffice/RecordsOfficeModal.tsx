@@ -102,13 +102,16 @@ export const RecordsOfficeFormModal = ({
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setLoading(true);
     console.log("Submitted");
+    const total =  parseInt(values.responsiveness) + parseInt(values.reliability) + parseInt(values.access) + parseInt(values.communication) + parseInt(values.costs) + parseInt(values.integrity) + parseInt(values.assurance) + parseInt(values.outcome);
+    console.log("this is total", total);
     const userNameContainer = session?.user?.name || "";
     const submittedValues = {
       ...adminProps,
       userName: userNameContainer,
       ...values,
+      mean: (total / 8).toString(),
     };
-    // console.log(submittedValues)
+    console.log(submittedValues)
     try {
       const res = await fetch("/api/recordsOffice", {
         method: "POST",
@@ -157,7 +160,7 @@ export const RecordsOfficeFormModal = ({
             animate={{ scale: 1, rotate: "0deg" }}
             exit={{ scale: 0, rotate: "0deg" }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-gradient-to-br from-violet-600 to-indigo-600 text-white p-6 rounded-lg w-full h-full max-w-lg shadow-xl cursor-default relative overflow-hidden"
+            className="bg-gradient-to-br from-violet-600 to-indigo-600 text-white p-6 rounded-lg w-full h-full max-w-lg shadow-xl cursor-default relative "
           >
             <FiAlertCircle className="text-white/10 rotate-12 text-[250px] absolute z-0 -top-24 -left-24" />
 
