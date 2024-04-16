@@ -67,9 +67,10 @@ const BACSchema = new Schema(
     },
     message:{
       type: String,
-    }
-
-
+    },
+    mean:{
+      type: String,
+    },
   },
   { timestamps: true }
   );

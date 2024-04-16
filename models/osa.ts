@@ -67,7 +67,10 @@ const OSASchema = new Schema(
     },
     message:{
       type: String,
-    }
+    },
+    mean:{
+      type: String,
+    },
 
 
   },

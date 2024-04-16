@@ -384,6 +384,9 @@ export const CashierFormModal = ({
                     </FormItem>
                   )}
                 />
+
+
+                
                 <FormField
                   control={form.control}
                   name="communication"
