@@ -88,11 +88,16 @@ export const AdministrationOfficeAndFinanceModal = ({
     // ✅ This will be type-safe and validated.
     // console.log(values);
     console.log("Submitted");
+    const total =  parseInt(values.responsiveness) + parseInt(values.reliability) + parseInt(values.access) + parseInt(values.communication) + parseInt(values.costs) + parseInt(values.integrity) + parseInt(values.assurance) + parseInt(values.outcome);
+
+    console.log("Submitted");
+    
     const userNameContainer = session?.user?.name || "";
     const submittedValues = {
       ...adminProps,
       userName: userNameContainer,
       ...values,
+      mean: (total / 8).toString(),
     };
     // console.log(submittedValues)
     try {

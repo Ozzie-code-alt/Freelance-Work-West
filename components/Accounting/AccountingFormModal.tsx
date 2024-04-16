@@ -87,11 +87,16 @@ export const AccountingFormModal = ({
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setLoadiiing(true);
     console.log("Submitted");
+    const total =  parseInt(values.responsiveness) + parseInt(values.reliability) + parseInt(values.access) + parseInt(values.communication) + parseInt(values.costs) + parseInt(values.integrity) + parseInt(values.assurance) + parseInt(values.outcome);
+
+
+    console.log("Submitted");
     const userNameContainer = session?.user?.name || "";
     const submittedValues = {
       ...adminProps,
       userName: userNameContainer,
       ...values,
+      mean: (total / 3).toString(),
     };
     // console.log(submittedValues)
     try {
