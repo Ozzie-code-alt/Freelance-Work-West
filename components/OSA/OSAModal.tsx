@@ -111,7 +111,7 @@ export const OSAFormModal = ({
       ...adminProps,
       userName: userNameContainer,
       ...values,
-      mean: (total / 80).toString(),
+      mean: (total / 8).toString(),
     };
     // console.log(submittedValues)
     try {
