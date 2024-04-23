@@ -91,15 +91,15 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
     
     console.log("Submitted");
     const total =  parseInt(values.responsiveness) + parseInt(values.reliability) + parseInt(values.access) + parseInt(values.communication) + parseInt(values.costs) + parseInt(values.integrity) + parseInt(values.assurance) + parseInt(values.outcome);
-
-
+    // console.log("this is total",total)
+    // console.log("this is mean", total / 8)
 
     const userNameContainer = session?.user?.name || "";
     const submittedValues = {
       ...adminProps,
       userName: userNameContainer,
       ...values,
-      mean: (total / 3).toString(),
+      mean: (total / 8).toString(),
     };
       console.log("Submitted Values", submittedValues);
 

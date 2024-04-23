@@ -96,7 +96,7 @@ export const AccountingFormModal = ({
       ...adminProps,
       userName: userNameContainer,
       ...values,
-      mean: (total / 3).toString(),
+      mean: (total / 8).toString(),
     };
     // console.log(submittedValues)
     try {
