@@ -2,6 +2,8 @@
 import { useState, useEffect } from "react";
 import { DataTable } from "@/components/ui/data-table";
 import { BACcolumns } from "@/app/payments/BACColumns";
+import { date } from "zod";
+import Example from "@/components/Loader";
 
 export default function DemoPage() {
   const [data, setData] = useState([]);
@@ -25,7 +27,10 @@ export default function DemoPage() {
         }
 
         const { bacs } = jsonResponse;
-        console.log("This is BAC Info", bacs);
+        console.log("This is BAC Info Admin", bacs);
+
+        console.log("this is new data", bacs)
+
         setData(bacs); // Update the state with the fetched data
       } catch (error) {
         console.error("Failed to fetch data:", error);
@@ -37,9 +42,10 @@ export default function DemoPage() {
 
 
     console.log(data)
+
+
   if (!data.length) {
-    console.log(data.length)
-    return <div>Loading...</div>;
+    return <div className="w-screen h-screen flex justify-center items-center "><Example/></div>;
   }
 
 

@@ -73,7 +73,7 @@ const BACFormPage = () => {
   const [isOpen, setIsOpen] = useState(false);
   // const { data: session } = useSession();
 
-  const { toast } = useToast();
+
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -85,6 +85,7 @@ const BACFormPage = () => {
       externalClient: "",
       sex: "",
       pointOfOrigin: "",
+      date: new Date(),
     },
   });
 
@@ -92,7 +93,14 @@ const BACFormPage = () => {
     setIsOpen(true);
   };
 
-  const submissionData = form.getValues();
+
+  const grabDate = form.getValues("date").toDateString();
+  console.log("this is Grab dateeeee", grabDate);
+  const submissionData =  {
+    ...form.getValues(),
+    date:grabDate,
+
+  }
   //popover Content
   const languages = [
     { label: "Student / Estudyante", value: "Student" },

@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { DataTable } from "@/components/ui/data-table";
 import { RecordsOfficeColumns } from "@/app/payments/RecordsOfficeColumns";
+import Example from "@/components/Loader";
 export default function DemoPage() {
   const [data, setData] = useState([]);
 
@@ -36,11 +37,10 @@ export default function DemoPage() {
 
 
     console.log(data)
-  if (!data.length) {
-    console.log(data.length)
-    return <div>Loading...</div>;
-  }
 
+    if (!data.length) {
+      return <div className="w-screen h-screen flex justify-center items-center "><Example/></div>;
+    }
 
   return (
     <div className="container mx-auto py-10">

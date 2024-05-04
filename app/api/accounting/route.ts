@@ -21,5 +21,9 @@ export async function GET(){
         await connectMongo()
             const accounting = await Accounting.find()
             console.log("Logg BAC Information",accounting)
-            return NextResponse.json({accounting}) 
+            const accountingDateConverted = accounting.map(accountingData => ({
+                ...accountingData._doc,
+               date: accountingData.date.toISOString().split("T")[0]
+        }))
+            return NextResponse.json({accounting:accountingDateConverted}, {status:200}) 
 }

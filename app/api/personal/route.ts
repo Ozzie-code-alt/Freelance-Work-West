@@ -21,5 +21,9 @@ export async function GET(){
         await connectMongo()
             const personalInfo = await PersonalInformation.find()
             console.log("Logg Personal Information",personalInfo)
-            return NextResponse.json({personalInfo}) 
+            const personalDateConverted = personalInfo.map(personalData => ({
+                ...personalData._doc,
+               date: personalData.date.toISOString().split("T")[0]
+        }))
+            return NextResponse.json({personalInfo:personalDateConverted}, {status:200}) 
 }
