@@ -21,5 +21,9 @@ export async function GET(){
         await connectMongo()
             const medicals = await Medical.find()
             console.log("Logg BAC Information",medicals)
-            return NextResponse.json({medicals}) 
+            const medicalCOnverted = medicals.map((medData) =>({
+              ...medData._doc,
+                date: medData.date.toISOString().split("T")[0]  
+            }))
+            return NextResponse.json({medicals:medicalCOnverted}, {status:200}) 
 }

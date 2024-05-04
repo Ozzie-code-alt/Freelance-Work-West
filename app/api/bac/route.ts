@@ -23,5 +23,9 @@ export async function GET(){
         await connectMongo()
             const bacs = await BAC.find()
             console.log("Logg BAC Information",bacs)
-            return NextResponse.json({bacs}) 
+            const dateConverted = bacs.map(bac => ({
+                    ...bac._doc,
+                   date: bac.date.toISOString().split("T")[0]
+            }))
+            return NextResponse.json({bacs:dateConverted}, {status:200}) 
 }

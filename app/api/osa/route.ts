@@ -21,5 +21,9 @@ export async function GET(){
         await connectMongo()
             const osas = await OSA.find()
             console.log("Logg OSA Information",osas)
-            return NextResponse.json({osas}) 
+            const osasdateConverted = osas.map(osasData => ({
+                ...osasData._doc,
+               date: osasData.date.toISOString().split("T")[0]
+        }))
+            return NextResponse.json({osas:osasdateConverted}, {status:200}) 
 }

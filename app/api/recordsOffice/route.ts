@@ -21,5 +21,9 @@ export async function GET(){
         await connectMongo()
             const recordsOfficeInfo = await RecordsOffice.find()
             console.log("Logg Records Info",recordsOfficeInfo)
-            return NextResponse.json({recordsOfficeInfo}) 
+            const recordsDateConverted = recordsOfficeInfo.map(recordsData => ({
+                ...recordsData._doc,
+               date: recordsData.date.toISOString().split("T")[0]
+        }))
+            return NextResponse.json({recordsOfficeInfo:recordsDateConverted}, {status:200}) 
 }

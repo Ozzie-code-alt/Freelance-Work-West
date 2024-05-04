@@ -20,6 +20,10 @@ export async function POST(req:NextApiRequest){
 export async function GET(){
         await connectMongo()
             const cashiers = await Cashier.find()
+            const cashiersConverted = cashiers.map(cashier => ({
+                    ...cashier._doc,
+                   date: cashier.date.toISOString().split("T")[0]
+            }))
             console.log("Logg BAC Information",cashiers)
-            return NextResponse.json({cashiers}) 
+            return NextResponse.json({cashiers:cashiersConverted}, {status:200}) 
 }
