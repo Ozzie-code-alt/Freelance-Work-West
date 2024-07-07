@@ -10,6 +10,10 @@ This Program was built for Students at West Visayas State University Pototan Cam
 
 **Server:** Node, Express, Mongoose, MongoDB
 
+**Auth** Next Auth
+
+**Validations:** zod
+
 
 
 ## Documentation
