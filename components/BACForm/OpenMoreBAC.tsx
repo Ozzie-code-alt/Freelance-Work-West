@@ -14,6 +14,7 @@ export const BACModalOpenMore = ({ isOpen, setIsOpen, formIDValue }:any) => {
         }
         const data = await response.json();
         console.log("this is data", data);
+        console.log("typeof data", typeof(data))
 
         if (!data.hasOwnProperty("bacInfo")) {
           throw new Error(

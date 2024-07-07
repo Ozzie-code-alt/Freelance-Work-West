@@ -1,6 +1,5 @@
 "use client"
 import Globaldrawer from "@/components/drawer";
-import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 
 const UserInfo = () => {
@@ -14,9 +13,7 @@ const UserInfo = () => {
         </div>
     </div>
     <div className=" flex justify-end items-end  w-full h-auto">
-
       <Globaldrawer route="/" />
-     
     </div>  
   </div>
   )

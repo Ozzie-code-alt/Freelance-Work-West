@@ -55,6 +55,7 @@ type ActionsCellProps = {
 
 const ActionsCell: React.FC<ActionsCellProps> = ({ row }) => {
   const form = row.original;
+  
   const [isOpen, setIsOpen] = useState(false);
 
   // Assuming you have a function to handle the delete action
