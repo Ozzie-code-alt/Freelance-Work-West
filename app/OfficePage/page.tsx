@@ -1,14 +1,11 @@
 
 "use client"
 import OfficesContianer from "@/components/OfficesContianer";
-import dynamic from "next/dynamic";
-
 
 const Officepage = () => {
-const ProtectedDynamic = dynamic(()=> import('../../components/ProtectedRoute'),{ssr:false})
 
   return (
-    <ProtectedDynamic>
+  
     <section className="w-screen h-screen">
       <div className="flex  border border-blue-500">
         {/*Left Div */}
@@ -26,7 +23,7 @@ const ProtectedDynamic = dynamic(()=> import('../../components/ProtectedRoute'),
         </div>
       </div>
     </section>
-    </ProtectedDynamic>
+ 
   );
 };
 
