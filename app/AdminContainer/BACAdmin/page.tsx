@@ -4,6 +4,7 @@ import { DataTable } from "@/components/ui/data-table";
 import { BACcolumns } from "@/app/payments/BACColumns";
 import { date } from "zod";
 import Example from "@/components/Loader";
+import MonthFilter from "@/components/MonthFilter";
 
 export default function DemoPage() {
   const [data, setData] = useState([]);
@@ -50,8 +51,27 @@ export default function DemoPage() {
 
 
   return (
-    <div className="container mx-auto py-10">
+    <div className="container mx-auto h-auto border flex flex-col gap-5  border-red-500 py-10">
+
+      <div className="w-full border border-red-500">
+        <p
+         className="text-center text-6xl"> Bac Admin</p>
+      </div>
+
+      <div className="">
       <DataTable columns={BACcolumns} data={data} />
+      </div>
+
+      <div className="w-full border border-red-500  ">
+        <p className="text-center text-6xl">
+        Filter By Month
+        </p>
+      </div>
+
+      <div>
+        <MonthFilter data={data}/>
+      </div>
+  
     </div>
   );
 }
