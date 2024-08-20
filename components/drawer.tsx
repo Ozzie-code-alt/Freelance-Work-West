@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import {
   Drawer,
   DrawerClose,
@@ -7,11 +7,11 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
-import { Button } from "./ui/button";
-import { signOut } from "next-auth/react";
-import { useRouter } from "next/navigation";
+  DrawerTrigger
+} from '@/components/ui/drawer';
+import { Button } from './ui/button';
+import { signOut } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 type DrawerProps = {
   route: string;
@@ -25,21 +25,19 @@ const Globaldrawer = ({ route }: DrawerProps) => {
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <Button className="bg-black">Open Drawer</Button>
+        <Button className='bg-black'>Setting</Button>
       </DrawerTrigger>
-      <DrawerContent className="flex  justify-center items-center">
-        <div className="w-[800px]">
+      <DrawerContent className='flex  justify-center items-center'>
+        <div className='w-[800px]'>
           <DrawerHeader>
             <DrawerTitle>About - Know More about The Office</DrawerTitle>
-            <DrawerDescription>
-              Logout - Remove Account from this device
-            </DrawerDescription>
+            <DrawerDescription>Logout - Remove Account from this device</DrawerDescription>
           </DrawerHeader>
           <DrawerFooter>
             <Button>About</Button>
             <Button onClick={handleLogout}>Logout</Button>
             <DrawerClose>
-              <Button variant="outline">Cancel</Button>
+              <Button variant='outline'>Cancel</Button>
             </DrawerClose>
           </DrawerFooter>
         </div>
