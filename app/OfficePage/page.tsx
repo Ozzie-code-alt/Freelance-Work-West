@@ -5,19 +5,24 @@ import UserInfo from '@/components/userInfo';
 const Officepage = () => {
   return (
     <section className='w-screen h-screen'>
-      <div className='flex  border border-blue-500'>
+      <div className='flex   '>
         {/*Left Div */}
-        <div className=' border h-screen px-20 py-10 w-auto border-blue-500'>
-          <h1>
-            {' '}
-            <span className='text-5xl'>Welcome Back</span> <br /> <UserInfo />
-          </h1>
+        <div className='h-screen  px-20 py-10 w-auto border-r-2 '>
+          <div className='flex flex-col '>
+            <div className='pb-5'>
+              <h1>
+                {' '}
+                <span className='text-5xl'>Welcome Back</span>
+              </h1>
+            </div>
+            <UserInfo />
+          </div>
         </div>
-        <div></div>
-        <div className='w-full h-full flex flex-col justify-center gap-20 items-center'>
-          <div className='border border-red-500 px-10 py-10'>
-            <h1 className='text-5xl text-center'>
-              West Visayas State <br /> Feedback Forms
+        <div className='w-full h-full flex  flex-col justify-center gap-20 items-center'>
+          <div className=' px-10 py-10'>
+            <h1 className='text-5xl text-center leading-[60px]'>
+              <span className='font-bold'>West Visayas State</span>
+              <br /> Feedback Forms
             </h1>
           </div>
 

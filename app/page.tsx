@@ -8,7 +8,7 @@ export default function Home() {
       <QrcodePage />
 
       <div className="border-2 rounded-xl border-black bg-black/50  hover:cursor-pointer mt-10 px-20 py-10">
-        <button className=" text-white hover:text-slate-400 duration-500 text-3xl" onClick={()=>router.push("/LoginPage")}>Proceed here</button>
+        <button className=" text-white hover:text-slate-400 duration-500 text-3xl border" onClick={()=>router.push("/LoginPage")}>Proceed here</button>
       </div>
     </div>
   );
