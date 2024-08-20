@@ -7,7 +7,7 @@ import {
   CarouselNext,
   CarouselPrevious
 } from '@/components/ui/carousel';
-import { Offices } from '@/constants/indes';
+import { Offices, OfficesStudents } from '@/constants/indes';
 import Link from 'next/link';
 const OfficesContianer = () => {
   return (
@@ -19,7 +19,7 @@ const OfficesContianer = () => {
       className='w-full max-w-[700px]'
     >
       <CarouselContent className='-mt-1 h-[600px]'>
-        {Offices.map(
+        {OfficesStudents.map(
           (
             office,
             index // add constants here make this dynamic
