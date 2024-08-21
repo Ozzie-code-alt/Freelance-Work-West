@@ -25,31 +25,40 @@ const BACSchema = new Schema(
     sex: {
       type: String
     },
-    responsiveness: {
+    cc1: {
       type: String
     },
-    reliability: {
+    cc2: {
       type: String
     },
-    access: {
+    cc3: {
       type: String
     },
-    communication: {
+    sqd0: {
       type: String
     },
-    costs: {
+    sqd1: {
       type: String
     },
-    integrity: {
+    sqd2: {
       type: String
     },
-    assurance: {
+    sqd3: {
       type: String
     },
-    outcome: {
+    sqd4: {
       type: String
     },
-    message: {
+    sqd5: {
+      type: String
+    },
+    sqd6: {
+      type: String
+    },
+    sqd7: {
+      type: String
+    },
+    sqd8: {
       type: String
     },
     mean: {
