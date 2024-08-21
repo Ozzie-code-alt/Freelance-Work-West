@@ -348,7 +348,7 @@ const BACFormPage = () => {
               </FormItem>
             )}
           />
-          <Button type='submit'>Submit</Button>
+          <Button type='submit'>Next</Button>
         </form>
       </Form>
       <BACFormCC isOpen={isOpen} setIsOpen={setIsOpen} adminProps={submissionData}/>
