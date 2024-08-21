@@ -97,13 +97,15 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
     // console.log("this is mean", total / 8)
 
     const userNameContainer = session?.user?.name || '';
+
+ 
     const submittedValues = {
       ...adminProps,
       userName: userNameContainer,
       ...values,
       mean: (total / 8).toString()
     };
-    console.log('Submitted Values', submittedValues);
+    console.log('this is the final Submitted Values', submittedValues);
 
     try {
       const res = await fetch('/api/bac', {
@@ -669,7 +671,6 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
           </motion.div>
         </motion.div>
       )}
-      
     </AnimatePresence>
   );
 };

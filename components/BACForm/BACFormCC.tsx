@@ -37,12 +37,26 @@ const formSchema = z.object({
   cc3: z.string().min(1)
 });
 
-const criteria = [
-  { label: '1 - Very Dissatisfied', value: '1' },
-  { label: '2 - Dissatisfied', value: '2' },
-  { label: '3 - Neutral', value: '3' },
-  { label: '4 - Satisfied', value: '4' },
-  { label: '5 - Very Satisfied', value: '5' }
+const cc1criteria = [
+  { label: '1 - I know what a CC is and i Saw this office CC', value: '1' },
+  { label: '2 - I know what a CC is but i did not see this office CC', value: '2' },
+  { label: '3 - I learned of the CC only when i saw this office CCC', value: '3' },
+  { label: '4 - i do not know what a CC is and i did not see one in this office', value: '4' }
+] as const;
+
+const cc2criteria = [
+  { label: '1 - Easy to See', value: '1' },
+  { label: '2 - Somewhat easy to see', value: '2' },
+  { label: '3 - Difficult to see', value: '3' },
+  { label: '4 - Not Visible at all', value: '4' },
+  { label: '5 - N/A', value: '5' }
+] as const;
+
+const cc3criteria = [
+  { label: '1 - Helped very much', value: '1' },
+  { label: '2 - Somewhat helped', value: '2' },
+  { label: '3 - Did not help', value: '3' },
+  { label: '4 - N/A', value: '4' }
 ] as const;
 
 import { AnimatePresence, motion } from 'framer-motion';
@@ -61,9 +75,15 @@ export const BACFormCC = ({ isOpen, setIsOpen, adminProps }: any) => {
     }
   });
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    setIsFormModalOpen(true)
+    console.log(adminProps);
+    setIsFormModalOpen(true);
   };
-  const submissionData = 'hello';
+  const submissionData = {
+    ...adminProps,
+    ...form.getValues()
+  };
+
+  console.log('this is submission data', submissionData);
   return (
     <AnimatePresence>
       {isOpen && (
@@ -109,7 +129,8 @@ export const BACFormCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                               )}
                             >
                               {field.value
-                                ? criteria.find((language) => language.value === field.value)?.label
+                                ? cc1criteria.find((language) => language.value === field.value)
+                                    ?.label
                                 : 'Select language'}
                               <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                             </Button>
@@ -120,7 +141,7 @@ export const BACFormCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                             <CommandInput placeholder='Search framework...' className='h-9' />
                             <CommandEmpty>No framework found.</CommandEmpty>
                             <CommandGroup>
-                              {criteria.map((language) => (
+                              {cc1criteria.map((language) => (
                                 <CommandItem
                                   value={language.label}
                                   key={language.value}
@@ -171,7 +192,8 @@ export const BACFormCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                               )}
                             >
                               {field.value
-                                ? criteria.find((language) => language.value === field.value)?.label
+                                ? cc2criteria.find((language) => language.value === field.value)
+                                    ?.label
                                 : 'Select language'}
                               <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                             </Button>
@@ -182,7 +204,7 @@ export const BACFormCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                             <CommandInput placeholder='Search framework...' className='h-9' />
                             <CommandEmpty>No framework found.</CommandEmpty>
                             <CommandGroup>
-                              {criteria.map((language) => (
+                              {cc2criteria.map((language) => (
                                 <CommandItem
                                   value={language.label}
                                   key={language.value}
@@ -232,7 +254,8 @@ export const BACFormCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                               )}
                             >
                               {field.value
-                                ? criteria.find((language) => language.value === field.value)?.label
+                                ? cc3criteria.find((language) => language.value === field.value)
+                                    ?.label
                                 : 'Select language'}
                               <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                             </Button>
@@ -243,7 +266,7 @@ export const BACFormCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                             <CommandInput placeholder='Search framework...' className='h-9' />
                             <CommandEmpty>No framework found.</CommandEmpty>
                             <CommandGroup>
-                              {criteria.map((language) => (
+                              {cc3criteria.map((language) => (
                                 <CommandItem
                                   value={language.label}
                                   key={language.value}
