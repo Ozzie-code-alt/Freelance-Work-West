@@ -1,79 +1,63 @@
-import mongoose, { Schema, models } from "mongoose";
-// Everything From Personal To 
+import mongoose, { Schema, models } from 'mongoose';
 const BACSchema = new Schema(
   {
     date: {
-      type: Date,
-   
+      type: Date
     },
-    userName:{
-      type:String,
+    userName: {
+      type: String
     },
     servicesReceived: {
-      type: String,
-
+      type: String
     },
-    externalClient: {
-      type: String,
-
+    clientType: {
+      type: String
     },
     pointOfOrigin: {
-      type: String,
-
+      type: String
     },
     officeVisited: {
-      type: String,
- 
+      type: String
     },
-    internalClient: {
-      type: String,
-  
+    age: {
+      type: String
     },
     sex: {
-      type: String,
-
+      type: String
     },
-    responsiveness:{
-      type: String,
-     
+    responsiveness: {
+      type: String
     },
-    reliability:{
-      type: String,
- 
+    reliability: {
+      type: String
     },
-    access:{
-      type: String,
-
+    access: {
+      type: String
     },
-    communication:{
-      type: String,
-    
+    communication: {
+      type: String
     },
-    costs:{
-      type: String,
-    
+    costs: {
+      type: String
     },
-    integrity:{
-      type: String,
- 
+    integrity: {
+      type: String
     },
-    assurance:{
-      type: String,
- 
-    },    
-    outcome:{
-      type: String,
-  
+    assurance: {
+      type: String
     },
-    message:{
-      type: String,
+    outcome: {
+      type: String
     },
-    mean:{
-      type: String,
+    message: {
+      type: String
     },
+    mean: {
+      type: String
+    }
   },
   { timestamps: true }
-  );
-  
-  const BAC = models.BAC || mongoose.model("BAC", BACSchema);
-  export default BAC;
+);
+
+const BAC = models.BAC || mongoose.model('BAC', BACSchema);
+export default BAC;

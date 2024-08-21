@@ -63,7 +63,7 @@ import { FiAlertCircle } from "react-icons/fi";
 {
   /*Modal Function Here -------------------------------------------- */
 }
-export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
+export const BACFormCC = ({ isOpen, setIsOpen, adminProps }: any) => {
   const { data: session } = useSession();
   const [loading, setLoading] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
