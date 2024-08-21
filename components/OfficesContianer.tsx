@@ -18,7 +18,7 @@ const OfficesContianer = () => {
       orientation='vertical'
       className='w-full max-w-[700px]'
     >
-      <CarouselContent className='-mt-1 h-[600px]'>
+      <CarouselContent className='-mt-1  h-[400px] md:h-[600px]'>
         {OfficesStudents.map(
           (
             office,
@@ -29,7 +29,7 @@ const OfficesContianer = () => {
                 <Link href={office.route}>
                   <Card>
                     <CardContent className='flex items-center h-[200px]  justify-center p-6'>
-                      <span className='text-3xl font-semibold'>{office.title}</span>
+                      <span className=' text-lg md:text-3xl font-semibold'>{office.title}</span>
                     </CardContent>
                   </Card>
                 </Link>

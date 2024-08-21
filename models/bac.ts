@@ -1,79 +1,72 @@
-import mongoose, { Schema, models } from "mongoose";
-// Everything From Personal To 
+import mongoose, { Schema, models } from 'mongoose';
 const BACSchema = new Schema(
   {
     date: {
-      type: Date,
-   
+      type: Date
     },
-    userName:{
-      type:String,
+    userName: {
+      type: String
     },
     servicesReceived: {
-      type: String,
-
+      type: String
     },
-    externalClient: {
-      type: String,
-
+    clientType: {
+      type: String
     },
     pointOfOrigin: {
-      type: String,
-
+      type: String
     },
     officeVisited: {
-      type: String,
- 
+      type: String
     },
-    internalClient: {
-      type: String,
-  
+    age: {
+      type: String
     },
     sex: {
-      type: String,
-
+      type: String
     },
-    responsiveness:{
-      type: String,
-     
+    cc1: {
+      type: String
     },
-    reliability:{
-      type: String,
- 
+    cc2: {
+      type: String
     },
-    access:{
-      type: String,
-
+    cc3: {
+      type: String
     },
-    communication:{
-      type: String,
-    
+    sqd0: {
+      type: String
     },
-    costs:{
-      type: String,
-    
+    sqd1: {
+      type: String
     },
-    integrity:{
-      type: String,
- 
+    sqd2: {
+      type: String
     },
-    assurance:{
-      type: String,
- 
-    },    
-    outcome:{
-      type: String,
-  
+    sqd3: {
+      type: String
     },
-    message:{
-      type: String,
+    sqd4: {
+      type: String
     },
-    mean:{
-      type: String,
+    sqd5: {
+      type: String
     },
+    sqd6: {
+      type: String
+    },
+    sqd7: {
+      type: String
+    },
+    sqd8: {
+      type: String
+    },
+    mean: {
+      type: String
+    }
   },
   { timestamps: true }
-  );
-  
-  const BAC = models.BAC || mongoose.model("BAC", BACSchema);
-  export default BAC;
+);
+
+const BAC = models.BAC || mongoose.model('BAC', BACSchema);
+export default BAC;
