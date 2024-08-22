@@ -35,7 +35,7 @@ import {
   CommandItem
 } from '@/components/ui/command';
 import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons';
-import {BACFormCC} from './BACFormCC';
+import { BACFormCC } from './BACFormCC';
 const formSchema = z.object({
   date: z.date({
     required_error: 'Please select a date and time',
@@ -66,7 +66,6 @@ const BACFormPage = () => {
   const [isOpen, setIsOpen] = useState(false);
   // const { data: session } = useSession();
 
-  // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -81,12 +80,11 @@ const BACFormPage = () => {
     }
   });
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async () => {
     setIsOpen(true);
   };
 
   const grabDate = form.getValues('date').toDateString();
-  // console.log('this is Grab dateeeee', grabDate);
   const submissionData = {
     ...form.getValues(),
     date: grabDate
@@ -123,7 +121,7 @@ const BACFormPage = () => {
             name='date'
             render={({ field }) => (
               <FormItem className='w-full'>
-                <FormLabel className='text-2xl'>Date</FormLabel>
+                <FormLabel className='text-2xl mr-5'>Date</FormLabel>
                 <Popover>
                   <PopoverTrigger asChild>
                     <FormControl>
@@ -203,52 +201,15 @@ const BACFormPage = () => {
               <FormItem className='flex flex-col w-full'>
                 <FormLabel className='text-2xl'>Age</FormLabel>
 
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <FormControl>
-                      <Button
-                        variant='outline'
-                        role='combobox'
-                        className={cn(
-                          'w-[300px] md:w-[500px] justify-between',
-                          !field.value && 'text-muted-foreground'
-                        )}
-                      >
-                        {field.value
-                          ? languages.find((language) => language.value === field.value)?.label
-                          : 'Internal Client'}
-                        <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
-                      </Button>
-                    </FormControl>
-                  </PopoverTrigger>
+                <FormControl>
+                  <Input
+                    placeholder='Age'
+                    {...field}
+                    className='h-[60px] w-[300px] md:w-full'
+                  />
+                </FormControl>
 
-                  <PopoverContent className='w-[300px] md:w-full p-0'>
-                    <Command>
-                      <CommandInput placeholder='Options...' className='h-9' />
-                      <CommandEmpty>Nothing found.</CommandEmpty>
-                      <CommandGroup>
-                        {languages.map((language) => (
-                          <CommandItem
-                            value={language.label}
-                            key={language.value}
-                            onSelect={() => {
-                              form.setValue('age', language.value);
-                            }}
-                          >
-                            {language.label}
-                            <CheckIcon
-                              className={cn(
-                                'ml-auto h-4 w-4',
-                                language.value === field.value ? 'opacity-100' : 'opacity-0'
-                              )}
-                            />
-                          </CommandItem>
-                        ))}
-                      </CommandGroup>
-                    </Command>
-                  </PopoverContent>
-                </Popover>
-                <FormDescription>Kindly Select which of the Options apply to you</FormDescription>
+                <FormDescription>How old are you ?</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -351,7 +312,7 @@ const BACFormPage = () => {
           <Button type='submit'>Next</Button>
         </form>
       </Form>
-      <BACFormCC isOpen={isOpen} setIsOpen={setIsOpen} adminProps={submissionData}/>
+      <BACFormCC isOpen={isOpen} setIsOpen={setIsOpen} adminProps={submissionData} />
       {/* <BACFormModal isOpen={isOpen} setIsOpen={setIsOpen} adminProps={submissionData} /> */}
     </>
   );

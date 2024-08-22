@@ -1,13 +1,11 @@
 'use client';
 import { useState } from 'react';
-import { date, z } from 'zod';
+import {  z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons';
 import { useForm } from 'react-hook-form';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { Input } from '@/components/ui/input';
-import { Puff } from 'react-loader-spinner';
 import {
   Form,
   FormControl,
@@ -17,7 +15,7 @@ import {
   FormLabel,
   FormMessage
 } from '@/components/ui/form';
-import { toast } from '@/components/ui/use-toast';
+
 import {
   Command,
   CommandEmpty,
@@ -27,10 +25,6 @@ import {
 } from '@/components/ui/command';
 
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { useSession } from 'next-auth/react';
-import sendEmail from '@/lib/emailjs';
-import { useRouter } from 'next/navigation';
-
 const formSchema = z.object({
   cc1: z.string().min(1),
   cc2: z.string().min(1),
@@ -92,28 +86,28 @@ export const BACFormCC = ({ isOpen, setIsOpen, adminProps }: any) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={() => setIsOpen(false)}
-          className='bg-slate-900/20 backdrop-blur p-8 fixed inset-0 z-50 grid place-items-center overflow-y-scroll cursor-pointer'
+          className='bg-slate-900/20 backdrop-blur p-20 fixed inset-0 z-50 grid place-items-center cursor-pointer'
         >
           <motion.div
             initial={{ scale: 0, rotate: '12.5deg' }}
             animate={{ scale: 1, rotate: '0deg' }}
             exit={{ scale: 0, rotate: '0deg' }}
             onClick={(e) => e.stopPropagation()}
-            className='bg-gradient-to-br from-violet-600 to-indigo-600 text-white p-6 rounded-lg w-full max-w-lg h-full shadow-xl cursor-default relative '
+            className='bg-gradient-to-br from-violet-600 to-indigo-600 mb-60 text-white p-6 rounded-lg w-full  h-auto shadow-xl cursor-default relative '
           >
             <FiAlertCircle className='text-white/10 rotate-12 text-[250px] absolute z-0 -top-24 -left-24' />
 
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className=' py-0  md:py-20 grid md:gap-10 lg:grid-cols-2  mt overflow-y-scroll w-full space-y-8 h-full md:h-auto  place-items-center'
+                className=' py-0  md:py-20 md:gap-10 flex flex-col   w-full space-y-8 h-full md:h-auto '
               >
                 <FormField
                   control={form.control}
                   name='cc1'
                   render={({ field }) => (
-                    <FormItem className='flex flex-col'>
-                      <FormLabel>
+                    <FormItem className='flex flex-col gap-5'>
+                      <FormLabel className='text-5xl'>
                         {' '}
                         Which of The Follow best Descibes Your awareness of a CC ?
                       </FormLabel>
@@ -124,7 +118,7 @@ export const BACFormCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                               variant='outline'
                               role='combobox'
                               className={cn(
-                                'w-[200px] justify-between ',
+                                'w-fit justify-between ',
                                 !field.value && 'bg-white text-black'
                               )}
                             >
@@ -162,11 +156,11 @@ export const BACFormCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                           </Command>
                         </PopoverContent>
                       </Popover>
-                      <FormDescription>
+                      {/* <FormDescription>
                         <p className='text-yellow-500'>
                           This is the language that will be used in the dashboard.
                         </p>
-                      </FormDescription>
+                      </FormDescription> */}
                       <FormMessage />
                     </FormItem>
                   )}
@@ -175,8 +169,8 @@ export const BACFormCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                   control={form.control}
                   name='cc2'
                   render={({ field }) => (
-                    <FormItem className='flex flex-col'>
-                      <FormLabel>
+                    <FormItem className='flex flex-col gap-5 '>
+                      <FormLabel className='text-5xl'>
                         {' '}
                         <p> if aware of CC, would you say that the CC of this office was ?</p>
                       </FormLabel>
@@ -187,7 +181,7 @@ export const BACFormCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                               variant='outline'
                               role='combobox'
                               className={cn(
-                                'w-[200px] justify-between',
+                                'w-fit justify-between',
                                 !field.value && 'bg-white text-black'
                               )}
                             >
@@ -225,11 +219,11 @@ export const BACFormCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                           </Command>
                         </PopoverContent>
                       </Popover>
-                      <FormDescription>
+                      {/* <FormDescription>
                         <p className='text-yellow-500'>
                           This is the language that will be used in the dashboard.
                         </p>
-                      </FormDescription>
+                      </FormDescription> */}
                       <FormMessage />
                     </FormItem>
                   )}
@@ -238,8 +232,8 @@ export const BACFormCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                   control={form.control}
                   name='cc3'
                   render={({ field }) => (
-                    <FormItem className='flex flex-col'>
-                      <FormLabel>
+                    <FormItem className='flex flex-col gap-5'>
+                      <FormLabel className='text-5xl'>
                         If aware of CC, how much did the CC help you in your transaction ?
                       </FormLabel>
                       <Popover>
@@ -249,7 +243,7 @@ export const BACFormCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                               variant='outline'
                               role='combobox'
                               className={cn(
-                                'w-[200px] justify-between',
+                                'w-fit justify-between',
                                 !field.value && 'bg-white text-black'
                               )}
                             >
@@ -287,17 +281,17 @@ export const BACFormCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                           </Command>
                         </PopoverContent>
                       </Popover>
-                      <FormDescription>
+                      {/* <FormDescription>
                         <p className='text-yellow-500'>
                           This is the language that will be used in the dashboard.
                         </p>
-                      </FormDescription>
+                      </FormDescription> */}
                       <FormMessage />
                     </FormItem>
                   )}
                 />
 
-                <Button type='submit'>Next</Button>
+                <Button type='submit' className='w-fit'>Next</Button>
               </form>
             </Form>
           </motion.div>

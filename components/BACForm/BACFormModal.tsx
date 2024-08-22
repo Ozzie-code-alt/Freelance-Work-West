@@ -93,12 +93,9 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
       parseInt(values.sqd6) +
       parseInt(values.sqd7) +
       parseInt(values.sqd8);
-    // console.log("this is total",total)
-    // console.log("this is mean", total / 8)
 
     const userNameContainer = session?.user?.name || '';
 
- 
     const submittedValues = {
       ...adminProps,
       userName: userNameContainer,
@@ -151,28 +148,31 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={() => setIsOpen(false)}
-          className='bg-slate-900/20 backdrop-blur p-8 fixed inset-0 z-50 grid place-items-center overflow-y-scroll cursor-pointer'
+          className='bg-slate-900/20 backdrop-blur p-8 fixed inset-0 z-50 grid place-items-center  cursor-pointer'
         >
           <motion.div
             initial={{ scale: 0, rotate: '12.5deg' }}
             animate={{ scale: 1, rotate: '0deg' }}
             exit={{ scale: 0, rotate: '0deg' }}
             onClick={(e) => e.stopPropagation()}
-            className='bg-gradient-to-br from-violet-600 to-indigo-600 text-white p-6 rounded-lg w-full max-w-lg h-full shadow-xl cursor-default relative '
+            className='bg-gradient-to-br from-violet-600 to-indigo-600 text-white p-6 rounded-lg w-full  h-fit shadow-xl cursor-default relative '
           >
             <FiAlertCircle className='text-white/10 rotate-12 text-[250px] absolute z-0 -top-24 -left-24' />
 
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className=' py-0  md:py-20 grid md:gap-10 lg:grid-cols-2  mt overflow-y-scroll w-full space-y-8 h-full md:h-auto  place-items-center'
+                className=' py-0  md:py-20 grid md:gap-10 lg:grid-cols-3  mt  w-full  h-full md:h-auto  '
               >
                 <FormField
                   control={form.control}
                   name='sqd0'
                   render={({ field }) => (
-                    <FormItem className='flex flex-col'>
-                      <FormLabel> Responsiveness</FormLabel>
+                    <FormItem className='flex flex-col gap-3'>
+                      <FormLabel className='text-2xl'>
+                        {' '}
+                        I am satisfied with the service that i availed
+                      </FormLabel>
                       <Popover>
                         <PopoverTrigger asChild>
                           <FormControl>
@@ -230,10 +230,10 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
                   control={form.control}
                   name='sqd1'
                   render={({ field }) => (
-                    <FormItem className='flex flex-col'>
-                      <FormLabel>
+                    <FormItem className='flex flex-col gap-3'>
+                      <FormLabel className='text-2xl'>
                         {' '}
-                        <p>Realibility - Maasahan </p>
+                        <p>I spent a reasonable amont of time for my transaction</p>
                       </FormLabel>
                       <Popover>
                         <PopoverTrigger asChild>
@@ -292,8 +292,11 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
                   control={form.control}
                   name='sqd2'
                   render={({ field }) => (
-                    <FormItem className='flex flex-col'>
-                      <FormLabel>Accees & Facilities - Lokasyon at Pasilad</FormLabel>
+                    <FormItem className='flex flex-col gap-3'>
+                      <FormLabel className='text-2xl'>
+                        The office followed the transaction requirements and steps based on the
+                        information provided
+                      </FormLabel>
                       <Popover>
                         <PopoverTrigger asChild>
                           <FormControl>
@@ -351,8 +354,10 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
                   control={form.control}
                   name='sqd3'
                   render={({ field }) => (
-                    <FormItem className='flex flex-col'>
-                      <FormLabel>Pakikipag-usap</FormLabel>
+                    <FormItem className='flex flex-col gap-3'>
+                      <FormLabel className='text-2xl'>
+                        The steps i needed to do for my transaction were easy and simple
+                      </FormLabel>
                       <Popover>
                         <PopoverTrigger asChild>
                           <FormControl>
@@ -410,8 +415,11 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
                   control={form.control}
                   name='sqd4'
                   render={({ field }) => (
-                    <FormItem className='flex flex-col'>
-                      <FormLabel>Costs - Gastos</FormLabel>
+                    <FormItem className='flex flex-col gap-3'>
+                      <FormLabel className='text-2xl'>
+                        I easily found information about my tranaction from the office or its
+                        website
+                      </FormLabel>
                       <Popover>
                         <PopoverTrigger asChild>
                           <FormControl>
@@ -469,8 +477,10 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
                   control={form.control}
                   name='sqd5'
                   render={({ field }) => (
-                    <FormItem className='flex flex-col'>
-                      <FormLabel>Integrity - Kawastuhan ng mga Kilos</FormLabel>
+                    <FormItem className='flex flex-col gap-3'>
+                      <FormLabel className='text-2xl'>
+                        I paid a reasonable amount of fees for my transaction
+                      </FormLabel>
                       <Popover>
                         <PopoverTrigger asChild>
                           <FormControl>
@@ -528,8 +538,10 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
                   control={form.control}
                   name='sqd6'
                   render={({ field }) => (
-                    <FormItem className='flex flex-col'>
-                      <FormLabel>Assurance - Pagtitiwala</FormLabel>
+                    <FormItem className='flex flex-col gap-3'>
+                      <FormLabel className='text-2xl'>
+                        I feel the office was fair to everyone dring my transaction
+                      </FormLabel>
                       <Popover>
                         <PopoverTrigger asChild>
                           <FormControl>
@@ -587,8 +599,10 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
                   control={form.control}
                   name='sqd7'
                   render={({ field }) => (
-                    <FormItem className='flex flex-col'>
-                      <FormLabel>Outcome - Kinalabasan</FormLabel>
+                    <FormItem className='flex flex-col gap-3'>
+                      <FormLabel className='text-2xl'>
+                        I was treated courteously by the staff and the staff was helpful
+                      </FormLabel>
                       <Popover>
                         <PopoverTrigger asChild>
                           <FormControl>
@@ -646,8 +660,10 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
                   control={form.control}
                   name='sqd8'
                   render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Leave a Message :</FormLabel>
+                    <FormItem className='flex flex-col gap-3'>
+                      <FormLabel className='text-2xl'>
+                        I got what I needed from the goverment office
+                      </FormLabel>
                       <FormControl>
                         <Input placeholder='shadcn' className='text-black' {...field} />
                       </FormControl>
@@ -664,7 +680,9 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
                 {loading ? (
                   <Puff color='#00BFFF' height={50} width={50} />
                 ) : (
-                  <Button type='submit'>Next</Button>
+                  <Button type='submit' className='w-fit'>
+                    Next
+                  </Button>
                 )}
               </form>
             </Form>
