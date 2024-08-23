@@ -4,11 +4,11 @@ import UserInfo from '@/components/userInfo';
 
 const Officepage = () => {
   return (
-    <section className='w-screen h-auto'>
-      <div className='flex flex-col md:flex-row   '>
+    <section className='w-screen h-screen'>
+      <div className='flex flex-col md:flex-row '>
         {/*Left Div */}
-        <div className='h-auto px-20 py-10 w-auto border-r-2 '>
-          <div className='flex flex-col '>
+        <div className='h-screen px-20 py-10 w-auto border-r-2 '>
+          <div className='flex flex-col h-full '>
             <div className='pb-5'>
               <h1>
                 {' '}
