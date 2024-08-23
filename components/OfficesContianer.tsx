@@ -16,36 +16,6 @@ import BACFormPage from './BACForm/BACForm';
 const OfficesContianer = () => {
   const cards = data.map((card, index) => <Card key={card.src} card={card} index={index} />);
   return (
-    // <Carousel
-    //   opts={{
-    //     align: 'start'
-    //   }}
-    //   orientation='vertical'
-    //   className='w-full max-w-[700px]'
-    // >
-    //   <CarouselContent className='-mt-1  h-[400px] md:h-[600px]'>
-    //     {OfficesStudents.map(
-    //       (
-    //         office,
-    //         index // add constants here make this dynamic
-    //       ) => (
-    //         <CarouselItem key={index} className='pt-1  md:basis-1/2'>
-    //           <div className='p-1'>
-    //             <Link href={office.route}>
-    //               <Card className='border-2 border-black'>
-    //                 <CardContent className='flex items-center h-[200px]  justify-center p-6'>
-    //                   <span className=' text-lg md:text-3xl font-semibold'>{office.title}</span>
-    //                 </CardContent>
-    //               </Card>
-    //             </Link>
-    //           </div>
-    //         </CarouselItem>
-    //       )
-    //     )}
-    //   </CarouselContent>
-    //   <CarouselPrevious />
-    //   <CarouselNext />
-    // </Carousel>
 
     <Carousel items={cards} />
   );
