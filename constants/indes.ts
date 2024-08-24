@@ -67,66 +67,82 @@ export const Offices = [
 
 export const OfficesStudents = [
   {
+    id: '1',
     title: 'Admin Office and Finance',
     route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm'
   },
   {
+    id: '2',
     title: 'BAC',
     route: '/BAC/BACPersonalForm'
   },
   {
+    id: '3',
     title: 'Accounting',
     route: '/Accounting/AccountingPersonalForm'
   },
   {
+    id: '4',
     title: 'Library',
     route: '/AdminContainer/AdministrationOfficesandFinance'
   },
   {
+    id: '5',
     title: 'Medical and Dental Clinic',
     route: '/Medical/MedicalPersonalForm'
   },
   {
+    id: '6',
     title: 'OD Educ',
     route: '/AdminContainer/AdministrationOfficesandFinance'
   },
   {
+    id: '7',
     title: 'OD ICT',
     route: '/AdminContainer/AdministrationOfficesandFinance'
   },
   {
+    id: '8',
     title: 'OD Industrial Tech',
     route: '/AdminContainer/AdministrationOfficesandFinance'
   },
   {
+    id: '9',
     title: 'OD SBM',
     route: '/AdminContainer/AdministrationOfficesandFinance'
   },
   {
+    id: '10',
     title: 'Office of Registrar',
     route: '/AdminContainer/AdministrationOfficesandFinance'
   },
   {
+    id: '11',
     title: 'OSA',
     route: 'OSA/OSAPersonalForm'
   },
   {
+    id: '12',
     title: 'Planning and Development Unit',
     route: '/AdminContainer/AdministrationOfficesandFinance'
   },
   {
+    id: '13',
     title: 'Records and Management Unit',
     route: '/AdminContainer/AdministrationOfficesandFinance'
   },
   {
+    id: '14',
     title: 'RIX',
     route: '/AdminContainer/AdministrationOfficesandFinance'
   },
   {
+    id: '15',
     title: 'Sports Office',
     route: '/AdminContainer/AdministrationOfficesandFinance'
   },
   {
+    id: '16',
     title: 'Supply Building 1',
     route: '/AdminContainer/AdministrationOfficesandFinance'
   }
