@@ -26,6 +26,11 @@
   dependencies:
     regenerator-runtime "^0.14.0"
 
+"@darkroom.engineering/tempus@^0.0.46":
+  version "0.0.46"
+  resolved "https://registry.yarnpkg.com/@darkroom.engineering/tempus/-/tempus-0.0.46.tgz#3d958807503e4055fcc4a1aeeff83ca0546c62f0"
+  integrity sha512-s5vav3KMHYezvUCl4ee5epg0oimF6M8C9gAaKxFnFaTvX2q3ywFDryIv6XLd0mRFUt3S1uHDJqKaiEcs2ZVSvw==
+
 "@emailjs/browser@^4.3.3":
   version "4.3.3"
   resolved "https://registry.yarnpkg.com/@emailjs/browser/-/browser-4.3.3.tgz#edf759fc68f1628d7192bed689b1bb0651890f57"
@@ -2998,6 +3003,13 @@ language-tags@^1.0.9:
   integrity sha512-MbjN408fEndfiQXbFQ1vnd+1NoLDsnQW41410oQBXiyXDMYH5z505juWa4KUE1LqxRC7DgOgZDbKLxHIwm27hA==
   dependencies:
     language-subtag-registry "^0.3.20"
+
+lenis@^1.1.11:
+  version "1.1.11"
+  resolved "https://registry.yarnpkg.com/lenis/-/lenis-1.1.11.tgz#a7e8d93b49d58feaf7f5ba5144636d329621aa7b"
+  integrity sha512-ykl6sYWhECtD/9N1JiKhKCY10LEYnGaxgQzo5tFQcHlkD9zZx2ZSUydqk1Xtk/w13+ZGv9qMyhcG7d8s159ONQ==
+  dependencies:
+    "@darkroom.engineering/tempus" "^0.0.46"
 
 levn@^0.4.1:
   version "0.4.1"
