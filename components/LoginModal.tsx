@@ -10,8 +10,6 @@ import {
   CardTitle
 } from '@/components/ui/card';
 import { signIn } from 'next-auth/react';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
