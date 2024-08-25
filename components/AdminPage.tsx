@@ -27,8 +27,8 @@ const AdminPage = () => {
             <Button className='text-2xl uppercase'>Admin Office and Finance</Button>
             <Button className='text-2xl uppercase'>BAC</Button>
             <Button className='text-2xl uppercase'>Accounting</Button>
-            <Button className='text-2xl uppercase'>LIbrary</Button>
-            <Button className='text-2xl uppercase'>medical and Dental Clinic</Button>
+            <Button className='text-2xl uppercase'>Library</Button>
+            <Button className='text-2xl uppercase'>Medical and Dental Clinic</Button>
             <Button className='text-2xl uppercase'>OD Educ</Button>
             <Button className='text-2xl uppercase'>OD ICT</Button>
             <Button className='text-2xl uppercase'>OD Industrial tech</Button>
