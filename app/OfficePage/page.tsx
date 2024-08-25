@@ -11,16 +11,21 @@ import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { signOut } from 'next-auth/react';
 import GradualSpacing from '@/components/ui/gradual-spacing';
+import { useRouter } from 'next/navigation';
 const Officepage = () => {
   const { data: session } = useSession();
 
   const handleLogout = () => {
     signOut();
   };
+  const router = useRouter();
+
   const links = [
     {
       label: 'Dashboard',
-      href: () => {},
+      href: () => {
+        router.push('/AdminPageHome');
+      },
       icon: (
         <IconBrandTabler className='text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0' />
       )
@@ -35,6 +40,7 @@ const Officepage = () => {
     {
       label: 'Settings',
       href: () => {},
+
       icon: (
         <IconSettings className='text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0' />
       )
@@ -42,6 +48,7 @@ const Officepage = () => {
     {
       label: 'Logout',
       href: handleLogout,
+
       icon: (
         <IconArrowLeft className='text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0' />
       )
@@ -57,7 +64,7 @@ const Officepage = () => {
     >
       <Sidebar open={open} setOpen={setOpen}>
         <SidebarBody className='justify-between gap-10'>
-          <div className='flex flex-col flex-1 overflow-y-auto overflow-x-hidden'>
+          <div className='flex flex-col  flex-1 overflow-y-auto overflow-x-hidden'>
             {open ? <Logo /> : <LogoIcon />}
             <div className='mt-8 flex flex-col gap-2'>
               {links.map((link, idx) => (
@@ -84,8 +91,8 @@ const Officepage = () => {
           </div>
         </SidebarBody>
       </Sidebar>
-      <div className='w-full h-full flex  flex-col justify-center items-center'>
-        <div className='pt-3'>
+      <div className='w-full h-full flex  flex-col bg-slate-500/10  justify-center items-center'>
+        <div className='pt-3  '>
           <GradualSpacing
             className='font-display text-center text-4xl font-bold tracking-[-0.1em]  text-black dark:text-white md:text-7xl '
             text='West Thesis'
