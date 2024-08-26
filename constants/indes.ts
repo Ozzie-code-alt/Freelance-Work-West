@@ -74,12 +74,12 @@ export const OfficesStudents = [
   {
     id: '2',
     title: 'BAC',
-    route: '/BAC/BACPersonalForm'
+    route: '/AdminContainer/BACAdmin'
   },
   {
     id: '3',
     title: 'Accounting',
-    route: '/Accounting/AccountingPersonalForm'
+    route: '/AdminContainer/AccountingAdmin'
   },
   {
     id: '4',
@@ -161,4 +161,87 @@ export const Months = [
   { title: 'October' },
   { title: 'November' },
   { title: 'December' }
+];
+
+export const cards = [
+  {
+    title: 'Admin Office and Finance',
+    route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm',
+    src: 'https://images.unsplash.com/photo-1518710843675-2540dd79065c?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    title: 'BAC',
+    route: '/AdminContainer/BACAdmin',
+    src: 'https://images.unsplash.com/photo-1600271772470-bd22a42787b3?q=80&w=3072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    title: 'Accounting',
+    route: '/AdminContainer/AccountingAdmin',
+    src: 'https://images.unsplash.com/photo-1505142468610-359e7d316be0?q=80&w=3070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    title: 'Library',
+    route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm',
+    src: 'https://images.unsplash.com/photo-1486915309851-b0cc1f8a0084?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    title: 'Medical and Dental Clinic',
+    route: '/Medical/MedicalPersonalForm',
+    src: 'https://images.unsplash.com/photo-1507041957456-9c397ce39c97?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    title: 'OD Education',
+    route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm',
+    src: 'https://images.unsplash.com/photo-1518710843675-2540dd79065c?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    title: 'OD ICT',
+    route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm',
+    src: 'https://images.unsplash.com/photo-1600271772470-bd22a42787b3?q=80&w=3072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    title: 'OD Industrial Tech',
+    route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm',
+    src: 'https://images.unsplash.com/photo-1505142468610-359e7d316be0?q=80&w=3070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    title: 'OD SBM',
+    route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm',
+    src: 'https://images.unsplash.com/photo-1486915309851-b0cc1f8a0084?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    title: 'Office of Registrar',
+    route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm',
+    src: 'https://images.unsplash.com/photo-1507041957456-9c397ce39c97?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    title: 'OSA',
+    route: 'OSA/OSAPersonalForm',
+    src: 'https://images.unsplash.com/photo-1507041957456-9c397ce39c97?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    title: 'Planning and Development Unit',
+    route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm',
+    src: 'https://images.unsplash.com/photo-1518710843675-2540dd79065c?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    title: 'Records and Management Unit',
+    route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm',
+    src: 'https://images.unsplash.com/photo-1600271772470-bd22a42787b3?q=80&w=3072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    title: 'RIX',
+    route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm',
+    src: 'https://images.unsplash.com/photo-1505142468610-359e7d316be0?q=80&w=3070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    title: 'Sports Office',
+    route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm',
+    src: 'https://images.unsplash.com/photo-1486915309851-b0cc1f8a0084?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    title: 'Supply Building 1',
+    route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm',
+    src: 'https://images.unsplash.com/photo-1507041957456-9c397ce39c97?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  }
 ];
