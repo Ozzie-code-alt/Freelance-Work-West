@@ -3,6 +3,7 @@
 import { Carousel, Card } from '@/components/ui/apple-carousel';
 import Image from 'next/image';
 import BACFormPage from './BACForm/BACForm';
+import AdminOfficeandFinancePage from './AdminOfficeAndFinance/AdminOfficeandFinancePage';
 const OfficesContianer = () => {
   const cards = data.map((card, index) => <Card key={card.src} card={card} index={index} />);
   return (
@@ -45,10 +46,10 @@ const DummyContent = () => {
 };
 const data = [
   {
-    category: 'Artificial Intelligence',
+    category: 'Admin Office and Finance Office',
     title: 'Admin Office and Finance',
     src: 'https://images.unsplash.com/photo-1593508512255-86ab42a8e620?q=80&w=3556&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: '<DummyContent />'
+    content: <AdminOfficeandFinancePage />
   },
   {
     category: 'BAC Office',

@@ -1,82 +1,74 @@
-import mongoose, { Schema, models } from "mongoose";
-import { string } from "zod";
+import mongoose, { Schema, models } from 'mongoose';
 
 const PersonalInformationSchema = new Schema(
-    {
-      date: {
-        type: Date,
-     
-      },
-      userName:{
-        type:String,
-      },
-      servicesReceived: {
-        type: String,
-
-      },
-      externalClient: {
-        type: String,
-
-      },
-      pointOfOrigin: {
-        type: String,
-  
-      },
-      officeVisited: {
-        type: String,
-   
-      },
-      internalClient: {
-        type: String,
-    
-      },
-      sex: {
-        type: String,
- 
-      },
-      responsiveness:{
-        type: String,
-       
-      },
-      reliability:{
-        type: String,
-   
-      },
-      access:{
-        type: String,
- 
-      },
-      communication:{
-        type: String,
-      
-      },
-      costs:{
-        type: String,
-      
-      },
-      integrity:{
-        type: String,
-   
-      },
-      assurance:{
-        type: String,
-   
-      },    
-      outcome:{
-        type: String,
-    
-      },
-      message:{
-        type: String,
-      },
-      mean:{
-        type: String,
-      },
-
-
+  {
+    date: {
+      type: Date
     },
-    { timestamps: true }
-  );
-  
-  const PersonalInformation = models.PersonalInformation || mongoose.model("PersonalInformation", PersonalInformationSchema);
-  export default PersonalInformation;
+    userName: {
+      type: String
+    },
+    servicesReceived: {
+      type: String
+    },
+    clientType: {
+      type: String
+    },
+    pointOfOrigin: {
+      type: String
+    },
+    officeVisited: {
+      type: String
+    },
+    age: {
+      type: String
+    },
+    sex: {
+      type: String
+    },
+    cc1: {
+      type: String
+    },
+    cc2: {
+      type: String
+    },
+    cc3: {
+      type: String
+    },
+    sqd0: {
+      type: String
+    },
+    sqd1: {
+      type: String
+    },
+    sqd2: {
+      type: String
+    },
+    sqd3: {
+      type: String
+    },
+    sqd4: {
+      type: String
+    },
+    sqd5: {
+      type: String
+    },
+    sqd6: {
+      type: String
+    },
+    sqd7: {
+      type: String
+    },
+    sqd8: {
+      type: String
+    },
+    mean: {
+      type: String
+    }
+  },
+  { timestamps: true }
+);
+
+const PersonalInformation =
+  models.PersonalInformation || mongoose.model('PersonalInformation', PersonalInformationSchema);
+export default PersonalInformation;
