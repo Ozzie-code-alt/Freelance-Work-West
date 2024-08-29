@@ -6,6 +6,7 @@ import BACFormPage from './BACForm/BACForm';
 import AdminOfficeandFinancePage from './AdminOfficeAndFinance/AdminOfficeandFinancePage';
 import AccountingFormPage from './Accounting/AccountingForm';
 import LibraryFormPage from './Library/LibraryForm';
+import MedicalFormPage from './Medical/MedicalForm';
 const OfficesContianer = () => {
   const cards = data.map((card, index) => <Card key={card.src} card={card} index={index} />);
   return <Carousel items={cards} />;
@@ -73,7 +74,7 @@ const data = [
     category: 'iOS',
     title: 'Medical and Dental Clinic',
     src: 'https://images.unsplash.com/photo-1602081957921-9137a5d6eaee?q=80&w=2793&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: <DummyContent />
+    content: <MedicalFormPage />
   },
   {
     category: 'OD Educ',
