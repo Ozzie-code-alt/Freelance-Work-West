@@ -664,9 +664,50 @@ export const AdminFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
                       <FormLabel className='text-2xl'>
                         I got what I needed from the goverment office
                       </FormLabel>
-                      <FormControl>
-                        <Input placeholder='shadcn' className='text-black' {...field} />
-                      </FormControl>
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <FormControl>
+                            <Button
+                              variant='outline'
+                              role='combobox'
+                              className={cn(
+                                'w-[200px] justify-between',
+                                !field.value && 'bg-white text-black'
+                              )}
+                            >
+                              {field.value
+                                ? criteria.find((language) => language.value === field.value)?.label
+                                : 'Select language'}
+                              <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
+                            </Button>
+                          </FormControl>
+                        </PopoverTrigger>
+                        <PopoverContent className='w-[200px] p-0'>
+                          <Command>
+                            <CommandInput placeholder='Search framework...' className='h-9' />
+                            <CommandEmpty>No framework found.</CommandEmpty>
+                            <CommandGroup>
+                              {criteria.map((language) => (
+                                <CommandItem
+                                  value={language.label}
+                                  key={language.value}
+                                  onSelect={() => {
+                                    form.setValue('sqd8', language.value);
+                                  }}
+                                >
+                                  {language.label}
+                                  <CheckIcon
+                                    className={cn(
+                                      'ml-auto h-4 w-4',
+                                      language.value === field.value ? 'opacity-100' : 'opacity-0'
+                                    )}
+                                  />
+                                </CommandItem>
+                              ))}
+                            </CommandGroup>
+                          </Command>
+                        </PopoverContent>
+                      </Popover>
                       <FormDescription>
                         {' '}
                         <p className='text-yellow-500'>
