@@ -12,6 +12,8 @@ import MedicalFormPage from './Medical/MedicalForm';
 import ICTFormPage from './ICT/ICTForm';
 import IndustrialTechFormPage from './IndustrialTech/IndustrialTechForm';
 import SBMFormPage from './SBM/SBMForm';
+import RegistrarFormPage from './Registrar/RegistrarForm';
+import OSAFormPage from './OSA/OSAForm';
 const OfficesContianer = () => {
   const cards = data.map((card, index) => <Card key={card.src} card={card} index={index} />);
   return <Carousel items={cards} />;
@@ -109,7 +111,7 @@ const data = [
     category: 'OD Educ',
     title: 'Office of Registrar',
     src: 'https://images.unsplash.com/photo-1511984804822-e16ba72f5848?q=80&w=2048&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: <DummyContent />
+    content: <RegistrarFormPage />
   },
   {
     category: 'OD Educ',
@@ -121,7 +123,7 @@ const data = [
     category: 'OD Educ',
     title: 'Planning and Development Unit',
     src: 'https://images.unsplash.com/photo-1511984804822-e16ba72f5848?q=80&w=2048&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: <DummyContent />
+    content: <OSAFormPage />
   },
   {
     category: 'OD Educ',
