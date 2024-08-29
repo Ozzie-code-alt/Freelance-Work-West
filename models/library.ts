@@ -1,6 +1,5 @@
 import mongoose, { Schema, models } from 'mongoose';
-// Everything From Personal To
-const AccountingSchema = new Schema(
+const LibrarySchema = new Schema(
   {
     date: {
       type: Date
@@ -69,5 +68,5 @@ const AccountingSchema = new Schema(
   { timestamps: true }
 );
 
-const Accounting = models.Accounting || mongoose.model('Accounting', AccountingSchema);
-export default Accounting;
+const LIBRARY = models.LIBRARY || mongoose.model('LIBRARY', LibrarySchema);
+export default LIBRARY;

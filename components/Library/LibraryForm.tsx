@@ -35,7 +35,7 @@ import {
   CommandItem
 } from '@/components/ui/command';
 import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons';
-import { AccountingFormCC } from './AccountingFormCC';
+import { LibraryFormCC } from './LibraryFormCC';
 const formSchema = z.object({
   date: z.date({
     required_error: 'Please select a date and time',
@@ -62,7 +62,7 @@ const formSchema = z.object({
   })
 });
 
-const AccountingFormPage = () => {
+const LibraryFormPage = () => {
   const [isOpen, setIsOpen] = useState(false);
   // const { data: session } = useSession();
 
@@ -89,7 +89,6 @@ const AccountingFormPage = () => {
     ...form.getValues(),
     date: grabDate
   };
-
   const externalClientOptions = [
     { label: 'General Public / Pribadong Indibidwal', value: 'General Public' },
     {
@@ -306,10 +305,10 @@ const AccountingFormPage = () => {
           <Button type='submit'>Next</Button>
         </form>
       </Form>
-      <AccountingFormCC isOpen={isOpen} setIsOpen={setIsOpen} adminProps={submissionData} />
+      <LibraryFormCC isOpen={isOpen} setIsOpen={setIsOpen} adminProps={submissionData} />
     
     </>
   );
 };
 
-export default AccountingFormPage;
+export default LibraryFormPage;
