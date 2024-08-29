@@ -4,6 +4,7 @@ import { Carousel, Card } from '@/components/ui/apple-carousel';
 import Image from 'next/image';
 import BACFormPage from './BACForm/BACForm';
 import AdminOfficeandFinancePage from './AdminOfficeAndFinance/AdminOfficeandFinancePage';
+import AccountingFormPage from './Accounting/AccountingForm';
 const OfficesContianer = () => {
   const cards = data.map((card, index) => <Card key={card.src} card={card} index={index} />);
   return (
@@ -61,7 +62,7 @@ const data = [
     category: 'Product',
     title: 'Accounting',
     src: 'https://images.unsplash.com/photo-1713869791518-a770879e60dc?q=80&w=2333&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: <DummyContent />
+    content: <AccountingFormPage />
   },
 
   {

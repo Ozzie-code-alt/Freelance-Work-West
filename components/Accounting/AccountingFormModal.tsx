@@ -1,12 +1,13 @@
-"use client";
-import { date, z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
-import { useForm } from "react-hook-form";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { Input } from "@/components/ui/input";
-import { useSession } from "next-auth/react";
+'use client';
+import { useState } from 'react';
+import { date, z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons';
+import { useForm } from 'react-hook-form';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { Input } from '@/components/ui/input';
+import { Puff } from 'react-loader-spinner';
 import {
   Form,
   FormControl,
@@ -14,123 +15,129 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { toast } from "@/components/ui/use-toast";
+  FormMessage
+} from '@/components/ui/form';
+import { toast } from '@/components/ui/use-toast';
 import {
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
-  CommandItem,
-} from "@/components/ui/command";
+  CommandItem
+} from '@/components/ui/command';
 
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import sendEmail from "@/lib/emailjs";
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { useSession } from 'next-auth/react';
+import sendEmail from '@/lib/emailjs';
+import { useRouter } from 'next/navigation';
+
 const formSchema = z.object({
-  responsiveness: z.string().min(1),
-  reliability: z.string().min(1),
-  access: z.string().min(1),
-  communication: z.string().min(1),
-  costs: z.string().min(1),
-  integrity: z.string().min(1),
-  assurance: z.string().min(1),
-  outcome: z.string().min(1),
-  message: z.string().min(1).max(100),
+  sqd0: z.string().min(1),
+  sqd1: z.string().min(1),
+  sqd2: z.string().min(1),
+  sqd3: z.string().min(1),
+  sqd4: z.string().min(1),
+  sqd5: z.string().min(1),
+  sqd6: z.string().min(1),
+  sqd7: z.string().min(1),
+  sqd8: z.string().min(1),
+  mean: z.string()
 });
 
 const criteria = [
-  { label: "1 - Very Dissatisfied", value: "1" },
-  { label: "2 - Dissatisfied", value: "2" },
-  { label: "3 - Neutral", value: "3" },
-  { label: "4 - Satisfied", value: "4" },
-  { label: "5 - Very Satisfied", value: "5" },
+  { label: '1 - Very Dissatisfied', value: '1' },
+  { label: '2 - Dissatisfied', value: '2' },
+  { label: '3 - Neutral', value: '3' },
+  { label: '4 - Satisfied', value: '4' },
+  { label: '5 - Very Satisfied', value: '5' }
 ] as const;
-import { Puff } from "react-loader-spinner";
-import { AnimatePresence, motion } from "framer-motion";
-import { Dispatch, SetStateAction, useState } from "react";
-import { FiAlertCircle } from "react-icons/fi";
-import { useRouter } from "next/navigation";
+
+import { AnimatePresence, motion } from 'framer-motion';
+
+import { FiAlertCircle } from 'react-icons/fi';
+
 {
   /*Modal Function Here -------------------------------------------- */
 }
-
-
-
-export const AccountingFormModal = ({
- 
-  isOpen,
-  setIsOpen,
-  adminProps,
-}:any) => {
+export const AccountingFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
   const { data: session } = useSession();
-  const [loadiiing, setLoadiiing] = useState(false);
+  const [loading, setLoading] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      responsiveness: "",
-      reliability: "",
-      access: "",
-      communication: "",
-      costs: "",
-      integrity: "",
-      assurance: "",
-      outcome: "",
-      message: "",
-    },
+      sqd0: '',
+      sqd1: '',
+      sqd2: '',
+      sqd3: '',
+      sqd4: '',
+      sqd5: '',
+      sqd6: '',
+      sqd7: '',
+      sqd8: '',
+      mean: ''
+    }
   });
   const router = useRouter();
+
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    setLoadiiing(true);
-    console.log("Submitted");
-    const total =  parseInt(values.responsiveness) + parseInt(values.reliability) + parseInt(values.access) + parseInt(values.communication) + parseInt(values.costs) + parseInt(values.integrity) + parseInt(values.assurance) + parseInt(values.outcome);
+    setLoading(true);
 
+    console.log('Submitted');
+    const total =
+      parseInt(values.sqd0) +
+      parseInt(values.sqd1) +
+      parseInt(values.sqd2) +
+      parseInt(values.sqd3) +
+      parseInt(values.sqd4) +
+      parseInt(values.sqd5) +
+      parseInt(values.sqd6) +
+      parseInt(values.sqd7) +
+      parseInt(values.sqd8);
 
-    console.log("Submitted");
-    const userNameContainer = session?.user?.name || "";
+    const userNameContainer = session?.user?.name || '';
+
     const submittedValues = {
       ...adminProps,
       userName: userNameContainer,
       ...values,
-      mean: (total / 8).toString(),
+      mean: (total / 8).toString()
     };
-    // console.log(submittedValues)
+    console.log('this is the final Submitted Values', submittedValues);
+
     try {
-      const res = await fetch("/api/accounting", {
-        method: "POST",
+      const res = await fetch('/api/accounting', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ ...submittedValues }),
+        body: JSON.stringify({ ...submittedValues })
       });
       if (!res.ok) {
         throw new Error(`Error: ${res.status}`);
       }
       const data = await res.json();
+
       toast({
-        title: "Up and Ready to Go !!",
-        variant: "success",
-        description: "Form Successfully Sent",
+        title: 'Up and Ready to Go !!',
+        variant: 'success',
+        description: 'Form Successfully Sent'
       });
 
       sendEmail({
-        to_name: session?.user?.name || "User",
-        contact: "contact Value Here",
-        user_email: session?.user?.email || "justinsantos731@gmail.com",
-        type: "Form Type Here",
-        subject: "Wedding Inquiry Here",
-        message: "it is DONE"
+        to_name: session?.user?.name || 'User',
+        contact: 'contact Value Here',
+        user_email: session?.user?.email || 'justinsantos731@gmail.com',
+        type: 'Form Type Here',
+        subject: 'Wedding Inquiry Here',
+        message: 'it is DONE'
       });
-      router.push("/Thankyou");
+
       console.log(data);
-      setLoadiiing(false);
+      router.push('/Thankyou');
+      setLoading(false);
     } catch (error) {
-      console.log("Error During Registration", error);
-      setLoadiiing(false);
+      console.log('Error During Registration', error);
+      setLoading(false);
     }
   };
   return (
@@ -141,127 +148,52 @@ export const AccountingFormModal = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={() => setIsOpen(false)}
-          className="bg-slate-900/20 backdrop-blur p-8 fixed inset-0 z-50 grid place-items-center overflow-y-scroll cursor-pointer"
+          className='bg-slate-900/20 backdrop-blur p-8 fixed inset-0 z-50 grid place-items-center  cursor-pointer'
         >
           <motion.div
-            initial={{ scale: 0, rotate: "12.5deg" }}
-            animate={{ scale: 1, rotate: "0deg" }}
-            exit={{ scale: 0, rotate: "0deg" }}
+            initial={{ scale: 0, rotate: '12.5deg' }}
+            animate={{ scale: 1, rotate: '0deg' }}
+            exit={{ scale: 0, rotate: '0deg' }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-gradient-to-br from-violet-600 to-indigo-600 text-white p-6 rounded-lg w-full max-w-lg shadow-xl cursor-default relative "
+            className='bg-gradient-to-br from-violet-600 to-indigo-600 text-white p-6 rounded-lg w-full  h-fit shadow-xl cursor-default relative '
           >
-            <FiAlertCircle className="text-white/10 rotate-12 text-[250px] absolute z-0 -top-24 -left-24" />
+            <FiAlertCircle className='text-white/10 rotate-12 text-[250px] absolute z-0 -top-24 -left-24' />
 
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="py-20 grid gap-10 lg:grid-cols-2 overflow-y-scroll  w-full space-y-8 h-auto  place-items-center"
+                className=' py-0  md:py-20 grid md:gap-10 lg:grid-cols-3  mt  w-full  h-full md:h-auto  '
               >
                 <FormField
                   control={form.control}
-                  name="responsiveness"
+                  name='sqd0'
                   render={({ field }) => (
-                    <FormItem className="flex flex-col">
-                      <FormLabel> Responsiveness</FormLabel>
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <FormControl>
-                            <Button
-                              variant="outline"
-                              role="combobox"
-                              className={cn(
-                                "w-[200px] justify-between text-black",
-                                !field.value && "bg-white text-black"
-                              )}
-                            >
-                              {field.value
-                                ? criteria.find(
-                                    (language) => language.value === field.value
-                                  )?.label
-                                : "Select language"}
-                              <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                            </Button>
-                          </FormControl>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-[200px] p-0">
-                          <Command>
-                            <CommandInput
-                              placeholder="Search framework..."
-                              className="h-9"
-                            />
-                            <CommandEmpty>No framework found.</CommandEmpty>
-                            <CommandGroup>
-                              {criteria.map((language) => (
-                                <CommandItem
-                                  value={language.label}
-                                  key={language.value}
-                                  onSelect={() => {
-                                    form.setValue(
-                                      "responsiveness",
-                                      language.value
-                                    );
-                                  }}
-                                >
-                                  {language.label}
-                                  <CheckIcon
-                                    className={cn(
-                                      "ml-auto h-4 w-4",
-                                      language.value === field.value
-                                        ? "opacity-100"
-                                        : "opacity-0"
-                                    )}
-                                  />
-                                </CommandItem>
-                              ))}
-                            </CommandGroup>
-                          </Command>
-                        </PopoverContent>
-                      </Popover>
-                      <FormDescription>
-                      <p className="text-yellow-500">
-                          This is the language that will be used in the
-                          dashboard.
-                        </p>
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="reliability"
-                  render={({ field }) => (
-                    <FormItem className="flex flex-col">
-                      <FormLabel>
-                        {" "}
-                        <p>Realibility - Maasahan </p>
+                    <FormItem className='flex flex-col gap-3'>
+                      <FormLabel className='text-2xl'>
+                        {' '}
+                        I am satisfied with the service that i availed
                       </FormLabel>
                       <Popover>
                         <PopoverTrigger asChild>
                           <FormControl>
                             <Button
-                              variant="outline"
-                              role="combobox"
+                              variant='outline'
+                              role='combobox'
                               className={cn(
-                                "w-[200px] justify-between",
-                                !field.value && "bg-white text-black"
+                                'w-[200px] justify-between ',
+                                !field.value && 'bg-white text-black'
                               )}
                             >
                               {field.value
-                                ? criteria.find(
-                                    (language) => language.value === field.value
-                                  )?.label
-                                : "Select language"}
-                              <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                                ? criteria.find((language) => language.value === field.value)?.label
+                                : 'Select language'}
+                              <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                             </Button>
                           </FormControl>
                         </PopoverTrigger>
-                        <PopoverContent className="w-[200px] p-0">
+                        <PopoverContent className='w-[200px] p-0'>
                           <Command>
-                            <CommandInput
-                              placeholder="Search framework..."
-                              className="h-9"
-                            />
+                            <CommandInput placeholder='Search framework...' className='h-9' />
                             <CommandEmpty>No framework found.</CommandEmpty>
                             <CommandGroup>
                               {criteria.map((language) => (
@@ -269,19 +201,14 @@ export const AccountingFormModal = ({
                                   value={language.label}
                                   key={language.value}
                                   onSelect={() => {
-                                    form.setValue(
-                                      "reliability",
-                                      language.value
-                                    );
+                                    form.setValue('sqd0', language.value);
                                   }}
                                 >
                                   {language.label}
                                   <CheckIcon
                                     className={cn(
-                                      "ml-auto h-4 w-4",
-                                      language.value === field.value
-                                        ? "opacity-100"
-                                        : "opacity-0"
+                                      'ml-auto h-4 w-4',
+                                      language.value === field.value ? 'opacity-100' : 'opacity-0'
                                     )}
                                   />
                                 </CommandItem>
@@ -291,9 +218,8 @@ export const AccountingFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
-                          This is the language that will be used in the
-                          dashboard.
+                        <p className='text-yellow-500'>
+                          This is the language that will be used in the dashboard.
                         </p>
                       </FormDescription>
                       <FormMessage />
@@ -302,38 +228,34 @@ export const AccountingFormModal = ({
                 />
                 <FormField
                   control={form.control}
-                  name="access"
+                  name='sqd1'
                   render={({ field }) => (
-                    <FormItem className="flex flex-col">
-                      <FormLabel>
-                        Accees & Facilities - Lokasyon at Pasilad
+                    <FormItem className='flex flex-col gap-3'>
+                      <FormLabel className='text-2xl'>
+                        {' '}
+                        <p>I spent a reasonable amont of time for my transaction</p>
                       </FormLabel>
                       <Popover>
                         <PopoverTrigger asChild>
                           <FormControl>
                             <Button
-                              variant="outline"
-                              role="combobox"
+                              variant='outline'
+                              role='combobox'
                               className={cn(
-                                "w-[200px] justify-between",
-                                !field.value && "bg-white text-black"
+                                'w-[200px] justify-between',
+                                !field.value && 'bg-white text-black'
                               )}
                             >
                               {field.value
-                                ? criteria.find(
-                                    (language) => language.value === field.value
-                                  )?.label
-                                : "Select language"}
-                              <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                                ? criteria.find((language) => language.value === field.value)?.label
+                                : 'Select language'}
+                              <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                             </Button>
                           </FormControl>
                         </PopoverTrigger>
-                        <PopoverContent className="w-[200px] p-0">
+                        <PopoverContent className='w-[200px] p-0'>
                           <Command>
-                            <CommandInput
-                              placeholder="Search framework..."
-                              className="h-9"
-                            />
+                            <CommandInput placeholder='Search framework...' className='h-9' />
                             <CommandEmpty>No framework found.</CommandEmpty>
                             <CommandGroup>
                               {criteria.map((language) => (
@@ -341,16 +263,14 @@ export const AccountingFormModal = ({
                                   value={language.label}
                                   key={language.value}
                                   onSelect={() => {
-                                    form.setValue("access", language.value);
+                                    form.setValue('sqd1', language.value);
                                   }}
                                 >
                                   {language.label}
                                   <CheckIcon
                                     className={cn(
-                                      "ml-auto h-4 w-4",
-                                      language.value === field.value
-                                        ? "opacity-100"
-                                        : "opacity-0"
+                                      'ml-auto h-4 w-4',
+                                      language.value === field.value ? 'opacity-100' : 'opacity-0'
                                     )}
                                   />
                                 </CommandItem>
@@ -360,9 +280,8 @@ export const AccountingFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
-                          This is the language that will be used in the
-                          dashboard.
+                        <p className='text-yellow-500'>
+                          This is the language that will be used in the dashboard.
                         </p>
                       </FormDescription>
                       <FormMessage />
@@ -371,36 +290,34 @@ export const AccountingFormModal = ({
                 />
                 <FormField
                   control={form.control}
-                  name="communication"
+                  name='sqd2'
                   render={({ field }) => (
-                    <FormItem className="flex flex-col">
-                      <FormLabel>Pakikipag-usap</FormLabel>
+                    <FormItem className='flex flex-col gap-3'>
+                      <FormLabel className='text-2xl'>
+                        The office followed the transaction requirements and steps based on the
+                        information provided
+                      </FormLabel>
                       <Popover>
                         <PopoverTrigger asChild>
                           <FormControl>
                             <Button
-                              variant="outline"
-                              role="combobox"
+                              variant='outline'
+                              role='combobox'
                               className={cn(
-                                "w-[200px] justify-between",
-                                !field.value && "bg-white text-black"
+                                'w-[200px] justify-between',
+                                !field.value && 'bg-white text-black'
                               )}
                             >
                               {field.value
-                                ? criteria.find(
-                                    (language) => language.value === field.value
-                                  )?.label
-                                : "Select language"}
-                              <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                                ? criteria.find((language) => language.value === field.value)?.label
+                                : 'Select language'}
+                              <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                             </Button>
                           </FormControl>
                         </PopoverTrigger>
-                        <PopoverContent className="w-[200px] p-0">
+                        <PopoverContent className='w-[200px] p-0'>
                           <Command>
-                            <CommandInput
-                              placeholder="Search framework..."
-                              className="h-9"
-                            />
+                            <CommandInput placeholder='Search framework...' className='h-9' />
                             <CommandEmpty>No framework found.</CommandEmpty>
                             <CommandGroup>
                               {criteria.map((language) => (
@@ -408,19 +325,14 @@ export const AccountingFormModal = ({
                                   value={language.label}
                                   key={language.value}
                                   onSelect={() => {
-                                    form.setValue(
-                                      "communication",
-                                      language.value
-                                    );
+                                    form.setValue('sqd2', language.value);
                                   }}
                                 >
                                   {language.label}
                                   <CheckIcon
                                     className={cn(
-                                      "ml-auto h-4 w-4",
-                                      language.value === field.value
-                                        ? "opacity-100"
-                                        : "opacity-0"
+                                      'ml-auto h-4 w-4',
+                                      language.value === field.value ? 'opacity-100' : 'opacity-0'
                                     )}
                                   />
                                 </CommandItem>
@@ -430,9 +342,8 @@ export const AccountingFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
-                          This is the language that will be used in the
-                          dashboard.
+                        <p className='text-yellow-500'>
+                          This is the language that will be used in the dashboard.
                         </p>
                       </FormDescription>
                       <FormMessage />
@@ -441,36 +352,33 @@ export const AccountingFormModal = ({
                 />
                 <FormField
                   control={form.control}
-                  name="costs"
+                  name='sqd3'
                   render={({ field }) => (
-                    <FormItem className="flex flex-col">
-                      <FormLabel>Costs - Gastos</FormLabel>
+                    <FormItem className='flex flex-col gap-3'>
+                      <FormLabel className='text-2xl'>
+                        The steps i needed to do for my transaction were easy and simple
+                      </FormLabel>
                       <Popover>
                         <PopoverTrigger asChild>
                           <FormControl>
                             <Button
-                              variant="outline"
-                              role="combobox"
+                              variant='outline'
+                              role='combobox'
                               className={cn(
-                                "w-[200px] justify-between",
-                                !field.value && "bg-white text-black"
+                                'w-[200px] justify-between',
+                                !field.value && 'bg-white text-black'
                               )}
                             >
                               {field.value
-                                ? criteria.find(
-                                    (language) => language.value === field.value
-                                  )?.label
-                                : "Select language"}
-                              <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                                ? criteria.find((language) => language.value === field.value)?.label
+                                : 'Select language'}
+                              <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                             </Button>
                           </FormControl>
                         </PopoverTrigger>
-                        <PopoverContent className="w-[200px] p-0">
+                        <PopoverContent className='w-[200px] p-0'>
                           <Command>
-                            <CommandInput
-                              placeholder="Search framework..."
-                              className="h-9"
-                            />
+                            <CommandInput placeholder='Search framework...' className='h-9' />
                             <CommandEmpty>No framework found.</CommandEmpty>
                             <CommandGroup>
                               {criteria.map((language) => (
@@ -478,16 +386,14 @@ export const AccountingFormModal = ({
                                   value={language.label}
                                   key={language.value}
                                   onSelect={() => {
-                                    form.setValue("costs", language.value);
+                                    form.setValue('sqd3', language.value);
                                   }}
                                 >
                                   {language.label}
                                   <CheckIcon
                                     className={cn(
-                                      "ml-auto h-4 w-4",
-                                      language.value === field.value
-                                        ? "opacity-100"
-                                        : "opacity-0"
+                                      'ml-auto h-4 w-4',
+                                      language.value === field.value ? 'opacity-100' : 'opacity-0'
                                     )}
                                   />
                                 </CommandItem>
@@ -497,47 +403,44 @@ export const AccountingFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
-                          This is the language that will be used in the
-                          dashboard.
+                        <p className='text-yellow-500'>
+                          This is the language that will be used in the dashboard.
                         </p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
-                />{" "}
+                />
                 <FormField
                   control={form.control}
-                  name="integrity"
+                  name='sqd4'
                   render={({ field }) => (
-                    <FormItem className="flex flex-col">
-                      <FormLabel>Integrity - Kawastuhan ng mga Kilos</FormLabel>
+                    <FormItem className='flex flex-col gap-3'>
+                      <FormLabel className='text-2xl'>
+                        I easily found information about my tranaction from the office or its
+                        website
+                      </FormLabel>
                       <Popover>
                         <PopoverTrigger asChild>
                           <FormControl>
                             <Button
-                              variant="outline"
-                              role="combobox"
+                              variant='outline'
+                              role='combobox'
                               className={cn(
-                                "w-[200px] justify-between",
-                                !field.value && "bg-white text-black"
+                                'w-[200px] justify-between',
+                                !field.value && 'bg-white text-black'
                               )}
                             >
                               {field.value
-                                ? criteria.find(
-                                    (language) => language.value === field.value
-                                  )?.label
-                                : "Select language"}
-                              <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                                ? criteria.find((language) => language.value === field.value)?.label
+                                : 'Select language'}
+                              <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                             </Button>
                           </FormControl>
                         </PopoverTrigger>
-                        <PopoverContent className="w-[200px] p-0">
+                        <PopoverContent className='w-[200px] p-0'>
                           <Command>
-                            <CommandInput
-                              placeholder="Search framework..."
-                              className="h-9"
-                            />
+                            <CommandInput placeholder='Search framework...' className='h-9' />
                             <CommandEmpty>No framework found.</CommandEmpty>
                             <CommandGroup>
                               {criteria.map((language) => (
@@ -545,16 +448,14 @@ export const AccountingFormModal = ({
                                   value={language.label}
                                   key={language.value}
                                   onSelect={() => {
-                                    form.setValue("integrity", language.value);
+                                    form.setValue('sqd4', language.value);
                                   }}
                                 >
                                   {language.label}
                                   <CheckIcon
                                     className={cn(
-                                      "ml-auto h-4 w-4",
-                                      language.value === field.value
-                                        ? "opacity-100"
-                                        : "opacity-0"
+                                      'ml-auto h-4 w-4',
+                                      language.value === field.value ? 'opacity-100' : 'opacity-0'
                                     )}
                                   />
                                 </CommandItem>
@@ -564,47 +465,43 @@ export const AccountingFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
-                          This is the language that will be used in the
-                          dashboard.
+                        <p className='text-yellow-500'>
+                          This is the language that will be used in the dashboard.
                         </p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
-                />
+                />{' '}
                 <FormField
                   control={form.control}
-                  name="assurance"
+                  name='sqd5'
                   render={({ field }) => (
-                    <FormItem className="flex flex-col">
-                      <FormLabel>Assurance - Pagtitiwala</FormLabel>
+                    <FormItem className='flex flex-col gap-3'>
+                      <FormLabel className='text-2xl'>
+                        I paid a reasonable amount of fees for my transaction
+                      </FormLabel>
                       <Popover>
                         <PopoverTrigger asChild>
                           <FormControl>
                             <Button
-                              variant="outline"
-                              role="combobox"
+                              variant='outline'
+                              role='combobox'
                               className={cn(
-                                "w-[200px] justify-between",
-                                !field.value && "bg-white text-black"
+                                'w-[200px] justify-between',
+                                !field.value && 'bg-white text-black'
                               )}
                             >
                               {field.value
-                                ? criteria.find(
-                                    (language) => language.value === field.value
-                                  )?.label
-                                : "Select language"}
-                              <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                                ? criteria.find((language) => language.value === field.value)?.label
+                                : 'Select language'}
+                              <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                             </Button>
                           </FormControl>
                         </PopoverTrigger>
-                        <PopoverContent className="w-[200px] p-0">
+                        <PopoverContent className='w-[200px] p-0'>
                           <Command>
-                            <CommandInput
-                              placeholder="Search framework..."
-                              className="h-9"
-                            />
+                            <CommandInput placeholder='Search framework...' className='h-9' />
                             <CommandEmpty>No framework found.</CommandEmpty>
                             <CommandGroup>
                               {criteria.map((language) => (
@@ -612,83 +509,14 @@ export const AccountingFormModal = ({
                                   value={language.label}
                                   key={language.value}
                                   onSelect={() => {
-                                    form.setValue("assurance", language.value);
+                                    form.setValue('sqd5', language.value);
                                   }}
                                 >
                                   {language.label}
                                   <CheckIcon
                                     className={cn(
-                                      "ml-auto h-4 w-4",
-                                      language.value === field.value
-                                        ? "opacity-100"
-                                        : "opacity-0"
-                                    )}
-                                  />
-                                </CommandItem>
-                              ))}
-                            </CommandGroup>
-                          </Command>
-                        </PopoverContent>
-                      </Popover>
-                      <FormDescription >
-                        <p className="text-yellow-500">
-                          This is the language that will be used in the
-                          dashboard.
-                        </p>
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="outcome"
-                  render={({ field }) => (
-                    <FormItem className="flex flex-col">
-                      <FormLabel>Outcome - Kinalabasan</FormLabel>
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <FormControl>
-                            <Button
-                              variant="outline"
-                              role="combobox"
-                              className={cn(
-                                "w-[200px] justify-between",
-                                !field.value && "bg-white text-black"
-                              )}
-                            >
-                              {field.value
-                                ? criteria.find(
-                                    (language) => language.value === field.value
-                                  )?.label
-                                : "Select language"}
-                              <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                            </Button>
-                          </FormControl>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-[200px] p-0">
-                          <Command>
-                            <CommandInput
-                              placeholder="Search framework..."
-                              className="h-9"
-                            />
-                            <CommandEmpty>No framework found.</CommandEmpty>
-                            <CommandGroup>
-                              {criteria.map((language) => (
-                                <CommandItem
-                                  value={language.label}
-                                  key={language.value}
-                                  onSelect={() => {
-                                    form.setValue("outcome", language.value);
-                                  }}
-                                >
-                                  {language.label}
-                                  <CheckIcon
-                                    className={cn(
-                                      "ml-auto h-4 w-4",
-                                      language.value === field.value
-                                        ? "opacity-100"
-                                        : "opacity-0"
+                                      'ml-auto h-4 w-4',
+                                      language.value === field.value ? 'opacity-100' : 'opacity-0'
                                     )}
                                   />
                                 </CommandItem>
@@ -698,9 +526,8 @@ export const AccountingFormModal = ({
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                      <p className="text-yellow-500">
-                          This is the language that will be used in the
-                          dashboard.
+                        <p className='text-yellow-500'>
+                          This is the language that will be used in the dashboard.
                         </p>
                       </FormDescription>
                       <FormMessage />
@@ -709,26 +536,241 @@ export const AccountingFormModal = ({
                 />
                 <FormField
                   control={form.control}
-                  name="message"
+                  name='sqd6'
                   render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Leave a Message :</FormLabel>
-                      <FormControl>
-                        <Input placeholder="shadcn" className="text-black" {...field} />
-                      </FormControl>
-                      <FormDescription>    <p className="text-yellow-500">
-                          This is the language that will be used in the
-                          dashboard.
-                        </p></FormDescription>
+                    <FormItem className='flex flex-col gap-3'>
+                      <FormLabel className='text-2xl'>
+                        I feel the office was fair to everyone dring my transaction
+                      </FormLabel>
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <FormControl>
+                            <Button
+                              variant='outline'
+                              role='combobox'
+                              className={cn(
+                                'w-[200px] justify-between',
+                                !field.value && 'bg-white text-black'
+                              )}
+                            >
+                              {field.value
+                                ? criteria.find((language) => language.value === field.value)?.label
+                                : 'Select language'}
+                              <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
+                            </Button>
+                          </FormControl>
+                        </PopoverTrigger>
+                        <PopoverContent className='w-[200px] p-0'>
+                          <Command>
+                            <CommandInput placeholder='Search framework...' className='h-9' />
+                            <CommandEmpty>No framework found.</CommandEmpty>
+                            <CommandGroup>
+                              {criteria.map((language) => (
+                                <CommandItem
+                                  value={language.label}
+                                  key={language.value}
+                                  onSelect={() => {
+                                    form.setValue('sqd6', language.value);
+                                  }}
+                                >
+                                  {language.label}
+                                  <CheckIcon
+                                    className={cn(
+                                      'ml-auto h-4 w-4',
+                                      language.value === field.value ? 'opacity-100' : 'opacity-0'
+                                    )}
+                                  />
+                                </CommandItem>
+                              ))}
+                            </CommandGroup>
+                          </Command>
+                        </PopoverContent>
+                      </Popover>
+                      <FormDescription>
+                        <p className='text-yellow-500'>
+                          This is the language that will be used in the dashboard.
+                        </p>
+                      </FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-
-                {loadiiing ? (
-                  <Puff color="#00BFFF" height={100} width={100} />
+                <FormField
+                  control={form.control}
+                  name='sqd7'
+                  render={({ field }) => (
+                    <FormItem className='flex flex-col gap-3'>
+                      <FormLabel className='text-2xl'>
+                        I was treated courteously by the staff and the staff was helpful
+                      </FormLabel>
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <FormControl>
+                            <Button
+                              variant='outline'
+                              role='combobox'
+                              className={cn(
+                                'w-[200px] justify-between',
+                                !field.value && 'bg-white text-black'
+                              )}
+                            >
+                              {field.value
+                                ? criteria.find((language) => language.value === field.value)?.label
+                                : 'Select language'}
+                              <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
+                            </Button>
+                          </FormControl>
+                        </PopoverTrigger>
+                        <PopoverContent className='w-[200px] p-0'>
+                          <Command>
+                            <CommandInput placeholder='Search framework...' className='h-9' />
+                            <CommandEmpty>No framework found.</CommandEmpty>
+                            <CommandGroup>
+                              {criteria.map((language) => (
+                                <CommandItem
+                                  value={language.label}
+                                  key={language.value}
+                                  onSelect={() => {
+                                    form.setValue('sqd7', language.value);
+                                  }}
+                                >
+                                  {language.label}
+                                  <CheckIcon
+                                    className={cn(
+                                      'ml-auto h-4 w-4',
+                                      language.value === field.value ? 'opacity-100' : 'opacity-0'
+                                    )}
+                                  />
+                                </CommandItem>
+                              ))}
+                            </CommandGroup>
+                          </Command>
+                        </PopoverContent>
+                      </Popover>
+                      <FormDescription>
+                        <p className='text-yellow-500'>
+                          This is the language that will be used in the dashboard.
+                        </p>
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name='sqd8'
+                  render={({ field }) => (
+                    <FormItem className='flex flex-col gap-3'>
+                      <FormLabel className='text-2xl'>
+                        I got what I needed from the goverment office
+                      </FormLabel>
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <FormControl>
+                            <Button
+                              variant='outline'
+                              role='combobox'
+                              className={cn(
+                                'w-[200px] justify-between',
+                                !field.value && 'bg-white text-black'
+                              )}
+                            >
+                              {field.value
+                                ? criteria.find((language) => language.value === field.value)?.label
+                                : 'Select language'}
+                              <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
+                            </Button>
+                          </FormControl>
+                        </PopoverTrigger>
+                        <PopoverContent className='w-[200px] p-0'>
+                          <Command>
+                            <CommandInput placeholder='Search framework...' className='h-9' />
+                            <CommandEmpty>No framework found.</CommandEmpty>
+                            <CommandGroup>
+                              {criteria.map((language) => (
+                                <CommandItem
+                                  value={language.label}
+                                  key={language.value}
+                                  onSelect={() => {
+                                    form.setValue('sqd8', language.value);
+                                  }}
+                                >
+                                  {language.label}
+                                  <CheckIcon
+                                    className={cn(
+                                      'ml-auto h-4 w-4',
+                                      language.value === field.value ? 'opacity-100' : 'opacity-0'
+                                    )}
+                                  />
+                                </CommandItem>
+                              ))}
+                            </CommandGroup>{' '}
+                            <Popover>
+                              <PopoverTrigger asChild>
+                                <FormControl>
+                                  <Button
+                                    variant='outline'
+                                    role='combobox'
+                                    className={cn(
+                                      'w-[200px] justify-between',
+                                      !field.value && 'bg-white text-black'
+                                    )}
+                                  >
+                                    {field.value
+                                      ? criteria.find((language) => language.value === field.value)
+                                          ?.label
+                                      : 'Select language'}
+                                    <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
+                                  </Button>
+                                </FormControl>
+                              </PopoverTrigger>
+                              <PopoverContent className='w-[200px] p-0'>
+                                <Command>
+                                  <CommandInput placeholder='Search framework...' className='h-9' />
+                                  <CommandEmpty>No framework found.</CommandEmpty>
+                                  <CommandGroup>
+                                    {criteria.map((language) => (
+                                      <CommandItem
+                                        value={language.label}
+                                        key={language.value}
+                                        onSelect={() => {
+                                          form.setValue('sqd7', language.value);
+                                        }}
+                                      >
+                                        {language.label}
+                                        <CheckIcon
+                                          className={cn(
+                                            'ml-auto h-4 w-4',
+                                            language.value === field.value
+                                              ? 'opacity-100'
+                                              : 'opacity-0'
+                                          )}
+                                        />
+                                      </CommandItem>
+                                    ))}
+                                  </CommandGroup>
+                                </Command>
+                              </PopoverContent>
+                            </Popover>
+                          </Command>
+                        </PopoverContent>
+                      </Popover>
+                      <FormDescription>
+                        {' '}
+                        <p className='text-yellow-500'>
+                          This is the language that will be used in the dashboard.
+                        </p>
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                {loading ? (
+                  <Puff color='#00BFFF' height={50} width={50} />
                 ) : (
-                  <Button type="submit">Submit</Button>
+                  <Button type='submit' className='w-fit'>
+                    Next
+                  </Button>
                 )}
               </form>
             </Form>
