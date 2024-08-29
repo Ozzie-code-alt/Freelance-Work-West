@@ -59,7 +59,7 @@ import { FiAlertCircle } from 'react-icons/fi';
 {
   /*Modal Function Here -------------------------------------------- */
 }
-export const OSAFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
+export const SupplyBuildingFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
   const { data: session } = useSession();
   const [loading, setLoading] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
@@ -105,7 +105,7 @@ export const OSAFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
     console.log('this is the final Submitted Values', submittedValues);
 
     try {
-      const res = await fetch('/api/osa', {
+      const res = await fetch('/api/supplyBuilding', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

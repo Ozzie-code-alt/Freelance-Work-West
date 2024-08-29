@@ -1,5 +1,5 @@
 import { connectMongo } from '@/lib/connection';
-import OSA from '@/models/osa';
+import RIX from '@/models/rix';
 import { NextApiRequest } from 'next';
 import { NextResponse } from 'next/server';
 
@@ -30,7 +30,7 @@ export async function POST(req: NextApiRequest) {
       //@ts-ignore
     } = await req.json();
     await connectMongo();
-    await OSA.create({
+    await RIX.create({
       date,
       userName,
       servicesReceived,
@@ -53,11 +53,11 @@ export async function POST(req: NextApiRequest) {
       sqd8,
       mean
     });
-    console.log('OSA Information Sent');
-    return NextResponse.json({ message: 'OSA Information Sent' }, { status: 201 });
+    console.log('RIX Information Sent');
+    return NextResponse.json({ message: 'RIX Information Sent it work now' }, { status: 201 });
   } catch (error) {
     return NextResponse.json(
-      { message: 'An Error Occured While Sending OSA Informaton' },
+      { message: 'An Error Occured While Sending Personal Informaton' },
       { status: 500 }
     );
   }
@@ -65,11 +65,11 @@ export async function POST(req: NextApiRequest) {
 
 export async function GET() {
   await connectMongo();
-  const osas = await OSA.find();
-  console.log('Logg OSA Information', osas);
-  const osasdateConverted = osas.map((osasData) => ({
-    ...osasData._doc,
-    date: osasData.date.toISOString().split('T')[0]
+  const rixs = await RIX.find();
+  console.log('Logg rix Information', rixs);
+  const dateConverted = rixs.map((rix) => ({
+    ...rix._doc,
+    date: rix.date.toISOString().split('T')[0]
   }));
-  return NextResponse.json({ osas: osasdateConverted }, { status: 200 });
+  return NextResponse.json({ rixs: dateConverted }, { status: 200 });
 }

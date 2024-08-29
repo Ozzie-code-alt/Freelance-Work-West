@@ -35,7 +35,7 @@ import {
   CommandItem
 } from '@/components/ui/command';
 import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons';
-import { MedicalFormCC } from './MedicalFormCC';
+import { SBMFormCC } from './SBMFormCC';
 const formSchema = z.object({
   date: z.date({
     required_error: 'Please select a date and time',
@@ -62,7 +62,7 @@ const formSchema = z.object({
   })
 });
 
-const MedicalFormPage = () => {
+const SBMFormPage = () => {
   const [isOpen, setIsOpen] = useState(false);
   // const { data: session } = useSession();
 
@@ -312,10 +312,10 @@ const MedicalFormPage = () => {
           <Button type='submit'>Next</Button>
         </form>
       </Form>
-      <MedicalFormCC isOpen={isOpen} setIsOpen={setIsOpen} adminProps={submissionData} />
+      <SBMFormCC isOpen={isOpen} setIsOpen={setIsOpen} adminProps={submissionData} />
     
     </>
   );
 };
 
-export default MedicalFormPage;
+export default SBMFormPage;

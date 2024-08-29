@@ -1,6 +1,5 @@
-import mongoose, { Schema, models } from "mongoose";
-// Everything From Personal To 
-const MedicalSchema = new Schema(
+import mongoose, { Schema, models } from 'mongoose';
+const supplyBuildingSchema = new Schema(
   {
     date: {
       type: Date
@@ -67,7 +66,7 @@ const MedicalSchema = new Schema(
     }
   },
   { timestamps: true }
-  );
-  
-  const Medical = models.Medical || mongoose.model("Medical", MedicalSchema);
-  export default Medical;
+);
+
+const SupplyBuilding = models.SupplyBuilding || mongoose.model('SupplyBuilding', supplyBuildingSchema);
+export default SupplyBuilding;

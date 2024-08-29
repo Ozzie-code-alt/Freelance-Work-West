@@ -1,5 +1,5 @@
 import { connectMongo } from '@/lib/connection';
-import OSA from '@/models/osa';
+import ICT from '@/models/ict';
 import { NextApiRequest } from 'next';
 import { NextResponse } from 'next/server';
 
@@ -30,7 +30,7 @@ export async function POST(req: NextApiRequest) {
       //@ts-ignore
     } = await req.json();
     await connectMongo();
-    await OSA.create({
+    await ICT.create({
       date,
       userName,
       servicesReceived,
@@ -53,11 +53,11 @@ export async function POST(req: NextApiRequest) {
       sqd8,
       mean
     });
-    console.log('OSA Information Sent');
-    return NextResponse.json({ message: 'OSA Information Sent' }, { status: 201 });
+    console.log('ICT Information Sent');
+    return NextResponse.json({ message: 'ICT Information Sent it work now' }, { status: 201 });
   } catch (error) {
     return NextResponse.json(
-      { message: 'An Error Occured While Sending OSA Informaton' },
+      { message: 'An Error Occured While Sending ICT Informaton' },
       { status: 500 }
     );
   }
@@ -65,11 +65,11 @@ export async function POST(req: NextApiRequest) {
 
 export async function GET() {
   await connectMongo();
-  const osas = await OSA.find();
-  console.log('Logg OSA Information', osas);
-  const osasdateConverted = osas.map((osasData) => ({
-    ...osasData._doc,
-    date: osasData.date.toISOString().split('T')[0]
+  const icts = await ICT.find();
+  console.log('Logg ICT Information', icts);
+  const dateConverted = icts.map((ict) => ({
+    ...ict._doc,
+    date: ict.date.toISOString().split('T')[0]
   }));
-  return NextResponse.json({ osas: osasdateConverted }, { status: 200 });
+  return NextResponse.json({ icts: dateConverted }, { status: 200 });
 }

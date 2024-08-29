@@ -25,7 +25,6 @@ import {
 } from '@/components/ui/select';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-// import { useSession } from "next-auth/react";
 import { useState } from 'react';
 import {
   Command,
@@ -35,7 +34,7 @@ import {
   CommandItem
 } from '@/components/ui/command';
 import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons';
-import { MedicalFormCC } from './MedicalFormCC';
+import { RMUFormCC } from './RMUFormCC';
 const formSchema = z.object({
   date: z.date({
     required_error: 'Please select a date and time',
@@ -62,7 +61,7 @@ const formSchema = z.object({
   })
 });
 
-const MedicalFormPage = () => {
+const RMUFormPage = () => {
   const [isOpen, setIsOpen] = useState(false);
   // const { data: session } = useSession();
 
@@ -312,10 +311,10 @@ const MedicalFormPage = () => {
           <Button type='submit'>Next</Button>
         </form>
       </Form>
-      <MedicalFormCC isOpen={isOpen} setIsOpen={setIsOpen} adminProps={submissionData} />
+      <RMUFormCC isOpen={isOpen} setIsOpen={setIsOpen} adminProps={submissionData} />
     
     </>
   );
 };
 
-export default MedicalFormPage;
+export default RMUFormPage;

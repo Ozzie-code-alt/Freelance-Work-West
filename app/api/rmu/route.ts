@@ -1,5 +1,5 @@
 import { connectMongo } from '@/lib/connection';
-import OSA from '@/models/osa';
+import RMU from '@/models/rmu';
 import { NextApiRequest } from 'next';
 import { NextResponse } from 'next/server';
 
@@ -30,7 +30,7 @@ export async function POST(req: NextApiRequest) {
       //@ts-ignore
     } = await req.json();
     await connectMongo();
-    await OSA.create({
+    await RMU.create({
       date,
       userName,
       servicesReceived,
@@ -53,11 +53,11 @@ export async function POST(req: NextApiRequest) {
       sqd8,
       mean
     });
-    console.log('OSA Information Sent');
-    return NextResponse.json({ message: 'OSA Information Sent' }, { status: 201 });
+    console.log('RMU Information Sent');
+    return NextResponse.json({ message: 'RMU Information Sent it work now' }, { status: 201 });
   } catch (error) {
     return NextResponse.json(
-      { message: 'An Error Occured While Sending OSA Informaton' },
+      { message: 'An Error Occured While Sending Personal Informaton' },
       { status: 500 }
     );
   }
@@ -65,11 +65,11 @@ export async function POST(req: NextApiRequest) {
 
 export async function GET() {
   await connectMongo();
-  const osas = await OSA.find();
-  console.log('Logg OSA Information', osas);
-  const osasdateConverted = osas.map((osasData) => ({
-    ...osasData._doc,
-    date: osasData.date.toISOString().split('T')[0]
+  const rmus = await RMU.find();
+  console.log('Logg RMU Information', rmus);
+  const dateConverted = rmus.map((rmu) => ({
+    ...rmu._doc,
+    date: rmu.date.toISOString().split('T')[0]
   }));
-  return NextResponse.json({ osas: osasdateConverted }, { status: 200 });
+  return NextResponse.json({ rmus: dateConverted }, { status: 200 });
 }

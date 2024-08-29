@@ -6,7 +6,6 @@ import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons';
 import { useForm } from 'react-hook-form';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { Input } from '@/components/ui/input';
 import { Puff } from 'react-loader-spinner';
 import {
   Form,
@@ -59,7 +58,7 @@ import { FiAlertCircle } from 'react-icons/fi';
 {
   /*Modal Function Here -------------------------------------------- */
 }
-export const OSAFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
+export const PDUFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
   const { data: session } = useSession();
   const [loading, setLoading] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
@@ -105,7 +104,7 @@ export const OSAFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
     console.log('this is the final Submitted Values', submittedValues);
 
     try {
-      const res = await fetch('/api/osa', {
+      const res = await fetch('/api/pdu', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
