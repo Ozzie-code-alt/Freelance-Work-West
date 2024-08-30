@@ -1,33 +1,44 @@
+import { connectMongo } from '@/lib/connection';
+import BAC from '@/models/bac';
+import { NextApiRequest } from 'next';
+import { NextResponse } from 'next/server';
 
-import { connectMongo } from "@/lib/connection";
-import BAC from "@/models/bac";
-import { NextApiRequest } from "next";
-import { NextResponse } from "next/server"
+export async function GET(req: NextApiRequest, { params }: any) {
+  const { id } = params; //we grab id from link - desctructure
+  await connectMongo();
+  const bacInfoResponse = await BAC.findById({ _id: id });
+  //    age,
+  //    cc1,
+  //    cc2,
+  //    cc3,
+  //    sex,
+  //    sqd0,
+  //    sqd1,
+  //    sqd2,
+  //    sqd3,
+  //    sqd4,
+  //    sqd5,
+  //    sqd6,
+  //    sqd7,
+  //    sqd8,
+  //    mean
 
-export async function GET(req:NextApiRequest, {params}:any){
-    const {id} = params //we grab id from link - desctructure
-    await connectMongo();
-   const bacInfoResponse = await BAC.findById({_id:id})
-
-
-    const bacInfo = {
+  const bacInfo = {
     userName: bacInfoResponse.userName,
-    servicesReceived: bacInfoResponse.servicesReceived,
-    externalClient: bacInfoResponse.externalClient,
-    pointOfOrigin: bacInfoResponse.pointOfOrigin,
-    officeVisited:bacInfoResponse.officeVisited,
-    internalClient:bacInfoResponse.internalClient,
     sex: bacInfoResponse.sex,
-    responsiveness:bacInfoResponse.responsiveness,
-    reliability:bacInfoResponse.reliability,
-    access: bacInfoResponse.access,
-    communication:bacInfoResponse.communication,
-    costs:bacInfoResponse.costs,
-    integrity:bacInfoResponse.integrity,
-    assurance:bacInfoResponse.assurance,
-    outcome:bacInfoResponse.outcome,
-    message:bacInfoResponse.message,
-    mean:bacInfoResponse.mean
-   }
-   return NextResponse.json({bacInfo}, {status:200})
+    cc1: bacInfoResponse.cc1,
+    cc2: bacInfoResponse.cc2,
+    cc3: bacInfoResponse.cc3,
+    sqd0: bacInfoResponse.sqd0,
+    sqd1: bacInfoResponse.sqd1,
+    sqd2: bacInfoResponse.sqd2,
+    sqd3: bacInfoResponse.sqd3,
+    sqd4: bacInfoResponse.sqd4,
+    sqd5: bacInfoResponse.sqd5,
+    sqd6: bacInfoResponse.sqd6,
+    sqd7: bacInfoResponse.sqd7,
+    sqd8: bacInfoResponse.sqd8,
+    mean: bacInfoResponse.mean
+  };
+  return NextResponse.json({ bacInfo }, { status: 200 });
 }
