@@ -39,7 +39,7 @@ export default function DemoPage() {
     }
 
     fetchData();
-  }, []); // Empty dependency array ensures this effect runs once on mount
+  }, []); 
 
 
     console.log(data)

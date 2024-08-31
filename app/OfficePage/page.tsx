@@ -75,7 +75,8 @@ const Officepage = () => {
           <div>
             <SidebarLink
               link={{
-                label: `${session?.user?.name}`,
+                label: `${session?.user?.name} - ${session?.user.role} `,
+
                 href: () => {},
                 icon: (
                   <Image

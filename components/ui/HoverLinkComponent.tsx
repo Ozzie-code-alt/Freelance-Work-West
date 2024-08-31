@@ -33,10 +33,10 @@ export const HoverImageLinksData = ({ data }: any) => {
   };
 
   return (
-    <section className='bg-neutral-950 p-4 md:p-8'>
+    <section className='bg-neutral-950 rounded-xl p-4 md:p-8'>
       <div className='mx-auto max-w-5xl'>
         {Months.map((month: any, monthIndex: any) => (
-          <div key={monthIndex} className='border w-fit border-black rounded-2xl font px-5 py-4'>
+          <div key={monthIndex} className='border w-full border-black rounded-2xl font px-5 py-4'>
             <Link
               heading={month.title}
               subheading='Learn what we do here'

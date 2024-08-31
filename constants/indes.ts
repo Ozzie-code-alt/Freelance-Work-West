@@ -149,18 +149,18 @@ export const OfficesStudents = [
 ];
 
 export const Months = [
-  { title: 'January' },
-  { title: 'February' },
-  { title: 'March' },
-  { title: 'April' },
-  { title: 'May' },
-  { title: 'June' },
-  { title: 'July' },
-  { title: 'August' },
-  { title: 'September' },
-  { title: 'October' },
-  { title: 'November' },
-  { title: 'December' }
+  { title: 'January', description: 'Filter by January', imageUrl: '' },
+  { title: 'February', description: 'Filter By February', imageUrl: '' },
+  { title: 'March', description: 'Filter By March', imageUrl: '' },
+  { title: 'April', description: 'Filter by April', imageUrl: '' },
+  { title: 'May', description: 'Filter by May', imageUrl: '' },
+  { title: 'June', description: 'Filter by June', imageUrl: '' },
+  { title: 'July', description: 'Filter by July', imageUrl: '' },
+  { title: 'August', description: 'Filter by August', imageUrl: '' },
+  { title: 'September', description: 'Filter by September', imageUrl: '' },
+  { title: 'October', description: 'Filter by October', imageUrl: '' },
+  { title: 'November', description: 'Filter by November', imageUrl: '' },
+  { title: 'December', description: 'Filter by December', imageUrl: '' }
 ];
 
 export const cards = [
