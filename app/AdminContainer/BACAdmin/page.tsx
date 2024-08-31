@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { DataTable } from "@/components/ui/data-table";
 import { BACcolumns } from "@/app/payments/BACColumns";
 import GradualSpacing from "@/components/ui/gradual-spacing";
-import { HoverImageLinksData } from "@/components/ui/HoverIMageLink";
+import { HoverImageLinksData } from "@/components/ui/HoverLinkComponent";
 
 
 export default function DemoPage() {
@@ -39,7 +39,7 @@ export default function DemoPage() {
     }
 
     fetchData();
-  }, []); // Empty dependency array ensures this effect runs once on mount
+  }, []); 
 
 
     console.log(data)

@@ -162,10 +162,11 @@ export const SidebarLink = ({
   const { open, animate } = useSidebar();
   return (
     <Button
-      onClick={
-        link.href
-      }
-      className={cn('flex items-center justify-start gap-2 bg-transparent hover:bg-transparent group/sidebar py-2', className)}
+      onClick={link.href}
+      className={cn(
+        'flex items-center justify-start gap-2 bg-transparent hover:bg-transparent group/sidebar py-2',
+        className
+      )}
       {...props}
     >
       {link.icon}
