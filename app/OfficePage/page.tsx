@@ -124,7 +124,7 @@ const Officepage = () => {
         <div className='pt-3  '>
           <GradualSpacing
             className='font-display text-center text-4xl font-bold tracking-[-0.1em]  text-black dark:text-white md:text-7xl '
-            text='West Thesis'
+            text='Client Satisfaction Measurement'
           />
         </div>
 
@@ -147,7 +147,7 @@ export const Logo = () => {
         animate={{ opacity: 1 }}
         className='font-medium text-black dark:text-white whitespace-pre'
       >
-        West Thesis Group
+        Client Satisfaction Measurement
       </motion.span>
     </Link>
   );
