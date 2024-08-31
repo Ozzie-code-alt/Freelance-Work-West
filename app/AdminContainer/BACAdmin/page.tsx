@@ -2,11 +2,9 @@
 import { useState, useEffect } from "react";
 import { DataTable } from "@/components/ui/data-table";
 import { BACcolumns } from "@/app/payments/BACColumns";
-import { date } from "zod";
-import Example from "@/components/Loader";
-import MonthFilter from "@/components/MonthFilter";
 import GradualSpacing from "@/components/ui/gradual-spacing";
-import { HoverImageLinks } from "@/components/ui/HoverIMageLink";
+import { HoverImageLinksData } from "@/components/ui/HoverIMageLink";
+
 
 export default function DemoPage() {
   const [data, setData] = useState([]);
@@ -48,7 +46,9 @@ export default function DemoPage() {
 
 
   if (!data.length) {
-    return <div className="w-screen h-screen flex justify-center items-center "><Example/></div>;
+    return <div className="w-screen h-screen flex justify-center items-center ">
+      
+    </div>;
   }
 
 
@@ -76,7 +76,7 @@ export default function DemoPage() {
 
       <div>
         {/* <MonthFilter data={data}/> */}
-        <HoverImageLinks data={data}/>
+        <HoverImageLinksData data={data}/>
       </div>
   
     </div>
