@@ -2,9 +2,9 @@
 import { useState, useEffect } from "react";
 import { DataTable } from "@/components/ui/data-table";
 import { BACcolumns } from "@/app/payments/BACColumns";
-import { date } from "zod";
-import Example from "@/components/Loader";
-import MonthFilter from "@/components/MonthFilter";
+import GradualSpacing from "@/components/ui/gradual-spacing";
+import { HoverImageLinksData } from "@/components/ui/HoverIMageLink";
+
 
 export default function DemoPage() {
   const [data, setData] = useState([]);
@@ -32,7 +32,7 @@ export default function DemoPage() {
 
         console.log("this is new data", bacs)
 
-        setData(bacs); // Update the state with the fetched data
+        setData(bacs); 
       } catch (error) {
         console.error("Failed to fetch data:", error);
       }
@@ -46,30 +46,37 @@ export default function DemoPage() {
 
 
   if (!data.length) {
-    return <div className="w-screen h-screen flex justify-center items-center "><Example/></div>;
+    return <div className="w-screen h-screen flex justify-center items-center ">
+      
+    </div>;
   }
 
 
   return (
-    <div className="container mx-auto h-auto border flex flex-col gap-5  border-red-500 py-10">
+    <div className="container mx-auto h-auto  flex flex-col gap-5   py-10">
 
-      <div className="w-full border border-red-500">
-        <p
-         className="text-center text-6xl"> Bac Admin</p>
+      <div className="w-full  ">
+      <GradualSpacing
+        text="Bac Admin"
+        className="text-center text-6xl"
+        />
       </div>
 
       <div className="">
       <DataTable columns={BACcolumns} data={data} />
       </div>
 
-      <div className="w-full border border-red-500  ">
-        <p className="text-center text-6xl">
-        Filter By Month
-        </p>
+      <div className="w-full    ">
+        
+        <GradualSpacing
+        text="Filter By Month"
+        className="text-center text-6xl"
+        />
       </div>
 
       <div>
-        <MonthFilter data={data}/>
+        {/* <MonthFilter data={data}/> */}
+        <HoverImageLinksData data={data}/>
       </div>
   
     </div>
