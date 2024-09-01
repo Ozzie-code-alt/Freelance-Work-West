@@ -55,96 +55,96 @@ const data = [
   {
     category: 'Admin Office and Finance Office',
     title: 'Admin Office and Finance',
-    src: 'https://images.unsplash.com/photo-1593508512255-86ab42a8e620?q=80&w=3556&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    src: '/Offices/AdminOffice.jpg',
     content: <AdminOfficeandFinancePage />
   },
   {
     category: 'BAC Office',
     title: 'BAC',
-    src: 'https://images.unsplash.com/photo-1531554694128-c4c6665f59c2?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    src: '/Offices/BAC.JPG',
     content: <BACFormPage />
   },
   {
-    category: 'Product',
+    category: 'Accounting Office',
     title: 'Accounting',
     src: 'https://images.unsplash.com/photo-1713869791518-a770879e60dc?q=80&w=2333&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     content: <AccountingFormPage />
   },
 
   {
-    category: 'Product',
+    category: 'Library Office',
     title: 'Library',
-    src: 'https://images.unsplash.com/photo-1599202860130-f600f4948364?q=80&w=2515&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    src: '/Offices/Library.JPG',
     content: <LibraryFormPage />
   },
   {
-    category: 'iOS',
+    category: 'Medical and Dental Clinic Office',
     title: 'Medical and Dental Clinic',
-    src: 'https://images.unsplash.com/photo-1602081957921-9137a5d6eaee?q=80&w=2793&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    src: '/Offices/Medical.JPG',
     content: <MedicalFormPage />
   },
   {
-    category: 'OD Educ',
+    category: 'OD Educ Office',
     title: 'OD Educ',
     src: 'https://images.unsplash.com/photo-1511984804822-e16ba72f5848?q=80&w=2048&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     content: <EducFormPage />
   },
   {
-    category: 'OD Educ',
+    category: 'OD ICT Office',
     title: 'OD ICT',
     src: 'https://images.unsplash.com/photo-1511984804822-e16ba72f5848?q=80&w=2048&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     content: <ICTFormPage />
   },
   {
-    category: 'OD Educ',
+    category: 'OD Industrial Tech Office',
     title: 'OD Industrial Tech',
     src: 'https://images.unsplash.com/photo-1511984804822-e16ba72f5848?q=80&w=2048&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     content: <IndustrialTechFormPage />
   },
   {
-    category: 'OD Educ',
+    category: 'OD SBM Office',
     title: 'OD SBM',
     src: 'https://images.unsplash.com/photo-1511984804822-e16ba72f5848?q=80&w=2048&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     content: <SBMFormPage />
   },
   {
-    category: 'OD Educ',
+    category: 'Office of Registrar Office',
     title: 'Office of Registrar',
-    src: 'https://images.unsplash.com/photo-1511984804822-e16ba72f5848?q=80&w=2048&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    src: '/Offices/Registrar.JPG',
     content: <RegistrarFormPage />
   },
   {
-    category: 'OD Educ',
+    category: 'OSA Office',
     title: 'OSA',
     src: 'https://images.unsplash.com/photo-1511984804822-e16ba72f5848?q=80&w=2048&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     content: <OSAFormPage />
   },
   {
-    category: 'OD Educ',
+    category: 'Planning and Development Unit Office',
     title: 'Planning and Development Unit',
-    src: 'https://images.unsplash.com/photo-1511984804822-e16ba72f5848?q=80&w=2048&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    src: '/Offices/PDU.JPG',
     content: <DummyContent />
   },
   {
-    category: 'OD Educ',
+    category: 'Records and Management Unit Office',
     title: 'Records and Management Unit',
-    src: 'https://images.unsplash.com/photo-1511984804822-e16ba72f5848?q=80&w=2048&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    src: '/Offices/RMU.JPG',
     content: <DummyContent />
   },
   {
-    category: 'OD Educ',
+    category: 'RIX Office',
     title: 'RIX',
     src: 'https://images.unsplash.com/photo-1511984804822-e16ba72f5848?q=80&w=2048&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     content: <DummyContent />
   },
   {
-    category: 'OD Educ',
+    category: 'Sports Office ',
     title: 'Sports Office',
     src: 'https://images.unsplash.com/photo-1511984804822-e16ba72f5848?q=80&w=2048&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     content: <DummyContent />
   },
   {
-    category: 'OD Educ',
+    category: 'Supply Building 1 Office',
     title: 'Supply Building 1',
     src: 'https://images.unsplash.com/photo-1511984804822-e16ba72f5848?q=80&w=2048&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     content: <DummyContent />

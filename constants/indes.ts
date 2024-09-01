@@ -167,12 +167,12 @@ export const cards = [
   {
     title: 'Admin Office and Finance',
     route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm',
-    src: 'https://images.unsplash.com/photo-1518710843675-2540dd79065c?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    src: '/Offices/AdminOffice.jpg',
   },
   {
     title: 'BAC',
     route: '/AdminContainer/BACAdmin',
-    src: 'https://images.unsplash.com/photo-1600271772470-bd22a42787b3?q=80&w=3072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    src: '/Offices/BAC.JPG'
   },
   {
     title: 'Accounting',
@@ -182,12 +182,12 @@ export const cards = [
   {
     title: 'Library',
     route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm',
-    src: 'https://images.unsplash.com/photo-1486915309851-b0cc1f8a0084?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    src: '/Offices/Library.JPG'
   },
   {
     title: 'Medical and Dental Clinic',
     route: '/Medical/MedicalPersonalForm',
-    src: 'https://images.unsplash.com/photo-1507041957456-9c397ce39c97?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    src: '/Offices/Medical.JPG'
   },
   {
     title: 'OD Education',
@@ -212,7 +212,7 @@ export const cards = [
   {
     title: 'Office of Registrar',
     route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm',
-    src: 'https://images.unsplash.com/photo-1507041957456-9c397ce39c97?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    src: '/Offices/Registrar.JPG'
   },
   {
     title: 'OSA',
@@ -222,12 +222,12 @@ export const cards = [
   {
     title: 'Planning and Development Unit',
     route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm',
-    src: 'https://images.unsplash.com/photo-1518710843675-2540dd79065c?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    src: '/Offices/PDU.JPG'
   },
   {
     title: 'Records and Management Unit',
     route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm',
-    src: 'https://images.unsplash.com/photo-1600271772470-bd22a42787b3?q=80&w=3072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    src: '/Offices/RMU.JPG'
   },
   {
     title: 'RIX',
