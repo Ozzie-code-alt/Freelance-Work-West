@@ -1,10 +1,12 @@
 'use client';
 
 import { ColumnDef } from '@tanstack/react-table';
+
 import * as z from 'zod';
 import { MoreHorizontal } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { ArrowUpDown } from "lucide-react"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -88,7 +90,17 @@ export const BACcolumns: ColumnDef<FormData>[] = [
   },
   {
     accessorKey: 'date',
-    header: 'Date'
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Date
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
   },
   {
     accessorKey: 'officeVisited',
@@ -100,7 +112,17 @@ export const BACcolumns: ColumnDef<FormData>[] = [
   },
   {
     accessorKey: 'age',
-    header: 'Age'
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Age
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
   },
   {
     accessorKey: 'clientType',
