@@ -91,10 +91,6 @@ export const BACcolumns: ColumnDef<FormData>[] = [
     header: 'Date'
   },
   {
-    accessorKey: 'userName',
-    header: 'Name'
-  },
-  {
     accessorKey: 'officeVisited',
     header: 'Office Visited'
   },
