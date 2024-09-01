@@ -6,11 +6,11 @@ This Program was built for Students at West Visayas State University Pototan Cam
 
 ## Tech Stack
 
-**Client:**  NextJS, TailwindCSS, Shadcn
+**Client:**  NextJS, TailwindCSS, Shadcn, Clx, Radix, Framer
 
-**Server:** Node, Express, Mongoose, MongoDB
+**Server:** Node, Express, Mongoose, MongoDB, Compass
 
-**Auth** Next Auth
+**Auth** Next Auth, JWT
 
 **Validations:** zod
 
