@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { DataTable } from "@/components/ui/data-table";
 import Example from "@/components/Loader";
 import { Accountingcolumns } from "@/app/payments/AccountingColumns";
+import GradualSpacing from "@/components/ui/gradual-spacing";
+import { HoverImageLinksData } from "@/components/ui/HoverLinkComponent";
 
 export default function DemoPage() {
   const [data, setData] = useState([]);
@@ -42,8 +44,25 @@ export default function DemoPage() {
   }
 
   return (
-    <div className="container w-screen h-screen flex justify-center items-center mx-auto py-10">
+    // <div className="container w-screen h-screen flex justify-center items-center mx-auto py-10">
+    //   <DataTable columns={Accountingcolumns} data={data} />
+    // </div>
+    <div className='container mx-auto h-auto  flex flex-col gap-5   py-10'>
+    <div className='w-full  '>
+      <GradualSpacing text='Acconting Admin' className='text-center text-6xl' />
+    </div>
+
+    <div className=''>
       <DataTable columns={Accountingcolumns} data={data} />
     </div>
+
+    <div className='w-full    '>
+      <GradualSpacing text='Filter By Month' className='text-center text-6xl' />
+    </div>
+
+    <div>
+      <HoverImageLinksData data={data} />
+    </div>
+  </div>
   );
 }

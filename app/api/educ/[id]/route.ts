@@ -1,33 +1,34 @@
 
 import { connectMongo } from "@/lib/connection";
-import BAC from "@/models/bac";
+// import BAC from "@/models/bac";
+import EDUC from "@/models/educ"
 import { NextApiRequest } from "next";
 import { NextResponse } from "next/server"
 
 export async function GET(req:NextApiRequest, {params}:any){
     const {id} = params //we grab id from link - desctructure
     await connectMongo();
-   const bacInfoResponse = await BAC.findById({_id:id})
+   const educInfoResponse = await EDUC.findById({_id:id})
 
 
-    const bacInfo = {
-    userName: bacInfoResponse.userName,
-    servicesReceived: bacInfoResponse.servicesReceived,
-    externalClient: bacInfoResponse.externalClient,
-    pointOfOrigin: bacInfoResponse.pointOfOrigin,
-    officeVisited:bacInfoResponse.officeVisited,
-    internalClient:bacInfoResponse.internalClient,
-    sex: bacInfoResponse.sex,
-    responsiveness:bacInfoResponse.responsiveness,
-    reliability:bacInfoResponse.reliability,
-    access: bacInfoResponse.access,
-    communication:bacInfoResponse.communication,
-    costs:bacInfoResponse.costs,
-    integrity:bacInfoResponse.integrity,
-    assurance:bacInfoResponse.assurance,
-    outcome:bacInfoResponse.outcome,
-    message:bacInfoResponse.message,
-    mean:bacInfoResponse.mean
+    const educInfo = {
+    userName: educInfoResponse.userName,
+    servicesReceived: educInfoResponse.servicesReceived,
+    externalClient: educInfoResponse.externalClient,
+    pointOfOrigin: educInfoResponse.pointOfOrigin,
+    officeVisited:educInfoResponse.officeVisited,
+    internalClient:educInfoResponse.internalClient,
+    sex: educInfoResponse.sex,
+    responsiveness:educInfoResponse.responsiveness,
+    reliability:educInfoResponse.reliability,
+    access: educInfoResponse.access,
+    communication:educInfoResponse.communication,
+    costs:educInfoResponse.costs,
+    integrity:educInfoResponse.integrity,
+    assurance:educInfoResponse.assurance,
+    outcome:educInfoResponse.outcome,
+    message:educInfoResponse.message,
+    mean:educInfoResponse.mean
    }
-   return NextResponse.json({bacInfo}, {status:200})
+   return NextResponse.json({educInfo}, {status:200})
 }
