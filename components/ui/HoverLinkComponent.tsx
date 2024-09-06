@@ -40,7 +40,7 @@ export const HoverImageLinksData = ({ data }: any) => {
             <Link
               heading={month.title}
               subheading='Learn what we do here'
-              imgSrc='/imgs/random/11.jpg'
+              imgSrc=''
               onClick={() => handleLinkClick(monthIndex, month.title)}
             />
           </div>

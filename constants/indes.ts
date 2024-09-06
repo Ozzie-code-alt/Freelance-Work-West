@@ -166,7 +166,7 @@ export const Months = [
 export const cards = [
   {
     title: 'Admin Office and Finance',
-    route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm',
+    route: '/AdminContainer/AdministrationOfficesandFinanceAdmin',
     src: '/Offices/AdminOffice.jpg',
   },
   {
@@ -181,17 +181,17 @@ export const cards = [
   },
   {
     title: 'Library',
-    route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm',
+    route: '/AdminContainer/LibraryAdmin',
     src: '/Offices/Library.JPG'
   },
   {
     title: 'Medical and Dental Clinic',
-    route: '/Medical/MedicalPersonalForm',
+    route: '/AdminContainer/MedicalAdmin',
     src: '/Offices/Medical.JPG'
   },
   {
     title: 'OD Education',
-    route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm',
+    route: '/AdminContainer/ODEducAdmin',
     src: 'https://images.unsplash.com/photo-1518710843675-2540dd79065c?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
