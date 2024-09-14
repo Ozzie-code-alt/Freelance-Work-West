@@ -167,7 +167,9 @@ export const cards = [
   {
     title: 'Admin Office and Finance',
     route: '/AdminContainer/AdministrationOfficesandFinanceAdmin',
-    src: '/Offices/AdminOffice.jpg',
+    src: '',
+    bg: 'bg-gradient-to-r from-indigo-400 to-cyan-400',
+
   },
   {
     title: 'BAC',
