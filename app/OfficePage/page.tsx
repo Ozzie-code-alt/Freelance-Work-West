@@ -21,7 +21,6 @@ const Officepage = () => {
     signOut();
   };
 
-
   const handleUserChecker = () => {
     console.log('Clicked Dashboard');
     console.log(grabRole);
@@ -91,35 +90,37 @@ const Officepage = () => {
         'h-screen'
       )}
     >
-      <Sidebar open={open} setOpen={setOpen}>
-        <SidebarBody className='justify-between gap-10'>
-          <div className='flex flex-col  flex-1 overflow-y-auto overflow-x-hidden'>
-            {open ? <Logo /> : <LogoIcon />}
-            <div className='mt-8 flex flex-col gap-2'>
-              {links.map((link, idx) => (
-                <SidebarLink key={idx} link={link} />
-              ))}
+      {session?.user?.name && (
+        <Sidebar open={open} setOpen={setOpen}>
+          <SidebarBody className='justify-between gap-10'>
+            <div className='flex flex-col  flex-1 overflow-y-auto overflow-x-hidden'>
+              {open ? <Logo /> : <LogoIcon />}
+              <div className='mt-8 flex flex-col gap-2'>
+                {links.map((link, idx) => (
+                  <SidebarLink key={idx} link={link} />
+                ))}
+              </div>
             </div>
-          </div>
-          <div>
-            <SidebarLink
-              link={{
-                label: `${session?.user?.name} - ${session?.user.role} `,
-                href: () => {},
-                icon: (
-                  <Image
-                    src='https://images.unsplash.com/photo-1511367461989-f85a21fda167?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-                    className='h-7 w-7 flex-shrink-0 object-cover rounded-full'
-                    width={50}
-                    height={50}
-                    alt='Avatar'
-                  />
-                )
-              }}
-            />
-          </div>
-        </SidebarBody>
-      </Sidebar>
+            <div>
+              <SidebarLink
+                link={{
+                  label: `${session?.user?.name} - ${session?.user.role} `,
+                  href: () => {},
+                  icon: (
+                    <Image
+                      src='https://images.unsplash.com/photo-1511367461989-f85a21fda167?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                      className='h-7 w-7 flex-shrink-0 object-cover rounded-full'
+                      width={50}
+                      height={50}
+                      alt='Avatar'
+                    />
+                  )
+                }}
+              />
+            </div>
+          </SidebarBody>
+        </Sidebar>
+      )}
       <div className='w-full h-full flex  flex-col bg-slate-500/10  justify-center items-center'>
         <div className='pt-3  '>
           <GradualSpacing

@@ -12,9 +12,16 @@ export default function Home() {
         <div className=' rounded-xl border-black z-40 bg-black/50  hover:cursor-pointer mt-10 px-20 py-10'>
           <button
             className=' text-white  hover:text-slate-400 duration-500 text-3xl '
+            onClick={() => router.push('/OfficePage')}
+          >
+            West Visayas State University
+          </button>
+
+          <button
+            className=' text-white  hover:text-slate-400 duration-500 text-3xl '
             onClick={() => router.push('/LoginPage')}
           >
-           West Visayas State University 
+            Login
           </button>
         </div>
       </div>
