@@ -42,7 +42,7 @@ const OfficesContainer = () => {
   ));
 
   return (
-    <div className='w-full'>
+    <div className='w-full border'>
       {/* Search input */}
       <div className="">
         <input
