@@ -767,6 +767,25 @@ export const RMUFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
                     </FormItem>
                   )}
                 />
+                <FormField
+                  control={form.control}
+                  name='comments'
+                  render={({ field }) => (
+                    <FormItem className='flex flex-col gap-3'>
+                      <FormLabel className='text-2xl'>Message or Suggestions - Optional</FormLabel>
+
+                      <FormControl>
+                        <Input placeholder='shadcn' className='text-black' {...field} />
+                      </FormControl>
+
+                      <FormDescription>
+                        {' '}
+                        <p className='text-yellow-500'>Message or Suggestions</p>
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
                 {loading ? (
                   <Puff color='#00BFFF' height={50} width={50} />
                 ) : (

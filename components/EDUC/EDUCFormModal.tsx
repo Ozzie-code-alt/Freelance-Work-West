@@ -772,7 +772,7 @@ export const EducFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
                   name='comments'
                   render={({ field }) => (
                     <FormItem className='flex flex-col gap-3'>
-                      <FormLabel className='text-2xl'>Optional</FormLabel>
+                      <FormLabel className='text-2xl'>Message or Suggestions - Optional</FormLabel>
 
                       <FormControl>
                         <Input placeholder='shadcn' className='text-black' {...field} />
@@ -780,7 +780,7 @@ export const EducFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
 
                       <FormDescription>
                         {' '}
-                        <p className='text-yellow-500'>Optional</p>
+                        <p className='text-yellow-500'>Message or Suggestions</p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>

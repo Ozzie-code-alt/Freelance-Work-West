@@ -5,6 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons';
 import { useForm } from 'react-hook-form';
 import { Button } from '@/components/ui/button';
+import { Input } from '../ui/input';
 import { cn } from '@/lib/utils';
 import { Puff } from 'react-loader-spinner';
 import {
@@ -761,6 +762,25 @@ export const PDUFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
                         <p className='text-yellow-500'>
                           This is the language that will be used in the dashboard.
                         </p>
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name='comments'
+                  render={({ field }) => (
+                    <FormItem className='flex flex-col gap-3'>
+                      <FormLabel className='text-2xl'>Message or Suggestions - Optional</FormLabel>
+
+                      <FormControl>
+                        <Input placeholder='shadcn' className='text-black' {...field} />
+                      </FormControl>
+
+                      <FormDescription>
+                        {' '}
+                        <p className='text-yellow-500'>Message or Suggestions</p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
