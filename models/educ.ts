@@ -63,6 +63,9 @@ const EDUCSchema = new Schema(
     },
     mean: {
       type: String
+    },
+    comments: {
+      type: String
     }
   },
   { timestamps: true }

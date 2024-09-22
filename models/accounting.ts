@@ -64,6 +64,9 @@ const AccountingSchema = new Schema(
     },
     mean: {
       type: String
+    },
+    comments: {
+      type: String
     }
   },
   { timestamps: true }

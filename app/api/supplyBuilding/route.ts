@@ -26,7 +26,8 @@ export async function POST(req: NextApiRequest) {
       sqd6,
       sqd7,
       sqd8,
-      mean
+      mean,
+      comments
       //@ts-ignore
     } = await req.json();
     await connectMongo();
@@ -51,10 +52,14 @@ export async function POST(req: NextApiRequest) {
       sqd6,
       sqd7,
       sqd8,
-      mean
+      mean,
+      comments
     });
     console.log('SupplyBuilding Information Sent');
-    return NextResponse.json({ message: 'SupplyBuilding Information Sent it work now' }, { status: 201 });
+    return NextResponse.json(
+      { message: 'SupplyBuilding Information Sent it work now' },
+      { status: 201 }
+    );
   } catch (error) {
     return NextResponse.json(
       { message: 'An Error Occured While Sending Personal Informaton' },

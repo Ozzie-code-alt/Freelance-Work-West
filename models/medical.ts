@@ -64,6 +64,9 @@ const MedicalSchema = new Schema(
     },
     mean: {
       type: String
+    },
+    comments: {
+      type: String
     }
   },
   { timestamps: true }
