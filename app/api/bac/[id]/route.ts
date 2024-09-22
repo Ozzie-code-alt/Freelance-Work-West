@@ -7,21 +7,6 @@ export async function GET(req: NextApiRequest, { params }: any) {
   const { id } = params; //we grab id from link - desctructure
   await connectMongo();
   const bacInfoResponse = await BAC.findById({ _id: id });
-  //    age,
-  //    cc1,
-  //    cc2,
-  //    cc3,
-  //    sex,
-  //    sqd0,
-  //    sqd1,
-  //    sqd2,
-  //    sqd3,
-  //    sqd4,
-  //    sqd5,
-  //    sqd6,
-  //    sqd7,
-  //    sqd8,
-  //    mean
 
   const bacInfo = {
     userName: bacInfoResponse.userName,

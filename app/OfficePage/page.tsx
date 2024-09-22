@@ -122,9 +122,9 @@ const Officepage = () => {
         </Sidebar>
       )}
       <div className='w-full h-full flex  flex-col bg-slate-500/10  justify-center items-center'>
-        <div className='pt-3  '>
+        <div className='pt-3 pb-10 md:pb-0 '>
           <GradualSpacing
-            className='font-display text-center text-4xl font-bold tracking-[-0.1em]  text-black dark:text-white md:text-7xl '
+            className='font-display text-center text-4xl font-bold tracking-[-0.1em] text-[15px] text-black dark:text-white md:text-7xl '
             text='Client Satisfaction Measurement'
           />
         </div>

@@ -1,9 +1,10 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { DataTable } from '@/components/ui/data-table';
+
 import GradualSpacing from '@/components/ui/gradual-spacing';
 import { HoverImageLinksData } from '@/components/ui/HoverLinkComponent';
-import { EducColumns } from '@/app/payments/EducColumns';
+import { PDUcolumns } from '@/app/payments/PDUColumns';
 
 export default function DemoPage() {
   const [data, setData] = useState([]);
@@ -11,23 +12,23 @@ export default function DemoPage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch('/api/educ');
+        const res = await fetch('/api/pdu');
         if (!res.ok) {
           throw new Error(`API call failed with status: ${res.status} ${res.statusText}`);
         }
         const jsonResponse = await res.json();
         console.log('Raw JSON Response:', jsonResponse);
 
-        if (!jsonResponse.hasOwnProperty('educs')) {
-          throw new Error('Expected property educ not found in the response');
+        if (!jsonResponse.hasOwnProperty('pdus')) {
+          throw new Error('Expected property bac not found in the response');
         }
 
-        const { educs } = jsonResponse;
-        console.log('This is educ Info Admin', educs);
+        const { pdus } = jsonResponse;
+        console.log('This is BAC Info Admin', pdus);
 
-        console.log('this is new data', educs);
+        console.log('this is new data', pdus);
 
-        setData(educs);
+        setData(pdus);
       } catch (error) {
         console.error('Failed to fetch data:', error);
       }
@@ -45,11 +46,11 @@ export default function DemoPage() {
   return (
     <div className='container mx-auto h-auto  flex flex-col gap-5   py-10'>
       <div className='w-full  '>
-        <GradualSpacing text='Education Admin' className='text-center text-6xl' />
+        <GradualSpacing text='PDU Admin' className='text-center text-6xl' />
       </div>
 
       <div className=''>
-        <DataTable columns={EducColumns} data={data} />
+        <DataTable columns={PDUcolumns} data={data} />
       </div>
 
       <div className='w-full    '>

@@ -2,13 +2,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FiAlertCircle } from "react-icons/fi";
 import { Dispatch, SetStateAction, useState, useEffect } from "react";
 
-export const BACModalOpenMore = ({ isOpen, setIsOpen, formIDValue }:any) => {
+export const RIXModalOpenMore = ({ isOpen, setIsOpen, formIDValue }:any) => {
   const [adminInfo, setAdminInfo] = useState({});
 
   useEffect(() => {
     async function fetchTopics() {
       try {
-        const response = await fetch(`/api/bac/${formIDValue}`); // Make sure this URL is correct
+        const response = await fetch(`/api/rix/${formIDValue}`); // Make sure this URL is correct
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -16,14 +16,14 @@ export const BACModalOpenMore = ({ isOpen, setIsOpen, formIDValue }:any) => {
         console.log("this is data", data);
         console.log("typeof data", typeof(data))
 
-        if (!data.hasOwnProperty("bacInfo")) {
+        if (!data.hasOwnProperty("rixInfo")) {
           throw new Error(
             "Expected property adminInfo not found in the response"
           );
         }
-        const { bacInfo } = data;
+        const { rixInfo } = data;
 
-        setAdminInfo(bacInfo);
+        setAdminInfo(rixInfo);
       } catch (error) {
         console.error("Fetching topics failed:", error);
       }

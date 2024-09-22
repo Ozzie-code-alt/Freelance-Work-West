@@ -6,7 +6,7 @@ import * as z from 'zod';
 import { MoreHorizontal } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowUpDown } from "lucide-react"
+import { ArrowUpDown } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,6 +16,7 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import { BACModalOpenMore } from '@/components/BACForm/OpenMoreBAC';
+import { LibraryModalOpenMore } from '@/components/Library/OpenMoreLibrary';
 import { Row } from '@tanstack/react-table'; // Import the Row type from @tanstack/react-table
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -78,7 +79,7 @@ const ActionsCell: React.FC<ActionsCellProps> = ({ row }) => {
         <DropdownMenuItem>View customer</DropdownMenuItem>
         <DropdownMenuItem onClick={() => setIsOpen(true)}>View More</DropdownMenuItem>
       </DropdownMenuContent>
-      <BACModalOpenMore isOpen={isOpen} setIsOpen={setIsOpen} formIDValue={form._id} />
+      <LibraryModalOpenMore isOpen={isOpen} setIsOpen={setIsOpen} formIDValue={form._id} />
     </DropdownMenu>
   );
 };
@@ -93,14 +94,14 @@ export const Librarycolumns: ColumnDef<FormData>[] = [
     header: ({ column }) => {
       return (
         <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          variant='ghost'
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
         >
           Date
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <ArrowUpDown className='ml-2 h-4 w-4' />
         </Button>
-      )
-    },
+      );
+    }
   },
   {
     accessorKey: 'officeVisited',
@@ -115,14 +116,14 @@ export const Librarycolumns: ColumnDef<FormData>[] = [
     header: ({ column }) => {
       return (
         <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          variant='ghost'
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
         >
           Age
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <ArrowUpDown className='ml-2 h-4 w-4' />
         </Button>
-      )
-    },
+      );
+    }
   },
   {
     accessorKey: 'clientType',

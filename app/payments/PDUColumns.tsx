@@ -15,8 +15,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-import { EducModalOpenMore } from '@/components/EDUC/OpenMoreEduc';
 import { Row } from '@tanstack/react-table'; // Import the Row type from @tanstack/react-table
+import { PDUModalOpenMore } from '@/components/PDU/OpenMorePDU';
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
 const formSchema = z.object({
@@ -78,12 +78,12 @@ const ActionsCell: React.FC<ActionsCellProps> = ({ row }) => {
         <DropdownMenuItem>View customer</DropdownMenuItem>
         <DropdownMenuItem onClick={() => setIsOpen(true)}>View More</DropdownMenuItem>
       </DropdownMenuContent>
-      <EducModalOpenMore isOpen={isOpen} setIsOpen={setIsOpen} formIDValue={form._id} />
+      <PDUModalOpenMore isOpen={isOpen} setIsOpen={setIsOpen} formIDValue={form._id} />
     </DropdownMenu>
   );
 };
 
-export const EducColumns: ColumnDef<FormData>[] = [
+export const PDUcolumns: ColumnDef<FormData>[] = [
   {
     accessorKey: '_id',
     header: 'ID'
