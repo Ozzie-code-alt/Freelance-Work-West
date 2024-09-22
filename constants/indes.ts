@@ -45,7 +45,7 @@ export const Offices = [
   },
   {
     title: 'Planning and Development Unit',
-    route: '/AdminContainer/AdministrationOfficesandFinance'
+    route: '/AdminContainer/PDUAdmin'
   },
   {
     title: 'Records and Management Unit',
@@ -223,7 +223,7 @@ export const cards = [
   },
   {
     title: 'Planning and Development Unit',
-    route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm',
+    route: '/AdminContainer/PDUAdmin',
     src: '/Offices/PDU.JPG'
   },
   {

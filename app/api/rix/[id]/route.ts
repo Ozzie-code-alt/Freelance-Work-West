@@ -1,33 +1,32 @@
+import { connectMongo } from '@/lib/connection';
+// import BAC from '@/models/bac';
+import RIX from '@/models/rix';
+import { NextApiRequest } from 'next';
+import { NextResponse } from 'next/server';
 
-import { connectMongo } from "@/lib/connection";
-import BAC from "@/models/bac";
-import { NextApiRequest } from "next";
-import { NextResponse } from "next/server"
+export async function GET(req: NextApiRequest, { params }: any) {
+  const { id } = params; //we grab id from link - desctructure
+  await connectMongo();
+  const rixInfoResponse = await RIX.findById({ _id: id });
 
-export async function GET(req:NextApiRequest, {params}:any){
-    const {id} = params //we grab id from link - desctructure
-    await connectMongo();
-   const bacInfoResponse = await BAC.findById({_id:id})
-
-
-    const bacInfo = {
-    userName: bacInfoResponse.userName,
-    servicesReceived: bacInfoResponse.servicesReceived,
-    externalClient: bacInfoResponse.externalClient,
-    pointOfOrigin: bacInfoResponse.pointOfOrigin,
-    officeVisited:bacInfoResponse.officeVisited,
-    internalClient:bacInfoResponse.internalClient,
-    sex: bacInfoResponse.sex,
-    responsiveness:bacInfoResponse.responsiveness,
-    reliability:bacInfoResponse.reliability,
-    access: bacInfoResponse.access,
-    communication:bacInfoResponse.communication,
-    costs:bacInfoResponse.costs,
-    integrity:bacInfoResponse.integrity,
-    assurance:bacInfoResponse.assurance,
-    outcome:bacInfoResponse.outcome,
-    message:bacInfoResponse.message,
-    mean:bacInfoResponse.mean
-   }
-   return NextResponse.json({bacInfo}, {status:200})
+  const rixInfo = {
+    userName: rixInfoResponse.userName,
+    servicesReceived: rixInfoResponse.servicesReceived,
+    externalClient: rixInfoResponse.externalClient,
+    pointOfOrigin: rixInfoResponse.pointOfOrigin,
+    officeVisited: rixInfoResponse.officeVisited,
+    internalClient: rixInfoResponse.internalClient,
+    sex: rixInfoResponse.sex,
+    responsiveness: rixInfoResponse.responsiveness,
+    reliability: rixInfoResponse.reliability,
+    access: rixInfoResponse.access,
+    communication: rixInfoResponse.communication,
+    costs: rixInfoResponse.costs,
+    integrity: rixInfoResponse.integrity,
+    assurance: rixInfoResponse.assurance,
+    outcome: rixInfoResponse.outcome,
+    message: rixInfoResponse.message,
+    mean: rixInfoResponse.mean
+  };
+  return NextResponse.json({ rixInfo }, { status: 200 });
 }
