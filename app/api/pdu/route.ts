@@ -26,7 +26,8 @@ export async function POST(req: NextApiRequest) {
       sqd6,
       sqd7,
       sqd8,
-      mean
+      mean,
+      comments
       //@ts-ignore
     } = await req.json();
     await connectMongo();
@@ -51,7 +52,8 @@ export async function POST(req: NextApiRequest) {
       sqd6,
       sqd7,
       sqd8,
-      mean
+      mean,
+      comments
     });
     console.log('PDU Information Sent');
     return NextResponse.json({ message: 'PDU Information Sent it work now' }, { status: 201 });

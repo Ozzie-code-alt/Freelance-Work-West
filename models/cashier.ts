@@ -1,81 +1,67 @@
-import mongoose, { Schema, models } from "mongoose";
-// Everything From Personal To 
+import mongoose, { Schema, models } from 'mongoose';
+// Everything From Personal To
 const CashierSchema = new Schema(
   {
     date: {
-      type: Date,
-   
+      type: Date
     },
-    userName:{
-      type:String,
+    userName: {
+      type: String
     },
     servicesReceived: {
-      type: String,
-
+      type: String
     },
     externalClient: {
-      type: String,
-
+      type: String
     },
     pointOfOrigin: {
-      type: String,
-
+      type: String
     },
     officeVisited: {
-      type: String,
- 
+      type: String
     },
     internalClient: {
-      type: String,
-  
+      type: String
     },
     sex: {
-      type: String,
-
+      type: String
     },
-    responsiveness:{
-      type: String,
-     
+    responsiveness: {
+      type: String
     },
-    reliability:{
-      type: String,
- 
+    reliability: {
+      type: String
     },
-    access:{
-      type: String,
-
+    access: {
+      type: String
     },
-    communication:{
-      type: String,
-    
+    communication: {
+      type: String
     },
-    costs:{
-      type: String,
-    
+    costs: {
+      type: String
     },
-    integrity:{
-      type: String,
- 
+    integrity: {
+      type: String
     },
-    assurance:{
-      type: String,
- 
-    },    
-    outcome:{
-      type: String,
-  
+    assurance: {
+      type: String
     },
-    message:{
-      type: String,
+    outcome: {
+      type: String
     },
-    mean:{
-      type: String,
+    message: {
+      type: String
     },
-
-
+    mean: {
+      type: String
+    },
+    comments: {
+      type: String
+    }
   },
   { timestamps: true }
-  );
-  
-  const Cashier = models.Cashier || mongoose.model("Cashier", CashierSchema);
-  export default Cashier;
+);
+
+const Cashier = models.Cashier || mongoose.model('Cashier', CashierSchema);
+export default Cashier;
