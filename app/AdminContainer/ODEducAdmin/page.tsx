@@ -19,11 +19,11 @@ export default function DemoPage() {
         console.log('Raw JSON Response:', jsonResponse);
 
         if (!jsonResponse.hasOwnProperty('educs')) {
-          throw new Error('Expected property bac not found in the response');
+          throw new Error('Expected property educ not found in the response');
         }
 
         const { educs } = jsonResponse;
-        console.log('This is BAC Info Admin', educs);
+        console.log('This is educ Info Admin', educs);
 
         console.log('this is new data', educs);
 

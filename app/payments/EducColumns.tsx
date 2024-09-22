@@ -15,7 +15,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-import { BACModalOpenMore } from '@/components/BACForm/OpenMoreBAC';
+import { EducModalOpenMore } from '@/components/EDUC/OpenMoreEduc';
 import { Row } from '@tanstack/react-table'; // Import the Row type from @tanstack/react-table
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -78,7 +78,7 @@ const ActionsCell: React.FC<ActionsCellProps> = ({ row }) => {
         <DropdownMenuItem>View customer</DropdownMenuItem>
         <DropdownMenuItem onClick={() => setIsOpen(true)}>View More</DropdownMenuItem>
       </DropdownMenuContent>
-      <BACModalOpenMore isOpen={isOpen} setIsOpen={setIsOpen} formIDValue={form._id} />
+      <EducModalOpenMore isOpen={isOpen} setIsOpen={setIsOpen} formIDValue={form._id} />
     </DropdownMenu>
   );
 };
