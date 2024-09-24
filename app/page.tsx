@@ -78,7 +78,7 @@ const items = [
     redirect: ''
   }
 ];
-function index() {
+function Home() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const handleNavigation = (path: string) => {
@@ -120,4 +120,4 @@ function index() {
   );
 }
 
-export default index;
+export default Home;
