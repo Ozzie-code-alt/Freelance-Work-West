@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <main className=' overflow-scroll md:overflow-hidden'>
+        <main className=' overflow-scroll bg-black md:overflow-hidden'>
           <AuthProvider>{children}</AuthProvider>{' '}
         </main>
         <Toaster />
