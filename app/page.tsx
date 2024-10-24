@@ -54,7 +54,7 @@ import React, { useState } from 'react';
 const items = [
   {
     id: '1',
-    url: 'https://res.cloudinary.com/dzl9yxixg/image/upload/adrian_ibdgmu.png',
+    url: '/Teacher-Home.svg',
     title: 'Login Page',
     description: 'Teachers - Admins - Principals',
     tags: ['Floral', 'Highlands', 'Wildflowers', 'Colorful', 'Resilience'],
@@ -63,20 +63,13 @@ const items = [
 
   {
     id: '2',
-    url: 'https://res.cloudinary.com/dzl9yxixg/image/upload/person-portrait_pwxyyj.jpg',
+    url: '/Student-Home.svg',
     title: 'Client Feedback Form',
     description: 'Students - Visitors - Parents',
     tags: ['Twilight', 'Peaks', 'Silhouette', 'Evening Sky', 'Peaceful'],
     redirect: '/OfficePage'
   },
-  {
-    id: '3',
-    url: 'https://res.cloudinary.com/dzl9yxixg/image/upload/naymr_bmv5ac.png',
-    title: 'Naymur Rahman',
-    description: 'CTO & Co-Founder',
-    tags: ['Rocky', 'Ridges', 'Contrast', 'Adventure', 'Clouds'],
-    redirect: ''
-  }
+
 ];
 function Home() {
   const router = useRouter();
@@ -86,11 +79,11 @@ function Home() {
     router.push(path);
   };
   return (
-    <div className='bg-black h-screen w-screen'>
+    <div className='bg-black h-auto  md:h-fit w-screen'>
       <div className='group flex max-md:flex-col justify-center gap-2 w-[80%] mx-auto mb-4 '>
         {items.map((item, i: number) => {
           return (
-            <article key={i} className='group/article relative w-full rounded-xl overflow-hidden md:group-hover:[&:not(:hover)]:w-[20%] md:group-focus-within:[&:not(:focus-within):not(:hover)]:w-[20%] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.15)] before:absolute before:inset-x-0 before:bottom-0 before:h-1/3 before:bg-gradient-to-t before:from-black/50 before:transition-opacity md:before:opacity-0 md:hover:before:opacity-100 focus-within:before:opacity-100 after:opacity-0 md:group-hover:[&:not(:hover)]:after:opacity-100 md:group-focus-within:[&:not(:focus-within):not(:hover)]:after:opacity-100 after:absolute after:inset-0 after:bg-white/30 after:backdrop-blur after:rounded-lg after:transition-all focus-within:ring focus-within:ring-indigo-300'>
+            <article key={i} className='group/article cursor-pointer relative w-full rounded-xl overflow-hidden md:group-hover:[&:not(:hover)]:w-[20%] md:group-focus-within:[&:not(:focus-within):not(:hover)]:w-[20%] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.15)] before:absolute before:inset-x-0 before:bottom-0 before:h-1/3 before:bg-gradient-to-t before:from-black/50 before:transition-opacity md:before:opacity-0 md:hover:before:opacity-100 focus-within:before:opacity-100 after:opacity-0 md:group-hover:[&:not(:hover)]:after:opacity-100 md:group-focus-within:[&:not(:focus-within):not(:hover)]:after:opacity-100 after:absolute after:inset-0 after:bg-white/30 after:backdrop-blur after:rounded-lg after:transition-all focus-within:ring focus-within:ring-indigo-300'>
               <div
                 className='absolute inset-0 text-white z-10  p-3 flex flex-col justify-end'
                 onClick={() => handleNavigation(item.redirect)}
@@ -103,10 +96,10 @@ function Home() {
                 </span>
               </div>
               <Image
-                className='object-cover h-72 md:h-full  w-full'
+                className='object-contain h-72 cursor-pointer md:h-[470px]  w-full'
                 src={item?.url}
-                width='960'
-                height='480'
+                width='60'
+                height='180'
                 alt='Image 01'
               />
             </article>
