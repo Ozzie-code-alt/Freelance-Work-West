@@ -30,6 +30,15 @@ import GenderPage from './GenderDevelopment/GenderPage';
 import GuidancePage from './Guidance/GuidancePage';
 import HRMOPage from './HRMO/HRMOPage';
 import MISPage from './MIS/MISPage';
+import NSTPPage from './NSTP/NSTPPage';
+import PhysicalPlantPage from './PhysicalPlant/PhysicalPlantPage';
+import PublicAffairsPage from './PublicAffairs/PublicAffairsPage';
+import QualityAssurancePage from './QualityAssurance/QualityAssurancePage';
+import ResearchPage from './Research/ResearchPage';
+import SOBMPage from './SOBM/SOBMPage';
+import SOICTPage from './SOICT/SOICTPage';
+import SecurityPage from './Security/SecurityPage';
+import StudentAffairsPage from './StudentAffairs/StudentAffairsPage';
 const OfficesContainer = () => {
   // State to store the search query
   const [searchQuery, setSearchQuery] = useState('');
@@ -149,55 +158,55 @@ const data = [
     category: 'NSTP Office',
     title: 'NSTP',
     src: 'https://images.unsplash.com/photo-1673526759321-3b3da765ffd8?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: < />
+    content: <NSTPPage />
   },
   {
     category: 'Physical Plant Office',
     title: 'Physical Plant',
     src: 'https://images.unsplash.com/photo-1706523868343-62ddc796cd15?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: <AdminOfficeandFinancePage />
+    content: <PhysicalPlantPage />
   },
   {
     category: 'Public Affairs and Linkages Office',
     title: 'Public Affairs and Linkages',
     src: 'https://images.unsplash.com/photo-1710162734239-f2368bc6fae1?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: <AdminOfficeandFinancePage />
+    content: <PublicAffairsPage />
   },
   {
     category: 'Quality Assurance Office',
     title: 'Quality Assurance',
     src: 'https://images.unsplash.com/photo-1710166755745-9ac9f1a6ae80?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: <AdminOfficeandFinancePage />
+    content: <QualityAssurancePage />
   },
   {
     category: 'Research Innovation and Extensions Office',
     title: 'Research Innovation and Extensions',
     src: 'https://images.unsplash.com/photo-1710166755745-9ac9f1a6ae80?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: <AdminOfficeandFinancePage />
+    content: <ResearchPage />
   },
   {
     category: 'SOBM Office',
     title: 'SOBM',
     src: 'https://images.unsplash.com/photo-1710166755745-9ac9f1a6ae80?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: <AdminOfficeandFinancePage />
+    content: <SOBMPage />
   },
   {
     category: 'SOICT Office',
     title: 'SOICT',
     src: 'https://images.unsplash.com/photo-1710166755745-9ac9f1a6ae80?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: <AdminOfficeandFinancePage />
+    content: <SOICTPage />
   },
   {
     category: 'Security Office',
     title: 'Security',
     src: 'https://images.unsplash.com/photo-1710166755745-9ac9f1a6ae80?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: <AdminOfficeandFinancePage />
+    content: <SecurityPage />
   },
   {
     category: 'Student Affairs Office',
     title: 'Student Affairs',
     src: 'https://images.unsplash.com/photo-1710166755745-9ac9f1a6ae80?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: <AdminOfficeandFinancePage />
+    content: <StudentAffairsPage />
   },
   {
     category: 'Admin Office and Finance Office',
