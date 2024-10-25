@@ -1,7 +1,6 @@
 'use client';
 
 import { Carousel, Card } from '@/components/ui/apple-carousel';
-import Image from 'next/image';
 import BACFormPage from './BACForm/BACForm';
 import AdminOfficeandFinancePage from './AdminOfficeAndFinance/AdminOfficeandFinancePage';
 import AccountingFormPage from './Accounting/AccountingForm';
@@ -20,6 +19,8 @@ import RIXFormPage from './RIX/RIXForm';
 import SportsOfficeFormPage from './SportsOffice/SportsOfficeForm';
 import SupplyBuildingFormPage from './SupplyBuilding/SupplyBuildingForm';
 import { useState } from 'react';
+import AffairsOfficePage from './AffairsOffice/AffairsOfficePage';
+import AlumniPage from './Alumni/AlumniPage';
 const OfficesContainer = () => {
   // State to store the search query
   const [searchQuery, setSearchQuery] = useState('');
@@ -67,13 +68,13 @@ const data = [
     category: 'Academic Affairs Office',
     title: 'Academic Affairs',
     src: 'https://images.unsplash.com/photo-1557683304-673a23048d34?q=80&w=1700&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: <AdminOfficeandFinancePage />
+    content: <AffairsOfficePage />
   },
   {
     category: 'Alumni Office',
     title: 'Alumni',
     src: 'https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?q=80&w=2029&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: <AdminOfficeandFinancePage />
+    content: <AlumniPage />
   },
   {
     category: 'Awards Committee Office',
