@@ -39,6 +39,7 @@ import SOBMPage from './SOBM/SOBMPage';
 import SOICTPage from './SOICT/SOICTPage';
 import SecurityPage from './Security/SecurityPage';
 import StudentAffairsPage from './StudentAffairs/StudentAffairsPage';
+import GeneralServicesPage from './GeneralServices/GeneralServicesPage';
 const OfficesContainer = () => {
   // State to store the search query
   const [searchQuery, setSearchQuery] = useState('');
@@ -134,7 +135,7 @@ const data = [
     category: 'General Services Office',
     title: 'General Services',
     src: 'https://images.unsplash.com/photo-1635776062043-223faf322554?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: <General />
+    content: <GeneralServicesPage />
   },
   {
     category: 'Guidance Office',
