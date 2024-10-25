@@ -56,9 +56,9 @@ const cc3criteria = [
 import { AnimatePresence, motion } from 'framer-motion';
 
 import { FiAlertCircle } from 'react-icons/fi';
-import { AdminFormModal } from './NSTPFormModal';
+import { NSTPFormModal } from './NSTPFormModal';
 
-export const AdminFormCC = ({ isOpen, setIsOpen, adminProps }: any) => {
+export const NSTPFormCC = ({ isOpen, setIsOpen, adminProps }: any) => {
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -294,7 +294,7 @@ export const AdminFormCC = ({ isOpen, setIsOpen, adminProps }: any) => {
           </motion.div>
         </motion.div>
       )}
-      <AdminFormModal
+      <NSTPFormModal
         isOpen={isFormModalOpen}
         setIsOpen={setIsFormModalOpen}
         adminProps={submissionData}

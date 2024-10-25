@@ -59,7 +59,7 @@ import { FiAlertCircle } from 'react-icons/fi';
 {
   /*Modal Function Here -------------------------------------------- */
 }
-export const AdminFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
+export const NSTPFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
   const { data: session } = useSession();
   const [loading, setLoading] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({

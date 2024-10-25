@@ -34,7 +34,7 @@ import {
   CommandItem
 } from '@/components/ui/command';
 import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons';
-import { AdminFormCC } from './NSTPFormCC';
+import { NSTPFormCC } from './NSTPFormCC';
 const formSchema = z.object({
   date: z.date({
     required_error: 'Please select a date and time',
@@ -61,7 +61,7 @@ const formSchema = z.object({
   })
 });
 
-const AdminOfficeandFinancePage = () => {
+const NSTPPage = () => {
   const [isOpen, setIsOpen] = useState(false);
   // const { data: session } = useSession();
 
@@ -307,9 +307,9 @@ const AdminOfficeandFinancePage = () => {
           <Button type='submit'>Next</Button>
         </form>
       </Form>
-      <AdminFormCC isOpen={isOpen} setIsOpen={setIsOpen} adminProps={submissionData} />
+      <NSTPFormCC isOpen={isOpen} setIsOpen={setIsOpen} adminProps={submissionData} />
     </>
   );
 };
 
-export default AdminOfficeandFinancePage;
+export default NSTPPage;

@@ -21,6 +21,15 @@ import SupplyBuildingFormPage from './SupplyBuilding/SupplyBuildingForm';
 import { useState } from 'react';
 import AffairsOfficePage from './AffairsOffice/AffairsOfficePage';
 import AlumniPage from './Alumni/AlumniPage';
+import AwardsPage from './Awards/AwardsPage';
+import BudgetPage from './Budget/BudgetPage';
+import CampusAdminPage from './CampusAdmin/CampusAdminPage';
+import RiskPage from './RiskManagementOffice/RiskPage';
+import CulturalPage from './Cultural/CulturalPage';
+import GenderPage from './GenderDevelopment/GenderPage';
+import GuidancePage from './Guidance/GuidancePage';
+import HRMOPage from './HRMO/HRMOPage';
+import MISPage from './MIS/MISPage';
 const OfficesContainer = () => {
   // State to store the search query
   const [searchQuery, setSearchQuery] = useState('');
@@ -80,67 +89,67 @@ const data = [
     category: 'Awards Committee Office',
     title: 'Awards Committee',
     src: 'https://images.unsplash.com/photo-1557682268-e3955ed5d83f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDExfHx8ZW58MHx8fHx8',
-    content: <AdminOfficeandFinancePage />
+    content: <AwardsPage />
   },
   {
     category: 'Budget Office',
     title: 'Budget',
     src: 'https://images.unsplash.com/photo-1569982175971-d92b01cf8694?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fHw%3D',
-    content: <AdminOfficeandFinancePage />
+    content: <BudgetPage />
   },
   {
     category: 'Campus Admin Office',
     title: 'Campus Admin',
     src: 'https://images.unsplash.com/photo-1635776062360-af423602aff3?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: <AdminOfficeandFinancePage />
+    content: <CampusAdminPage />
   },
   {
     category: 'Risk Reduction Management Office',
     title: 'Risk Reduction Management',
     src: 'https://images.unsplash.com/photo-1557682268-e3955ed5d83f?q=80&w=1700&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: <AdminOfficeandFinancePage />
+    content: <RiskPage />
   },
   {
     category: 'Cultural Office',
     title: 'Cultural',
     src: 'https://images.unsplash.com/photo-1557682257-2f9c37a3a5f3?q=80&w=1700&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: <AdminOfficeandFinancePage />
+    content: <CulturalPage />
   },
   {
     category: 'Gender and Development Office',
     title: 'Gender and Development',
     src: 'https://images.unsplash.com/photo-1618367588411-d9a90fefa881?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: <AdminOfficeandFinancePage />
+    content: <GenderPage />
   },
   {
     category: 'General Services Office',
     title: 'General Services',
     src: 'https://images.unsplash.com/photo-1635776062043-223faf322554?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: <AdminOfficeandFinancePage />
+    content: <General />
   },
   {
     category: 'Guidance Office',
     title: 'Guidance',
     src: 'https://images.unsplash.com/photo-1569982175971-d92b01cf8694?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: <AdminOfficeandFinancePage />
+    content: <GuidancePage />
   },
   {
     category: 'HRMO Office',
     title: 'HRMO',
     src: 'https://images.unsplash.com/photo-1635776063043-ab23b4c226f6?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: <AdminOfficeandFinancePage />
+    content: <HRMOPage />
   },
   {
     category: 'Management Information System Office',
     title: 'Management Information System',
     src: 'https://images.unsplash.com/photo-1635776064096-4e12cce9ead4?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: <AdminOfficeandFinancePage />
+    content: <MISPage />
   },
   {
     category: 'NSTP Office',
     title: 'NSTP',
     src: 'https://images.unsplash.com/photo-1673526759321-3b3da765ffd8?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: <AdminOfficeandFinancePage />
+    content: < />
   },
   {
     category: 'Physical Plant Office',
