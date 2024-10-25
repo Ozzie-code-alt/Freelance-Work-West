@@ -44,30 +44,151 @@ const OfficesContainer = () => {
   return (
     <div className='w-full border'>
       {/* Search input */}
-      <div className="">
+      <div className=''>
         <input
-          type="text"
-          placeholder="Search for an office..."
+          type='text'
+          placeholder='Search for an office...'
           value={searchQuery}
           onChange={handleSearchChange}
-          className="ml-10 p-2 border rounded-md w-fit"
+          className='ml-10 p-2 border rounded-md w-fit'
         />
       </div>
 
       {/* Carousel with filtered cards */}
-      {cards.length > 0 ? (
-        <Carousel items={cards} />
-      ) : (
-        <p>No offices found for your search.</p>
-      )}
+      {cards.length > 0 ? <Carousel items={cards} /> : <p>No offices found for your search.</p>}
     </div>
   );
 };
 
 export default OfficesContainer;
 
-
 const data = [
+  {
+    category: 'Academic Affairs Office',
+    title: 'Academic Affairs',
+    src: 'https://images.unsplash.com/photo-1557683304-673a23048d34?q=80&w=1700&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    content: <AdminOfficeandFinancePage />
+  },
+  {
+    category: 'Alumni Office',
+    title: 'Alumni',
+    src: 'https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?q=80&w=2029&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    content: <AdminOfficeandFinancePage />
+  },
+  {
+    category: 'Awards Committee Office',
+    title: 'Awards Committee',
+    src: 'https://images.unsplash.com/photo-1557682268-e3955ed5d83f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDExfHx8ZW58MHx8fHx8',
+    content: <AdminOfficeandFinancePage />
+  },
+  {
+    category: 'Budget Office',
+    title: 'Budget',
+    src: 'https://images.unsplash.com/photo-1569982175971-d92b01cf8694?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fHw%3D',
+    content: <AdminOfficeandFinancePage />
+  },
+  {
+    category: 'Campus Admin Office',
+    title: 'Campus Admin',
+    src: 'https://images.unsplash.com/photo-1635776062360-af423602aff3?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    content: <AdminOfficeandFinancePage />
+  },
+  {
+    category: 'Risk Reduction Management Office',
+    title: 'Risk Reduction Management',
+    src: 'https://images.unsplash.com/photo-1557682268-e3955ed5d83f?q=80&w=1700&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    content: <AdminOfficeandFinancePage />
+  },
+  {
+    category: 'Cultural Office',
+    title: 'Cultural',
+    src: 'https://images.unsplash.com/photo-1557682257-2f9c37a3a5f3?q=80&w=1700&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    content: <AdminOfficeandFinancePage />
+  },
+  {
+    category: 'Gender and Development Office',
+    title: 'Gender and Development',
+    src: 'https://images.unsplash.com/photo-1618367588411-d9a90fefa881?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    content: <AdminOfficeandFinancePage />
+  },
+  {
+    category: 'General Services Office',
+    title: 'General Services',
+    src: 'https://images.unsplash.com/photo-1635776062043-223faf322554?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    content: <AdminOfficeandFinancePage />
+  },
+  {
+    category: 'Guidance Office',
+    title: 'Guidance',
+    src: 'https://images.unsplash.com/photo-1569982175971-d92b01cf8694?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    content: <AdminOfficeandFinancePage />
+  },
+  {
+    category: 'HRMO Office',
+    title: 'HRMO',
+    src: 'https://images.unsplash.com/photo-1635776063043-ab23b4c226f6?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    content: <AdminOfficeandFinancePage />
+  },
+  {
+    category: 'Management Information System Office',
+    title: 'Management Information System',
+    src: 'https://images.unsplash.com/photo-1635776064096-4e12cce9ead4?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    content: <AdminOfficeandFinancePage />
+  },
+  {
+    category: 'NSTP Office',
+    title: 'NSTP',
+    src: 'https://images.unsplash.com/photo-1673526759321-3b3da765ffd8?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    content: <AdminOfficeandFinancePage />
+  },
+  {
+    category: 'Physical Plant Office',
+    title: 'Physical Plant',
+    src: 'https://images.unsplash.com/photo-1706523868343-62ddc796cd15?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    content: <AdminOfficeandFinancePage />
+  },
+  {
+    category: 'Public Affairs and Linkages Office',
+    title: 'Public Affairs and Linkages',
+    src: 'https://images.unsplash.com/photo-1710162734239-f2368bc6fae1?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    content: <AdminOfficeandFinancePage />
+  },
+  {
+    category: 'Quality Assurance Office',
+    title: 'Quality Assurance',
+    src: 'https://images.unsplash.com/photo-1710166755745-9ac9f1a6ae80?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    content: <AdminOfficeandFinancePage />
+  },
+  {
+    category: 'Research Innovation and Extensions Office',
+    title: 'Research Innovation and Extensions',
+    src: 'https://images.unsplash.com/photo-1710166755745-9ac9f1a6ae80?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    content: <AdminOfficeandFinancePage />
+  },
+  {
+    category: 'SOBM Office',
+    title: 'SOBM',
+    src: 'https://images.unsplash.com/photo-1710166755745-9ac9f1a6ae80?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    content: <AdminOfficeandFinancePage />
+  },
+  {
+    category: 'SOICT Office',
+    title: 'SOICT',
+    src: 'https://images.unsplash.com/photo-1710166755745-9ac9f1a6ae80?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    content: <AdminOfficeandFinancePage />
+  },
+  {
+    category: 'Security Office',
+    title: 'Security',
+    src: 'https://images.unsplash.com/photo-1710166755745-9ac9f1a6ae80?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    content: <AdminOfficeandFinancePage />
+  },
+  {
+    category: 'Student Affairs Office',
+    title: 'Student Affairs',
+    src: 'https://images.unsplash.com/photo-1710166755745-9ac9f1a6ae80?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    content: <AdminOfficeandFinancePage />
+  },
   {
     category: 'Admin Office and Finance Office',
     title: 'Admin Office and Finance',
@@ -139,30 +260,30 @@ const data = [
     category: 'Planning and Development Unit Office',
     title: 'Planning and Development Unit',
     src: 'https://images.unsplash.com/photo-1635776064096-4e12cce9ead4?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: <PDUFormPage/>
+    content: <PDUFormPage />
   },
   {
     category: 'Records and Management Unit Office',
     title: 'Records and Management Unit',
     src: 'https://images.unsplash.com/photo-1673526759321-3b3da765ffd8?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: <RMUFormPage/>
+    content: <RMUFormPage />
   },
   {
     category: 'RIX Office',
     title: 'RIX',
     src: 'https://images.unsplash.com/photo-1706523868343-62ddc796cd15?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: <RIXFormPage/>
+    content: <RIXFormPage />
   },
   {
     category: 'Sports Office ',
     title: 'Sports Office',
     src: 'https://images.unsplash.com/photo-1710162734239-f2368bc6fae1?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: <SportsOfficeFormPage/>
+    content: <SportsOfficeFormPage />
   },
   {
     category: 'Supply Building 1 Office',
     title: 'Supply Building 1',
     src: 'https://images.unsplash.com/photo-1710166755745-9ac9f1a6ae80?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    content: <SupplyBuildingFormPage/>
+    content: <SupplyBuildingFormPage />
   }
 ];
