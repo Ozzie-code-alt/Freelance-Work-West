@@ -6,9 +6,13 @@ This Program was built for Students at West Visayas State University Pototan Cam
 
 ## Tech Stack
 
-**Client:**  NextJS, TailwindCSS, Shadcn
+**Client:**  NextJS, TailwindCSS, Shadcn, Clx, Radix, Framer
 
-**Server:** Node, Express, Mongoose, MongoDB
+**Server:** Node, Express, Mongoose, MongoDB, Compass
+
+**Auth** Next Auth, JWT
+
+**Validations:** zod
 
 
 
@@ -34,4 +38,8 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+
+This is route Based soo update and file name for office page:
+`http://localhost:3000/BAC/BACPersonalForm`
 
