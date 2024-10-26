@@ -89,12 +89,6 @@ const BACFormPage = () => {
     ...form.getValues(),
     date: grabDate
   };
-  //popover Content
-  // const languages = [
-  //   { label: 'Student / Estudyante', value: 'Student' },
-  //   { label: 'Faculty / Titser', value: 'Faculty' },
-  //   { label: 'Staff / Kawani Na Di Nagtuturo', value: 'Staff' }
-  // ] as const;
 
   const externalClientOptions = [
     { label: 'General Public / Pribadong Indibidwal', value: 'General Public' },
@@ -202,11 +196,7 @@ const BACFormPage = () => {
                 <FormLabel className='text-2xl'>Age</FormLabel>
 
                 <FormControl>
-                  <Input
-                    placeholder='Age'
-                    {...field}
-                    className='h-[60px] w-[300px] md:w-full'
-                  />
+                  <Input placeholder='Age' {...field} className='h-[60px] w-[300px] md:w-full' />
                 </FormControl>
 
                 <FormDescription>How old are you ?</FormDescription>
@@ -313,7 +303,6 @@ const BACFormPage = () => {
         </form>
       </Form>
       <BACFormCC isOpen={isOpen} setIsOpen={setIsOpen} adminProps={submissionData} />
-    
     </>
   );
 };
