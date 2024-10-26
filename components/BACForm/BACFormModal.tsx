@@ -28,7 +28,6 @@ import {
 
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { useSession } from 'next-auth/react';
-import sendEmail from '@/lib/emailjs';
 import { useRouter } from 'next/navigation';
 
 const formSchema = z.object({
@@ -141,7 +140,7 @@ export const BACFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={() => setIsOpen(false)}
-          className='bg-slate-900/20 backdrop-blur p-8 fixed inset-0 z-50 grid place-items-center  cursor-pointer'
+          className='bg-slate-900/20 backdrop-blur p-8 fixed overflow-y-scroll inset-0 z-50 grid place-items-center  cursor-pointer'
         >
           <motion.div
             initial={{ scale: 0, rotate: '12.5deg' }}
