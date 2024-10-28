@@ -28,7 +28,6 @@ import {
 
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { useSession } from 'next-auth/react';
-import sendEmail from '@/lib/emailjs';
 import { useRouter } from 'next/navigation';
 
 const formSchema = z.object({
@@ -107,7 +106,7 @@ export const IndustrialTechFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
     console.log('this is the final Submitted Values', submittedValues);
 
     try {
-      const res = await fetch('/api/industrialTech', {
+      const res = await fetch('/api/bac', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -123,15 +122,6 @@ export const IndustrialTechFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
         title: 'Up and Ready to Go !!',
         variant: 'success',
         description: 'Form Successfully Sent'
-      });
-
-      sendEmail({
-        to_name: session?.user?.name || 'User',
-        contact: 'contact Value Here',
-        user_email: session?.user?.email || 'justinsantos731@gmail.com',
-        type: 'Form Type Here',
-        subject: 'Wedding Inquiry Here',
-        message: 'it is DONE'
       });
 
       console.log(data);
@@ -150,7 +140,7 @@ export const IndustrialTechFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={() => setIsOpen(false)}
-          className='bg-slate-900/20 backdrop-blur p-8 fixed inset-0 z-50 grid place-items-center  cursor-pointer'
+          className='bg-slate-900/20 backdrop-blur p-8 fixed overflow-y-scroll inset-0 z-50 grid place-items-center  cursor-pointer'
         >
           <motion.div
             initial={{ scale: 0, rotate: '12.5deg' }}
@@ -196,7 +186,7 @@ export const IndustrialTechFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                         <PopoverContent className='w-[200px] p-0'>
                           <Command>
                             <CommandInput placeholder='Search framework...' className='h-9' />
-                            <CommandEmpty>No framework found.</CommandEmpty>
+                            <CommandEmpty>Input not found</CommandEmpty>
                             <CommandGroup>
                               {criteria.map((language) => (
                                 <CommandItem
@@ -221,7 +211,7 @@ export const IndustrialTechFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                       </Popover>
                       <FormDescription>
                         <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
+                          Kindly Choose to the best of your ability please
                         </p>
                       </FormDescription>
                       <FormMessage />
@@ -258,7 +248,7 @@ export const IndustrialTechFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                         <PopoverContent className='w-[200px] p-0'>
                           <Command>
                             <CommandInput placeholder='Search framework...' className='h-9' />
-                            <CommandEmpty>No framework found.</CommandEmpty>
+                            <CommandEmpty>Input not found</CommandEmpty>
                             <CommandGroup>
                               {criteria.map((language) => (
                                 <CommandItem
@@ -283,7 +273,7 @@ export const IndustrialTechFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                       </Popover>
                       <FormDescription>
                         <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
+                          Kindly Choose to the best of your ability please
                         </p>
                       </FormDescription>
                       <FormMessage />
@@ -320,7 +310,7 @@ export const IndustrialTechFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                         <PopoverContent className='w-[200px] p-0'>
                           <Command>
                             <CommandInput placeholder='Search framework...' className='h-9' />
-                            <CommandEmpty>No framework found.</CommandEmpty>
+                            <CommandEmpty>Input not found</CommandEmpty>
                             <CommandGroup>
                               {criteria.map((language) => (
                                 <CommandItem
@@ -345,7 +335,7 @@ export const IndustrialTechFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                       </Popover>
                       <FormDescription>
                         <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
+                          Kindly Choose to the best of your ability please
                         </p>
                       </FormDescription>
                       <FormMessage />
@@ -381,7 +371,7 @@ export const IndustrialTechFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                         <PopoverContent className='w-[200px] p-0'>
                           <Command>
                             <CommandInput placeholder='Search framework...' className='h-9' />
-                            <CommandEmpty>No framework found.</CommandEmpty>
+                            <CommandEmpty>Input not found</CommandEmpty>
                             <CommandGroup>
                               {criteria.map((language) => (
                                 <CommandItem
@@ -406,7 +396,7 @@ export const IndustrialTechFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                       </Popover>
                       <FormDescription>
                         <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
+                          Kindly Choose to the best of your ability please
                         </p>
                       </FormDescription>
                       <FormMessage />
@@ -443,7 +433,7 @@ export const IndustrialTechFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                         <PopoverContent className='w-[200px] p-0'>
                           <Command>
                             <CommandInput placeholder='Search framework...' className='h-9' />
-                            <CommandEmpty>No framework found.</CommandEmpty>
+                            <CommandEmpty>Input not found</CommandEmpty>
                             <CommandGroup>
                               {criteria.map((language) => (
                                 <CommandItem
@@ -468,7 +458,7 @@ export const IndustrialTechFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                       </Popover>
                       <FormDescription>
                         <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
+                          Kindly Choose to the best of your ability please
                         </p>
                       </FormDescription>
                       <FormMessage />
@@ -504,7 +494,7 @@ export const IndustrialTechFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                         <PopoverContent className='w-[200px] p-0'>
                           <Command>
                             <CommandInput placeholder='Search framework...' className='h-9' />
-                            <CommandEmpty>No framework found.</CommandEmpty>
+                            <CommandEmpty>Input not found</CommandEmpty>
                             <CommandGroup>
                               {criteria.map((language) => (
                                 <CommandItem
@@ -529,7 +519,7 @@ export const IndustrialTechFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                       </Popover>
                       <FormDescription>
                         <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
+                          Kindly Choose to the best of your ability please
                         </p>
                       </FormDescription>
                       <FormMessage />
@@ -565,7 +555,7 @@ export const IndustrialTechFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                         <PopoverContent className='w-[200px] p-0'>
                           <Command>
                             <CommandInput placeholder='Search framework...' className='h-9' />
-                            <CommandEmpty>No framework found.</CommandEmpty>
+                            <CommandEmpty>Input not found</CommandEmpty>
                             <CommandGroup>
                               {criteria.map((language) => (
                                 <CommandItem
@@ -590,7 +580,7 @@ export const IndustrialTechFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                       </Popover>
                       <FormDescription>
                         <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
+                          Kindly Choose to the best of your ability please
                         </p>
                       </FormDescription>
                       <FormMessage />
@@ -626,7 +616,7 @@ export const IndustrialTechFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                         <PopoverContent className='w-[200px] p-0'>
                           <Command>
                             <CommandInput placeholder='Search framework...' className='h-9' />
-                            <CommandEmpty>No framework found.</CommandEmpty>
+                            <CommandEmpty>Input not found</CommandEmpty>
                             <CommandGroup>
                               {criteria.map((language) => (
                                 <CommandItem
@@ -651,7 +641,7 @@ export const IndustrialTechFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                       </Popover>
                       <FormDescription>
                         <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
+                          Kindly Choose to the best of your ability please
                         </p>
                       </FormDescription>
                       <FormMessage />
@@ -687,7 +677,7 @@ export const IndustrialTechFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                         <PopoverContent className='w-[200px] p-0'>
                           <Command>
                             <CommandInput placeholder='Search framework...' className='h-9' />
-                            <CommandEmpty>No framework found.</CommandEmpty>
+                            <CommandEmpty>Input not found</CommandEmpty>
                             <CommandGroup>
                               {criteria.map((language) => (
                                 <CommandItem
@@ -729,7 +719,7 @@ export const IndustrialTechFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                               <PopoverContent className='w-[200px] p-0'>
                                 <Command>
                                   <CommandInput placeholder='Search framework...' className='h-9' />
-                                  <CommandEmpty>No framework found.</CommandEmpty>
+                                  <CommandEmpty>Input not found</CommandEmpty>
                                   <CommandGroup>
                                     {criteria.map((language) => (
                                       <CommandItem
@@ -760,7 +750,7 @@ export const IndustrialTechFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                       <FormDescription>
                         {' '}
                         <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
+                          Kindly Choose to the best of your ability please
                         </p>
                       </FormDescription>
                       <FormMessage />
