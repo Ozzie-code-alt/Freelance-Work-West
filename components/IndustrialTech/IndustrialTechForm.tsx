@@ -35,7 +35,7 @@ import {
   CommandItem
 } from '@/components/ui/command';
 import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons';
-import {IndustrialTechFormCC } from './IndustrialTechFormCC';
+import { IndustrialTechFormCC } from './IndustrialTechFormCC';
 const formSchema = z.object({
   date: z.date({
     required_error: 'Please select a date and time',
@@ -89,12 +89,6 @@ const IndustrialTechFormPage = () => {
     ...form.getValues(),
     date: grabDate
   };
-  //popover Content
-  // const languages = [
-  //   { label: 'Student / Estudyante', value: 'Student' },
-  //   { label: 'Faculty / Titser', value: 'Faculty' },
-  //   { label: 'Staff / Kawani Na Di Nagtuturo', value: 'Staff' }
-  // ] as const;
 
   const externalClientOptions = [
     { label: 'General Public / Pribadong Indibidwal', value: 'General Public' },
@@ -202,11 +196,7 @@ const IndustrialTechFormPage = () => {
                 <FormLabel className='text-2xl'>Age</FormLabel>
 
                 <FormControl>
-                  <Input
-                    placeholder='Age'
-                    {...field}
-                    className='h-[60px] w-[300px] md:w-full'
-                  />
+                  <Input placeholder='Age' {...field} className='h-[60px] w-[300px] md:w-full' />
                 </FormControl>
 
                 <FormDescription>How old are you ?</FormDescription>
@@ -313,7 +303,6 @@ const IndustrialTechFormPage = () => {
         </form>
       </Form>
       <IndustrialTechFormCC isOpen={isOpen} setIsOpen={setIsOpen} adminProps={submissionData} />
-    
     </>
   );
 };
