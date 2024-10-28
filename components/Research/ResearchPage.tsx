@@ -25,6 +25,7 @@ import {
 } from '@/components/ui/select';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+// import { useSession } from "next-auth/react";
 import { useState } from 'react';
 import {
   Command,
@@ -61,7 +62,7 @@ const formSchema = z.object({
   })
 });
 
-const ResearchPage = () => {
+const ResearchFormPage = () => {
   const [isOpen, setIsOpen] = useState(false);
   // const { data: session } = useSession();
 
@@ -88,12 +89,6 @@ const ResearchPage = () => {
     ...form.getValues(),
     date: grabDate
   };
-  //popover Content
-  // const languages = [
-  //   { label: 'Student / Estudyante', value: 'Student' },
-  //   { label: 'Faculty / Titser', value: 'Faculty' },
-  //   { label: 'Staff / Kawani Na Di Nagtuturo', value: 'Staff' }
-  // ] as const;
 
   const externalClientOptions = [
     { label: 'General Public / Pribadong Indibidwal', value: 'General Public' },
@@ -312,4 +307,4 @@ const ResearchPage = () => {
   );
 };
 
-export default ResearchPage;
+export default ResearchFormPage;
