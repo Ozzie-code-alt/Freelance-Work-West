@@ -72,5 +72,5 @@ const campusAdminSchema = new Schema(
   { timestamps: true }
 );
 
-const campusAdmin = models.campusAdmin || mongoose.model('campusAdmin', campusAdminSchema);
-export default campusAdmin;
+const CampusAdmin = models.campusAdmin || mongoose.model('campusAdmin', campusAdminSchema);
+export default CampusAdmin;
