@@ -8,7 +8,7 @@ export async function GET(req: NextApiRequest, { params }: any) {
   await connectMongo();
   const guidanceResponse = await Guidance.findById({ _id: id });
 
-  const guidance = {
+  const guidanceInfo = {
     userName: guidanceResponse.userName,
     sex: guidanceResponse.sex,
     cc1: guidanceResponse.cc1,
@@ -25,5 +25,5 @@ export async function GET(req: NextApiRequest, { params }: any) {
     sqd8: guidanceResponse.sqd8,
     mean: guidanceResponse.mean
   };
-  return NextResponse.json({ guidance }, { status: 200 });
+  return NextResponse.json({ guidanceInfo }, { status: 200 });
 }
