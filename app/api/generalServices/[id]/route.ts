@@ -1,29 +1,29 @@
 import { connectMongo } from '@/lib/connection';
-import BAC from '@/models/bac';
+import GeneralServices from '@/models/generalServices';
 import { NextApiRequest } from 'next';
 import { NextResponse } from 'next/server';
 
 export async function GET(req: NextApiRequest, { params }: any) {
   const { id } = params; //we grab id from link - desctructure
   await connectMongo();
-  const bacInfoResponse = await BAC.findById({ _id: id });
+  const generalServicesInfoResponse = await GeneralServices.findById({ _id: id });
 
-  const bacInfo = {
-    userName: bacInfoResponse.userName,
-    sex: bacInfoResponse.sex,
-    cc1: bacInfoResponse.cc1,
-    cc2: bacInfoResponse.cc2,
-    cc3: bacInfoResponse.cc3,
-    sqd0: bacInfoResponse.sqd0,
-    sqd1: bacInfoResponse.sqd1,
-    sqd2: bacInfoResponse.sqd2,
-    sqd3: bacInfoResponse.sqd3,
-    sqd4: bacInfoResponse.sqd4,
-    sqd5: bacInfoResponse.sqd5,
-    sqd6: bacInfoResponse.sqd6,
-    sqd7: bacInfoResponse.sqd7,
-    sqd8: bacInfoResponse.sqd8,
-    mean: bacInfoResponse.mean
+  const generalServicesInfo = {
+    userName: generalServicesInfoResponse.userName,
+    sex: generalServicesInfoResponse.sex,
+    cc1: generalServicesInfoResponse.cc1,
+    cc2: generalServicesInfoResponse.cc2,
+    cc3: generalServicesInfoResponse.cc3,
+    sqd0: generalServicesInfoResponse.sqd0,
+    sqd1: generalServicesInfoResponse.sqd1,
+    sqd2: generalServicesInfoResponse.sqd2,
+    sqd3: generalServicesInfoResponse.sqd3,
+    sqd4: generalServicesInfoResponse.sqd4,
+    sqd5: generalServicesInfoResponse.sqd5,
+    sqd6: generalServicesInfoResponse.sqd6,
+    sqd7: generalServicesInfoResponse.sqd7,
+    sqd8: generalServicesInfoResponse.sqd8,
+    mean: generalServicesInfoResponse.mean
   };
-  return NextResponse.json({ bacInfo }, { status: 200 });
+  return NextResponse.json({ generalServicesInfo }, { status: 200 });
 }
