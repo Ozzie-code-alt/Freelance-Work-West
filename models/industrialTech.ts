@@ -71,6 +71,6 @@ const industrialTechSchema = new Schema(
   { timestamps: true }
 );
 
-const industrialTech =
+const IndustrialTech =
   models.industrialTech || mongoose.model('industrialTech', industrialTechSchema);
-export default industrialTech;
+export default IndustrialTech;
