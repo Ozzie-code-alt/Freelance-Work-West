@@ -15,7 +15,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-import { PhysicalPlantModalOpenMore } from '@/components/PhysicalPlant/OpenMorePhysicalPlant';
+import { PublicAffairsModalOpenMore } from '@/components/PublicAffairs/OpenMorePublicAffairs';
 import { Row } from '@tanstack/react-table'; // Import the Row type from @tanstack/react-table
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -78,12 +78,12 @@ const ActionsCell: React.FC<ActionsCellProps> = ({ row }) => {
         <DropdownMenuItem>View customer</DropdownMenuItem>
         <DropdownMenuItem onClick={() => setIsOpen(true)}>View More</DropdownMenuItem>
       </DropdownMenuContent>
-      <PhysicalPlantModalOpenMore isOpen={isOpen} setIsOpen={setIsOpen} formIDValue={form._id} />
+      <PublicAffairsModalOpenMore isOpen={isOpen} setIsOpen={setIsOpen} formIDValue={form._id} />
     </DropdownMenu>
   );
 };
 
-export const PhysicalPLantcolumns: ColumnDef<FormData>[] = [
+export const PublicAffairscolumns: ColumnDef<FormData>[] = [
   {
     accessorKey: '_id',
     header: 'ID'
