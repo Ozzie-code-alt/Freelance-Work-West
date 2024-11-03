@@ -1,7 +1,8 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { DataTable } from '@/components/ui/data-table';
-import { BACcolumns } from '@/app/payments/BACColumns';
+// import { BACcolumns } from '@/app/payments/BACColumns';
+import { Alumnicolumns } from '@/app/payments/AlumniColumns';
 import GradualSpacing from '@/components/ui/gradual-spacing';
 import { HoverImageLinksData } from '@/components/ui/HoverLinkComponent';
 
@@ -11,23 +12,23 @@ export default function DemoPage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch('/api/bac');
+        const res = await fetch('/api/alumni');
         if (!res.ok) {
           throw new Error(`API call failed with status: ${res.status} ${res.statusText}`);
         }
         const jsonResponse = await res.json();
         console.log('Raw JSON Response:', jsonResponse);
 
-        if (!jsonResponse.hasOwnProperty('bacs')) {
+        if (!jsonResponse.hasOwnProperty('alumnis')) {
           throw new Error('Expected property bac not found in the response');
         }
 
-        const { bacs } = jsonResponse;
-        console.log('This is BAC Info Admin', bacs);
+        const { alumnis } = jsonResponse;
+        console.log('This is BAC Info Admin', alumnis);
 
-        console.log('this is new data', bacs);
+        console.log('this is new data', alumnis);
 
-        setData(bacs);
+        setData(alumnis);
       } catch (error) {
         console.error('Failed to fetch data:', error);
       }
@@ -49,7 +50,7 @@ export default function DemoPage() {
       </div>
 
       <div className=''>
-        <DataTable columns={BACcolumns} data={data} />
+        <DataTable columns={Alumnicolumns} data={data} />
       </div>
 
       <div className='w-full    '>
