@@ -1,7 +1,9 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { DataTable } from '@/components/ui/data-table';
+
 import { AffairsOfficecolumns } from '@/app/payments/AffairsOfficeColumns';
+
 import GradualSpacing from '@/components/ui/gradual-spacing';
 import { HoverImageLinksData } from '@/components/ui/HoverLinkComponent';
 
@@ -47,7 +49,9 @@ export default function DemoPage() {
       </div>
 
       <div className=''>
+
         <DataTable columns={AffairsOfficecolumns} data={data} />
+
       </div>
 
       <div className='w-full    '>
