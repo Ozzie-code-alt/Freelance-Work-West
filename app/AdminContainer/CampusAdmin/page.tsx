@@ -1,9 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { DataTable } from '@/components/ui/data-table';
-
-import { AffairsOfficecolumns } from '@/app/payments/AffairsOfficeColumns';
-
+import { CampusAdmincolumns } from '@/app/payments/CampusAdmin';
 import GradualSpacing from '@/components/ui/gradual-spacing';
 import { HoverImageLinksData } from '@/components/ui/HoverLinkComponent';
 
@@ -13,21 +11,23 @@ export default function DemoPage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch('/api/affairsOffice');
+        const res = await fetch('/api/campusAdmin');
         if (!res.ok) {
           throw new Error(`API call failed with status: ${res.status} ${res.statusText}`);
         }
         const jsonResponse = await res.json();
         console.log('Raw JSON Response:', jsonResponse);
 
-        if (!jsonResponse.hasOwnProperty('affairsOffices')) {
-          throw new Error('Expected property affairsOffice not found in the response');
+        if (!jsonResponse.hasOwnProperty('campusAdmins')) {
+          throw new Error('Expected property campusAdmin not found in the response');
         }
 
-        const { affairsOffices } = jsonResponse;
-        console.log('This is Afafirs Info ', affairsOffices);
+        const { campusAdmins } = jsonResponse;
+        console.log('This is BAC Info Admin', campusAdmins);
 
-        setData(affairsOffices);
+        console.log('this is new data', campusAdmins);
+
+        setData(campusAdmins);
       } catch (error) {
         console.error('Failed to fetch data:', error);
       }
@@ -49,9 +49,7 @@ export default function DemoPage() {
       </div>
 
       <div className=''>
-
-        <DataTable columns={AffairsOfficecolumns} data={data} />
-
+        <DataTable columns={CampusAdmincolumns} data={data} />
       </div>
 
       <div className='w-full    '>
