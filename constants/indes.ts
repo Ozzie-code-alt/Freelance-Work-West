@@ -169,7 +169,26 @@ export const cards = [
     route: '/AdminContainer/AdministrationOfficesandFinanceAdmin',
     src: '',
     bg: 'bg-gradient-to-r from-indigo-400 to-cyan-400',
-
+  },
+  {
+    title: 'Accounting',
+    route: '/AdminContainer/AccountingAdmin',
+    src: 'https://images.unsplash.com/photo-1505142468610-359e7d316be0?q=80&w=3070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    title: 'Affairs Office',
+    route: '/AdminContainer/AffairsOffice',
+    src: '',
+  },
+  {
+    title: 'Alumni',
+    route: '/AdminContainer/Alumni',
+    src: '',
+  },
+  {
+    title: 'Awards',
+    route: '/AdminContainer/AwardsAdmin',
+    src: '',
   },
   {
     title: 'BAC',
@@ -177,8 +196,58 @@ export const cards = [
     src: '/Offices/BAC.JPG'
   },
   {
-    title: 'Accounting',
-    route: '/AdminContainer/AccountingAdmin',
+    title: 'Budget',
+    route: '/AdminContainer/BudgetAdmin',
+    src: '',
+  },
+  {
+    title: 'Campus',
+    route: '/AdminContainer/CampusAdmin',
+    src: '',
+  },
+  {
+    title: 'Cashier',
+    route: '/AdminContainer/CashierAdmin',
+    src: '',
+  },
+  {
+    title: 'Cultural',
+    route: '/AdminContainer/CulturalAdmin',
+    src: '',
+  },
+  {
+    title: 'Education',
+    route: '/AdminContainer/EducAdmin',
+    src: '',
+  },
+  {
+    title: 'Gender Development',
+    route: '/AdminContainer/GenderDevelopmentAdmin',
+    src: '',
+  },
+  {
+    title: 'General Services',
+    route: '/AdminContainer/GeneralServicesAdmin',
+    src: '',
+  },
+  {
+    title: 'Guidance',
+    route: '/AdminContainer/GuidanceAdmin',
+    src: '',
+  },
+  {
+    title: 'HRMO',
+    route: '/AdminContainer/HRMOAdmin',
+    src: '',
+  },
+  {
+    title: 'ICT',
+    route: '/AdminContainer/ICTAdmin',
+    src: 'https://images.unsplash.com/photo-1600271772470-bd22a42787b3?q=80&w=3072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    title: 'Industrial Tech',
+    route: '/AdminContainer/IndustrialtechAdmin',
     src: 'https://images.unsplash.com/photo-1505142468610-359e7d316be0?q=80&w=3070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
@@ -192,34 +261,24 @@ export const cards = [
     src: '/Offices/Medical.JPG'
   },
   {
+    title: 'MIS',
+    route: '/AdminContainer/MISAdmin',
+    src: '',
+  },
+  {
+    title: 'NSTP',
+    route: '/AdminContainer/NSTPAdmin',
+    src: '',
+  },
+  {
     title: 'OD Education',
     route: '/AdminContainer/ODEducAdmin',
     src: 'https://images.unsplash.com/photo-1518710843675-2540dd79065c?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
-    title: 'OD ICT',
-    route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm',
-    src: 'https://images.unsplash.com/photo-1600271772470-bd22a42787b3?q=80&w=3072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-  },
-  {
-    title: 'OD Industrial Tech',
-    route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm',
-    src: 'https://images.unsplash.com/photo-1505142468610-359e7d316be0?q=80&w=3070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-  },
-  {
-    title: 'OD SBM',
-    route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm',
-    src: 'https://images.unsplash.com/photo-1486915309851-b0cc1f8a0084?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-  },
-  {
-    title: 'Office of Registrar',
-    route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm',
-    src: '/Offices/Registrar.JPG'
-  },
-  {
     title: 'OSA',
-    route: 'OSA/OSAPersonalForm',
-    src: 'https://images.unsplash.com/photo-1507041957456-9c397ce39c97?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    route: '/AdminContainer/OSAAdmin',
+    src: 'https://images.unsplash.com/photo-1507041957456-9c397ce39c97?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx'
   },
   {
     title: 'Planning and Development Unit',
@@ -227,23 +286,68 @@ export const cards = [
     src: '/Offices/PDU.JPG'
   },
   {
-    title: 'Records and Management Unit',
-    route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm',
-    src: '/Offices/RMU.JPG'
+    title: 'Physical Plant',
+    route: '/AdminContainer/PhysicalPlantAdmin',
+    src: '',
+  },
+  {
+    title: 'Public Affairs',
+    route: '/AdminContainer/PublicAffairsAdmin',
+    src: '',
+  },
+  {
+    title: 'Quality Assurance',
+    route: '/AdminContainer/QualityAssuranceAdmin',
+    src: '',
+  },
+  {
+    title: 'Records Office',
+    route: '/AdminContainer/RecordsOfficeAdmin',
+    src: '',
+  },
+  {
+    title: 'Registrar',
+    route: '/AdminContainer/RegistrarAdmin',
+    src: '/Offices/Registrar.JPG'
+  },
+  {
+    title: 'Research',
+    route: '/AdminContainer/ResearchAdmin',
+    src: '',
   },
   {
     title: 'RIX',
-    route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm',
+    route: '/AdminContainer/RIXAdmin',
     src: 'https://images.unsplash.com/photo-1505142468610-359e7d316be0?q=80&w=3070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
-    title: 'Sports Office',
-    route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm',
+    title: 'RMU',
+    route: '/AdminContainer/RMUAdmin',
+    src: '/Offices/RMU.JPG'
+  },
+  {
+    title: 'SBM',
+    route: '/AdminContainer/SBMAdmin',
     src: 'https://images.unsplash.com/photo-1486915309851-b0cc1f8a0084?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
-    title: 'Supply Building 1',
-    route: '/AdministrationOfficeandFinance/AdministrationOfficePersonalForm',
-    src: 'https://images.unsplash.com/photo-1507041957456-9c397ce39c97?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    title: 'Security',
+    route: '/AdminContainer/SecurityAdmin',
+    src: '',
+  },
+  {
+    title: 'SO Business Management',
+    route: '/AdminContainer/SOBMAdmin',
+    src: '',
+  },
+  {
+    title: 'SO ICT',
+    route: '/AdminContainer/SOICTAdmin',
+    src: '',
+  },
+  {
+    title: 'Sports Office',
+    route: '/AdminContainer/sportsOfficeAdmin',
+    src: 'https://images.unsplash.com/photo-1486915309851-b0cc1f8a0084?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   }
 ];
