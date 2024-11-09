@@ -106,7 +106,7 @@ export const ICTFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
     console.log('this is the final Submitted Values', submittedValues);
 
     try {
-      const res = await fetch('/api/bac', {
+      const res = await fetch('/api/ict', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
