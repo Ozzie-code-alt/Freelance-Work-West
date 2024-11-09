@@ -106,7 +106,7 @@ export const HRMOFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
     console.log('this is the final Submitted Values', submittedValues);
 
     try {
-      const res = await fetch('/api/bac', {
+      const res = await fetch('/api/hrmo', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

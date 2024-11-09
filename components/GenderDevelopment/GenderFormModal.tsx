@@ -106,7 +106,7 @@ export const GenderDevelopmentFormModal = ({ isOpen, setIsOpen, adminProps }: an
     console.log('this is the final Submitted Values', submittedValues);
 
     try {
-      const res = await fetch('/api/bac', {
+      const res = await fetch('/api/genderDevelopment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
