@@ -6,7 +6,7 @@ import * as z from 'zod';
 import { MoreHorizontal } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowUpDown } from "lucide-react"
+import { ArrowUpDown } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -25,25 +25,25 @@ const formSchema = z.object({
     invalid_type_error: "That's not a date!"
   }),
   userName: z.string().min(2, {
-    message: 'Office Visited must be at least 2 characters.'
+    message: 'Office Visited must be at least filled in.'
   }),
   officeVisited: z.string().min(2, {
-    message: 'Office Visited must be at least 2 characters.'
+    message: 'Office Visited must be at least filled in.'
   }),
   servicesReceived: z.string().min(2, {
-    message: 'Services Received must be at least 2 characters.'
+    message: 'Services Received must be at least filled in.'
   }),
   age: z.string().min(2, {
-    message: 'Internal Client must be at least 2 characters.'
+    message: 'Internal Client must be at least filled in.'
   }),
   clientType: z.string().min(2, {
-    message: 'External Client must be at least 2 characters.'
+    message: 'External Client must be at least filled in.'
   }),
   sex: z.string().min(2, {
-    message: 'Sex must be at least 2 characters.'
+    message: 'Sex must be at least filled in.'
   }),
   pointOfOrigin: z.string().min(2, {
-    message: 'Point Of Origin must be at least 2 characters.'
+    message: 'Point Of Origin must be at least filled in.'
   })
 });
 
@@ -93,14 +93,14 @@ export const HRMOcolumns: ColumnDef<FormData>[] = [
     header: ({ column }) => {
       return (
         <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          variant='ghost'
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
         >
           Date
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <ArrowUpDown className='ml-2 h-4 w-4' />
         </Button>
-      )
-    },
+      );
+    }
   },
   {
     accessorKey: 'officeVisited',
@@ -115,14 +115,14 @@ export const HRMOcolumns: ColumnDef<FormData>[] = [
     header: ({ column }) => {
       return (
         <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          variant='ghost'
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
         >
           Age
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <ArrowUpDown className='ml-2 h-4 w-4' />
         </Button>
-      )
-    },
+      );
+    }
   },
   {
     accessorKey: 'clientType',

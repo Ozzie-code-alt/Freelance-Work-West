@@ -42,22 +42,22 @@ const formSchema = z.object({
   }),
   userName: z.string().optional(),
   officeVisited: z.string().min(2, {
-    message: 'Office Visited must be at least 2 characters.'
+    message: 'Office Visited must be at least filled in.'
   }),
   servicesReceived: z.string().min(2, {
-    message: 'Services Received must be at least 2 characters.'
+    message: 'Services Received must be at least filled in.'
   }),
   age: z.string().min(2, {
-    message: 'Internal Client must be at least 2 characters.'
+    message: 'Internal Client must be at least filled in.'
   }),
   clientType: z.string().min(2, {
-    message: 'External Client must be at least 2 characters.'
+    message: 'External Client must be at least filled in.'
   }),
   sex: z.string().min(2, {
-    message: 'Sex must be at least 2 characters.'
+    message: 'Sex must be at least filled in.'
   }),
   pointOfOrigin: z.string().min(2, {
-    message: 'Point Of Origin must be at least 2 characters.'
+    message: 'Point Of Origin must be at least filled in.'
   })
 });
 
@@ -201,11 +201,7 @@ const RMUFormPage = () => {
                 <FormLabel className='text-2xl'>Age</FormLabel>
 
                 <FormControl>
-                  <Input
-                    placeholder='Age'
-                    {...field}
-                    className='h-[60px] w-[300px] md:w-full'
-                  />
+                  <Input placeholder='Age' {...field} className='h-[60px] w-[300px] md:w-full' />
                 </FormControl>
 
                 <FormDescription>How old are you ?</FormDescription>
@@ -312,7 +308,6 @@ const RMUFormPage = () => {
         </form>
       </Form>
       <RMUFormCC isOpen={isOpen} setIsOpen={setIsOpen} adminProps={submissionData} />
-    
     </>
   );
 };
