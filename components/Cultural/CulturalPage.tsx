@@ -69,7 +69,7 @@ const CulturalFormPage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      officeVisited: '',
+      officeVisited: 'Cultural Office',
       userName: '',
       servicesReceived: '',
       age: '',

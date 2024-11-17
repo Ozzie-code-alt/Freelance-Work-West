@@ -69,7 +69,7 @@ const IndustrialTechFormPage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      officeVisited: '',
+      officeVisited: 'Industrial Technology Office',
       userName: '',
       servicesReceived: '',
       age: '',

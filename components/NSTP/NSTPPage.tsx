@@ -69,7 +69,7 @@ const NSTPFormPage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      officeVisited: '',
+      officeVisited: 'NSTP Office',
       userName: '',
       servicesReceived: '',
       age: '',

@@ -69,7 +69,7 @@ const SOBMFormPage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      officeVisited: '',
+      officeVisited: 'SOBM Office',
       userName: '',
       servicesReceived: '',
       age: '',

@@ -69,7 +69,7 @@ const LibraryFormPage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      officeVisited: '',
+      officeVisited: 'Library Office',
       userName: '',
       servicesReceived: '',
       age: '',

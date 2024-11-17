@@ -69,7 +69,7 @@ const SportsOfficeFormPage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      officeVisited: '',
+      officeVisited: 'Sports Office',
       userName: '',
       servicesReceived: '',
       age: '',

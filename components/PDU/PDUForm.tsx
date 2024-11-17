@@ -69,7 +69,7 @@ const PDUFormPage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      officeVisited: '',
+      officeVisited: 'PDU Office',
       userName: '',
       servicesReceived: '',
       age: '',

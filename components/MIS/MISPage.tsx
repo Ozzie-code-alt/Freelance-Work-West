@@ -69,7 +69,7 @@ const MISFormPage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      officeVisited: '',
+      officeVisited: 'MIS Office',
       userName: '',
       servicesReceived: '',
       age: '',

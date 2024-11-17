@@ -69,7 +69,7 @@ const GenderFormPage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      officeVisited: '',
+      officeVisited: 'Gender Development Office',
       userName: '',
       servicesReceived: '',
       age: '',

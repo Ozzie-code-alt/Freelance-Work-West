@@ -69,7 +69,7 @@ const HRMOFormPage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      officeVisited: '',
+      officeVisited: 'HRMO Office',
       userName: '',
       servicesReceived: '',
       age: '',

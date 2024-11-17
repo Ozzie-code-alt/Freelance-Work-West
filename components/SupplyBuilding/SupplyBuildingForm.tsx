@@ -69,7 +69,7 @@ const SupplyBuildingFormPage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      officeVisited: '',
+      officeVisited: 'Suplpy Building Office',
       userName: '',
       servicesReceived: '',
       age: '',

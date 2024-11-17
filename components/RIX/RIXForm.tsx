@@ -69,7 +69,7 @@ const RIXFormPage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      officeVisited: '',
+      officeVisited: 'RIX Office',
       userName: '',
       servicesReceived: '',
       age: '',

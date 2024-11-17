@@ -69,7 +69,7 @@ const ICTFormPage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      officeVisited: '',
+      officeVisited: 'ICT Office',
       userName: '',
       servicesReceived: '',
       age: '',

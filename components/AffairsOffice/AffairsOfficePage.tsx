@@ -69,7 +69,7 @@ const AffairsOfficePage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      officeVisited: '',
+      officeVisited: 'Affairs Office',
       userName: '',
       servicesReceived: '',
       age: '',

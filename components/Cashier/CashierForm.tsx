@@ -74,7 +74,7 @@ const CashierFormPage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      officeVisited: '',
+      officeVisited: 'Cashier Office',
       userName: '',
       servicesReceived: '',
       internalClient: '',

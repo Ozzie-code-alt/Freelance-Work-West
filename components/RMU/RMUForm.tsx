@@ -68,7 +68,7 @@ const RMUFormPage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      officeVisited: '',
+      officeVisited: 'RMU Office',
       userName: '',
       servicesReceived: '',
       age: '',

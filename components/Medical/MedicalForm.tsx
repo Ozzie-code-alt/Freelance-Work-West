@@ -69,7 +69,7 @@ const MedicalFormPage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      officeVisited: '',
+      officeVisited: 'Medical Office',
       userName: '',
       servicesReceived: '',
       age: '',

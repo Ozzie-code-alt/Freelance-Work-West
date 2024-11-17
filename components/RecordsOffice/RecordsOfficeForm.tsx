@@ -72,7 +72,7 @@ const RecordsOfficeFormPage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      officeVisited: '',
+      officeVisited: 'Records and Management Office',
       userName: '',
       servicesReceived: '',
       internalClient: '',

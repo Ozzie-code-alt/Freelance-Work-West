@@ -68,7 +68,7 @@ const QualityAssurancePage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      officeVisited: '',
+      officeVisited: 'Quality Assurance Office',
       userName: '',
       servicesReceived: '',
       age: '',
