@@ -53,13 +53,6 @@ export default function DemoPage() {
         <DataTable columns={Alumnicolumns} data={data} />
       </div>
 
-      <div className='w-full    '>
-        <GradualSpacing text='Filter By Month' className='text-center text-6xl' />
-      </div>
-
-      <div>
-        <HoverImageLinksData data={data} />
-      </div>
     </div>
   );
 }
