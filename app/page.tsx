@@ -154,30 +154,14 @@ export default function Home() {
             onClick={() => handleNavigation('/LoginPage')}
           >
             <div className='p-6 space-y-6'>
-              <h2 className='text-2xl font-bold text-white text-center mb-6'>Staff Portal</h2>
+              <h2 className='text-2xl font-bold text-white text-center mb-6'>Admin Portal</h2>
               <div className='grid gap-4'>
-                <Label
-                  htmlFor='teachers'
-                  className='flex items-center w-full p-2  text-white rounded-md text-lg hover:bg-primary hover:text-primary-foreground transition-all'
-                >
-                  <ChalkboardTeacher className='mr-4 h-5 w-5' />
-                  Teachers
-                </Label>
-
                 <Label
                   htmlFor='admin'
                   className='flex items-center text-white w-full p-2 rounded-md text-lg hover:bg-primary hover:text-primary-foreground transition-all'
                 >
                   <Users className='mr-4 h-5 w-5' />
                   Administrators
-                </Label>
-
-                <Label
-                  htmlFor='principals'
-                  className='flex items-center w-full  text-white p-2 rounded-md text-lg hover:bg-primary hover:text-primary-foreground transition-all'
-                >
-                  <School className='mr-4 h-5 w-5' />
-                  Principals
                 </Label>
               </div>
             </div>
