@@ -164,6 +164,7 @@ const OSAFormPage = () => {
                   <Input
                     placeholder='Office Visited'
                     {...field}
+                    disabled
                     className='h-[60px] w-[300px] md:w-full'
                   />
                 </FormControl>
