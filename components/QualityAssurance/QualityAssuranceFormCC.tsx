@@ -125,7 +125,7 @@ export const QualityAssuranceFormCC = ({ isOpen, setIsOpen, adminProps }: any) =
                               {field.value
                                 ? cc1criteria.find((language) => language.value === field.value)
                                     ?.label
-                                : 'Select language'}
+                                : ''}
                               <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                             </Button>
                           </FormControl>
@@ -188,7 +188,7 @@ export const QualityAssuranceFormCC = ({ isOpen, setIsOpen, adminProps }: any) =
                               {field.value
                                 ? cc2criteria.find((language) => language.value === field.value)
                                     ?.label
-                                : 'Select language'}
+                                : ''}
                               <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                             </Button>
                           </FormControl>
@@ -245,7 +245,7 @@ export const QualityAssuranceFormCC = ({ isOpen, setIsOpen, adminProps }: any) =
                               {field.value
                                 ? cc3criteria.find((language) => language.value === field.value)
                                     ?.label
-                                : 'Select language'}
+                                : ''}
                               <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                             </Button>
                           </FormControl>

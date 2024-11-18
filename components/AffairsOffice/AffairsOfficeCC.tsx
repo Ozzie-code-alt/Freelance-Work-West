@@ -86,16 +86,13 @@ export const AffairsOfficeCC = ({ isOpen, setIsOpen, adminProps }: any) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={() => setIsOpen(false)}
-
           className='bg-slate-900/20 backdrop-blur p-4 sm:p-8 md:p-20 fixed inset-0 z-50 grid place-items-center  cursor-pointer'
-
         >
           <motion.div
             initial={{ scale: 0, rotate: '12.5deg' }}
             animate={{ scale: 1, rotate: '0deg' }}
             exit={{ scale: 0, rotate: '0deg' }}
             onClick={(e) => e.stopPropagation()}
-
             className='bg-gradient-to-br from-violet-600 to-indigo-600 text-white p-4 sm:p-6 rounded-lg w-full max-w-[800px]  h-auto shadow-xl cursor-default relative'
           >
             <FiAlertCircle className='text-white/10 rotate-12 text-[150px] sm:text-[250px] absolute z-0 -top-10 sm:-top-24 -left-10 sm:-left-24' />
@@ -109,10 +106,8 @@ export const AffairsOfficeCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                   control={form.control}
                   name='cc1'
                   render={({ field }) => (
-
                     <FormItem className='flex flex-col gap-2 sm:gap-5 '>
                       <FormLabel className='text-lg sm:text-5xl'>
-
                         {' '}
                         Which of The Follow best Descibes Your awareness of a CC ?
                       </FormLabel>
@@ -123,7 +118,6 @@ export const AffairsOfficeCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                               variant='outline'
                               role='combobox'
                               className={cn(
-
                                 'w-full max-w-[180px] justify-between text-sm overflow-hidden',
 
                                 !field.value && 'bg-white text-black'
@@ -132,7 +126,7 @@ export const AffairsOfficeCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                               {field.value
                                 ? cc1criteria.find((language) => language.value === field.value)
                                     ?.label
-                                : 'Select language'}
+                                : ''}
                               <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                             </Button>
                           </FormControl>
@@ -164,7 +158,6 @@ export const AffairsOfficeCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                         </PopoverContent>
                       </Popover>
 
-
                       <FormMessage />
                     </FormItem>
                   )}
@@ -174,9 +167,7 @@ export const AffairsOfficeCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                   name='cc2'
                   render={({ field }) => (
                     <FormItem className='flex flex-col gap-5 '>
-
                       <FormLabel className='text-lg sm:text-5xl'>
-
                         {' '}
                         <p> if aware of CC, would you say that the CC of this office was ?</p>
                       </FormLabel>
@@ -187,7 +178,6 @@ export const AffairsOfficeCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                               variant='outline'
                               role='combobox'
                               className={cn(
-
                                 'w-full max-w-[180px] justify-between text-sm',
 
                                 !field.value && 'bg-white text-black'
@@ -196,7 +186,7 @@ export const AffairsOfficeCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                               {field.value
                                 ? cc2criteria.find((language) => language.value === field.value)
                                     ?.label
-                                : 'Select language'}
+                                : ''}
                               <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                             </Button>
                           </FormControl>
@@ -236,9 +226,7 @@ export const AffairsOfficeCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                   name='cc3'
                   render={({ field }) => (
                     <FormItem className='flex flex-col gap-5'>
-
                       <FormLabel className='text-lg sm:text-5xl'>
-
                         If aware of CC, how much did the CC help you in your transaction ?
                       </FormLabel>
                       <Popover>
@@ -248,7 +236,6 @@ export const AffairsOfficeCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                               variant='outline'
                               role='combobox'
                               className={cn(
-
                                 'w-full max-w-[180px] justify-between text-sm',
 
                                 !field.value && 'bg-white text-black'
@@ -257,7 +244,7 @@ export const AffairsOfficeCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                               {field.value
                                 ? cc3criteria.find((language) => language.value === field.value)
                                     ?.label
-                                : 'Select language'}
+                                : ''}
                               <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                             </Button>
                           </FormControl>
