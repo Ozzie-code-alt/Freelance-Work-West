@@ -46,7 +46,7 @@ export default function DemoPage() {
             </div>
             <h2 className='text-3xl font-bold text-foreground mb-2'>No data available</h2>
             <p className='text-muted-foreground mb-6 max-w-md mx-auto'>
-              It looks like there's no data to display at the moment. Try adding some data or
+              It looks like there&apos;s no data to display at the moment. Try adding some data or
               refreshing the page.
             </p>
           </div>
