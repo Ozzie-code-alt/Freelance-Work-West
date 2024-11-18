@@ -58,12 +58,7 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
     <>
     <div className=' flex justify-between items-center'>
       <div className='flex items-center gap-5 py-4'>
-        <Input
-          placeholder='Filter By Office Visited...'
-          value={(table.getColumn('officeVisited')?.getFilterValue() as string) ?? ''}
-          onChange={(event) => table.getColumn('officeVisited')?.setFilterValue(event.target.value)}
-          className='max-w-sm'
-        />
+
         <Input
           placeholder='Filter By Date'
           value={(table.getColumn('date')?.getFilterValue() as string) ?? ''}
