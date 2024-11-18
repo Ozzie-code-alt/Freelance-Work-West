@@ -15,18 +15,17 @@ import { FiAlertCircle } from 'react-icons/fi';
 
 const Officepage = () => {
   const { data: session } = useSession();
-  const [grabRole, setGrabRole] = useState('');
+  const [grabRole, setGrabRole] = useState('ADMIN');
   const [isOpen, setIsOpen] = useState(false);
   const handleLogout = () => {
     signOut();
   };
-
+  const router = useRouter();
   const handleUserChecker = () => {
     console.log('Clicked Dashboard');
     console.log(grabRole);
-    if (grabRole === 'USER') {
-      setIsOpen(true); // Set state to open modal
-    }
+
+    router.push('/AdminPasscode');
   };
 
   useEffect(() => {
@@ -40,7 +39,7 @@ const Officepage = () => {
       if (session?.user?.role === 'USER') {
         setGrabRole('USER');
         console.log('Grabbed User');
-      } else if (session?.user?.role === 'ADMIN') {
+      } else if (grabRole === 'ADMIN') {
         setGrabRole('ADMIN');
         console.log('Grabbed Admin');
       } else {
@@ -52,7 +51,7 @@ const Officepage = () => {
   }, [session]);
   const links = [
     {
-      label: 'Dashboard',
+      label: 'Admin Dashboard',
       href: handleUserChecker,
       icon: (
         <IconBrandTabler className='text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0' />
@@ -104,7 +103,7 @@ const Officepage = () => {
             <div>
               <SidebarLink
                 link={{
-                  label: `${session?.user?.name} - ${session?.user.role} `,
+                  label: `${session?.user?.name} - ADMIN `,
                   href: () => {},
                   icon: (
                     <Image

@@ -5,6 +5,7 @@ import { columns } from '@/app/payments/columns';
 import Example from '@/components/Loader';
 import GradualSpacing from '@/components/ui/gradual-spacing';
 import { HoverImageLinksData } from '@/components/ui/HoverLinkComponent';
+import { FileX2 } from 'lucide-react';
 
 export default function DemoPage() {
   const [data, setData] = useState([]);
@@ -36,8 +37,24 @@ export default function DemoPage() {
 
   if (!data.length) {
     return (
-      <div className='w-screen h-screen flex justify-center items-center '>
-        <Example />
+      <div className='min-h-screen bg-background flex flex-col'>
+        <header className='border-b'>
+          <div className='container mx-auto px-4 py-4'>
+            <h1 className='text-2xl font-bold text-foreground'>Dashboard</h1>
+          </div>
+        </header>
+        <main className='flex-grow flex items-center justify-center'>
+          <div className='text-center'>
+            <div className='inline-block p-6 bg-muted rounded-full mb-4'>
+              <FileX2 className='w-12 h-12 text-muted-foreground' />
+            </div>
+            <h2 className='text-3xl font-bold text-foreground mb-2'>No data available</h2>
+            <p className='text-muted-foreground mb-6 max-w-md mx-auto'>
+              It looks like there&apos;s no data to display at the moment. Try adding some data or
+              refreshing the page.
+            </p>
+          </div>
+        </main>
       </div>
     );
   }

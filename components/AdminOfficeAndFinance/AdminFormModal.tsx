@@ -218,9 +218,7 @@ export const AdminFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                        <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
-                        </p>
+                        <p className='text-yellow-500'>Please Answer to the best of your ability</p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -280,9 +278,7 @@ export const AdminFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                        <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
-                        </p>
+                        <p className='text-yellow-500'>Please Answer to the best of your ability</p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -342,9 +338,7 @@ export const AdminFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                        <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
-                        </p>
+                        <p className='text-yellow-500'>Please Answer to the best of your ability</p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -403,9 +397,7 @@ export const AdminFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                        <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
-                        </p>
+                        <p className='text-yellow-500'>Please Answer to the best of your ability</p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -465,9 +457,7 @@ export const AdminFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                        <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
-                        </p>
+                        <p className='text-yellow-500'>Please Answer to the best of your ability</p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -526,9 +516,7 @@ export const AdminFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                        <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
-                        </p>
+                        <p className='text-yellow-500'>Please Answer to the best of your ability</p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -587,9 +575,7 @@ export const AdminFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                        <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
-                        </p>
+                        <p className='text-yellow-500'>Please Answer to the best of your ability</p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -648,9 +634,7 @@ export const AdminFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                        <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
-                        </p>
+                        <p className='text-yellow-500'>Please Answer to the best of your ability</p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -710,9 +694,7 @@ export const AdminFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
                       </Popover>
                       <FormDescription>
                         {' '}
-                        <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
-                        </p>
+                        <p className='text-yellow-500'>Please Answer to the best of your ability</p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
