@@ -159,7 +159,7 @@ const RecordsOfficeFormPage = () => {
               <FormItem className='w-full'>
                 <FormLabel className='text-2xl'>Office Visited</FormLabel>
                 <FormControl>
-                  <Input placeholder='Office Visited' {...field} className='h-[60px]' />
+                  <Input placeholder='Office Visited' {...field} disabled className='h-[60px]' />
                 </FormControl>
                 <FormDescription>Kindly write which Office you have just visited</FormDescription>
                 <FormMessage />
