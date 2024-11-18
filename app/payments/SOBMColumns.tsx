@@ -75,7 +75,7 @@ const ActionsCell: React.FC<ActionsCellProps> = ({ row }) => {
         <DropdownMenuLabel>Actions</DropdownMenuLabel>
         <DropdownMenuItem onClick={() => handleDelete(form._id)}>Delete</DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>View customer</DropdownMenuItem>
+
         <DropdownMenuItem onClick={() => setIsOpen(true)}>View More</DropdownMenuItem>
       </DropdownMenuContent>
       <SOBMModalOpenMore isOpen={isOpen} setIsOpen={setIsOpen} formIDValue={form._id} />
