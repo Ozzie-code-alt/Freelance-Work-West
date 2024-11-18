@@ -158,7 +158,7 @@ export const SupplyBuildingFormCC = ({ isOpen, setIsOpen, adminProps }: any) => 
                       </Popover>
                       {/* <FormDescription>
                         <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
+                          Please Answer to the best of your ability
                         </p>
                       </FormDescription> */}
                       <FormMessage />
@@ -221,7 +221,7 @@ export const SupplyBuildingFormCC = ({ isOpen, setIsOpen, adminProps }: any) => 
                       </Popover>
                       {/* <FormDescription>
                         <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
+                          Please Answer to the best of your ability
                         </p>
                       </FormDescription> */}
                       <FormMessage />
@@ -283,7 +283,7 @@ export const SupplyBuildingFormCC = ({ isOpen, setIsOpen, adminProps }: any) => 
                       </Popover>
                       {/* <FormDescription>
                         <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
+                          Please Answer to the best of your ability
                         </p>
                       </FormDescription> */}
                       <FormMessage />

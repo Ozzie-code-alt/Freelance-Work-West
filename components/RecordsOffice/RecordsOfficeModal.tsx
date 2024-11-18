@@ -220,9 +220,7 @@ export const RecordsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: Cashie
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                        <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
-                        </p>
+                        <p className='text-yellow-500'>Please Answer to the best of your ability</p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -282,9 +280,7 @@ export const RecordsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: Cashie
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                        <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
-                        </p>
+                        <p className='text-yellow-500'>Please Answer to the best of your ability</p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -341,9 +337,7 @@ export const RecordsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: Cashie
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                        <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
-                        </p>
+                        <p className='text-yellow-500'>Please Answer to the best of your ability</p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -400,9 +394,7 @@ export const RecordsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: Cashie
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                        <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
-                        </p>
+                        <p className='text-yellow-500'>Please Answer to the best of your ability</p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -459,9 +451,7 @@ export const RecordsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: Cashie
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                        <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
-                        </p>
+                        <p className='text-yellow-500'>Please Answer to the best of your ability</p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -518,9 +508,7 @@ export const RecordsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: Cashie
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                        <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
-                        </p>
+                        <p className='text-yellow-500'>Please Answer to the best of your ability</p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -577,9 +565,7 @@ export const RecordsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: Cashie
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                        <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
-                        </p>
+                        <p className='text-yellow-500'>Please Answer to the best of your ability</p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -636,9 +622,7 @@ export const RecordsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: Cashie
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                        <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
-                        </p>
+                        <p className='text-yellow-500'>Please Answer to the best of your ability</p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -655,9 +639,7 @@ export const RecordsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: Cashie
                       </FormControl>
                       <FormDescription>
                         {' '}
-                        <p className='text-yellow-500'>
-                          This is the language that will be used in the dashboard.
-                        </p>
+                        <p className='text-yellow-500'>Please Answer to the best of your ability</p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
