@@ -28,7 +28,6 @@ import {
 
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { useSession } from 'next-auth/react';
-import sendEmail from '@/lib/emailjs';
 import { useRouter } from 'next/navigation';
 
 const formSchema = z.object({
@@ -40,8 +39,9 @@ const formSchema = z.object({
   sqd5: z.string().min(1),
   sqd6: z.string().min(1),
   sqd7: z.string().min(1),
-  sqd8: z.string().min(1).max(100),
-  mean: z.string()
+  sqd8: z.string().min(1),
+  mean: z.string(),
+  comments: z.string()
 });
 
 const criteria = [
@@ -74,7 +74,8 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
       sqd6: '',
       sqd7: '',
       sqd8: '',
-      mean: ''
+      mean: '',
+      comments: ''
     }
   });
   const router = useRouter();
@@ -105,7 +106,7 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
     console.log('this is the final Submitted Values', submittedValues);
 
     try {
-      const res = await fetch('/api/personal', {
+      const res = await fetch('/api/affairsOffice', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -121,15 +122,6 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
         title: 'Up and Ready to Go !!',
         variant: 'success',
         description: 'Form Successfully Sent'
-      });
-
-      sendEmail({
-        to_name: session?.user?.name || 'User',
-        contact: 'contact Value Here',
-        user_email: session?.user?.email || 'justinsantos731@gmail.com',
-        type: 'Form Type Here',
-        subject: 'Wedding Inquiry Here',
-        message: 'it is DONE'
       });
 
       console.log(data);
@@ -148,14 +140,14 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={() => setIsOpen(false)}
-          className='bg-slate-900/20 backdrop-blur p-8 fixed  overflow-y-scroll inset-0 z-50 grid place-items-center  cursor-pointer'
+          className='bg-slate-900/20 backdrop-blur p-8 fixed overflow-y-scroll inset-0 z-50 grid place-items-center  cursor-pointer'
         >
           <motion.div
             initial={{ scale: 0, rotate: '12.5deg' }}
             animate={{ scale: 1, rotate: '0deg' }}
             exit={{ scale: 0, rotate: '0deg' }}
             onClick={(e) => e.stopPropagation()}
-            className='bg-gradient-to-br from-violet-600 to-indigo-600 text-white  p-6 rounded-lg w-full  h-fit shadow-xl cursor-default relative '
+            className='bg-gradient-to-br from-violet-600 to-indigo-600 text-white p-6 rounded-lg w-full  h-fit shadow-xl cursor-default relative '
           >
             <FiAlertCircle className='text-white/10 rotate-12 text-[250px] absolute z-0 -top-24 -left-24' />
 
@@ -194,7 +186,7 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                         <PopoverContent className='w-[200px] p-0'>
                           <Command>
                             <CommandInput placeholder='Search framework...' className='h-9' />
-                            <CommandEmpty>No framework found.</CommandEmpty>
+                            <CommandEmpty>Input not found</CommandEmpty>
                             <CommandGroup>
                               {criteria.map((language) => (
                                 <CommandItem
@@ -218,7 +210,9 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                        <p className='text-yellow-500'>Please Answer to the best of your ability</p>
+                        <p className='text-yellow-500'>
+                          Kindly Choose to the best of your ability please
+                        </p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -254,7 +248,7 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                         <PopoverContent className='w-[200px] p-0'>
                           <Command>
                             <CommandInput placeholder='Search framework...' className='h-9' />
-                            <CommandEmpty>No framework found.</CommandEmpty>
+                            <CommandEmpty>Input not found</CommandEmpty>
                             <CommandGroup>
                               {criteria.map((language) => (
                                 <CommandItem
@@ -278,7 +272,9 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                        <p className='text-yellow-500'>Please Answer to the best of your ability</p>
+                        <p className='text-yellow-500'>
+                          Kindly Choose to the best of your ability please
+                        </p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -314,7 +310,7 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                         <PopoverContent className='w-[200px] p-0'>
                           <Command>
                             <CommandInput placeholder='Search framework...' className='h-9' />
-                            <CommandEmpty>No framework found.</CommandEmpty>
+                            <CommandEmpty>Input not found</CommandEmpty>
                             <CommandGroup>
                               {criteria.map((language) => (
                                 <CommandItem
@@ -338,7 +334,9 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                        <p className='text-yellow-500'>Please Answer to the best of your ability</p>
+                        <p className='text-yellow-500'>
+                          Kindly Choose to the best of your ability please
+                        </p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -373,7 +371,7 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                         <PopoverContent className='w-[200px] p-0'>
                           <Command>
                             <CommandInput placeholder='Search framework...' className='h-9' />
-                            <CommandEmpty>No framework found.</CommandEmpty>
+                            <CommandEmpty>Input not found</CommandEmpty>
                             <CommandGroup>
                               {criteria.map((language) => (
                                 <CommandItem
@@ -397,7 +395,9 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                        <p className='text-yellow-500'>Please Answer to the best of your ability</p>
+                        <p className='text-yellow-500'>
+                          Kindly Choose to the best of your ability please
+                        </p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -433,7 +433,7 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                         <PopoverContent className='w-[200px] p-0'>
                           <Command>
                             <CommandInput placeholder='Search framework...' className='h-9' />
-                            <CommandEmpty>No framework found.</CommandEmpty>
+                            <CommandEmpty>Input not found</CommandEmpty>
                             <CommandGroup>
                               {criteria.map((language) => (
                                 <CommandItem
@@ -457,7 +457,9 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                        <p className='text-yellow-500'>Please Answer to the best of your ability</p>
+                        <p className='text-yellow-500'>
+                          Kindly Choose to the best of your ability please
+                        </p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -492,7 +494,7 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                         <PopoverContent className='w-[200px] p-0'>
                           <Command>
                             <CommandInput placeholder='Search framework...' className='h-9' />
-                            <CommandEmpty>No framework found.</CommandEmpty>
+                            <CommandEmpty>Input not found</CommandEmpty>
                             <CommandGroup>
                               {criteria.map((language) => (
                                 <CommandItem
@@ -516,7 +518,9 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                        <p className='text-yellow-500'>Please Answer to the best of your ability</p>
+                        <p className='text-yellow-500'>
+                          Kindly Choose to the best of your ability please
+                        </p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -551,7 +555,7 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                         <PopoverContent className='w-[200px] p-0'>
                           <Command>
                             <CommandInput placeholder='Search framework...' className='h-9' />
-                            <CommandEmpty>No framework found.</CommandEmpty>
+                            <CommandEmpty>Input not found</CommandEmpty>
                             <CommandGroup>
                               {criteria.map((language) => (
                                 <CommandItem
@@ -575,7 +579,9 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                        <p className='text-yellow-500'>Please Answer to the best of your ability</p>
+                        <p className='text-yellow-500'>
+                          Kindly Choose to the best of your ability please
+                        </p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -610,7 +616,7 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                         <PopoverContent className='w-[200px] p-0'>
                           <Command>
                             <CommandInput placeholder='Search framework...' className='h-9' />
-                            <CommandEmpty>No framework found.</CommandEmpty>
+                            <CommandEmpty>Input not found</CommandEmpty>
                             <CommandGroup>
                               {criteria.map((language) => (
                                 <CommandItem
@@ -634,7 +640,9 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
-                        <p className='text-yellow-500'>Please Answer to the best of your ability</p>
+                        <p className='text-yellow-500'>
+                          Kindly Choose to the best of your ability please
+                        </p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -669,7 +677,7 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                         <PopoverContent className='w-[200px] p-0'>
                           <Command>
                             <CommandInput placeholder='Search framework...' className='h-9' />
-                            <CommandEmpty>No framework found.</CommandEmpty>
+                            <CommandEmpty>Input not found</CommandEmpty>
                             <CommandGroup>
                               {criteria.map((language) => (
                                 <CommandItem
@@ -688,13 +696,81 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                                   />
                                 </CommandItem>
                               ))}
-                            </CommandGroup>
+                            </CommandGroup>{' '}
+                            <Popover>
+                              <PopoverTrigger asChild>
+                                <FormControl>
+                                  <Button
+                                    variant='outline'
+                                    role='combobox'
+                                    className={cn(
+                                      'w-[200px] justify-between',
+                                      !field.value && 'bg-white text-black'
+                                    )}
+                                  >
+                                    {field.value
+                                      ? criteria.find((language) => language.value === field.value)
+                                          ?.label
+                                      : ''}
+                                    <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
+                                  </Button>
+                                </FormControl>
+                              </PopoverTrigger>
+                              <PopoverContent className='w-[200px] p-0'>
+                                <Command>
+                                  <CommandInput placeholder='Search framework...' className='h-9' />
+                                  <CommandEmpty>Input not found</CommandEmpty>
+                                  <CommandGroup>
+                                    {criteria.map((language) => (
+                                      <CommandItem
+                                        value={language.label}
+                                        key={language.value}
+                                        onSelect={() => {
+                                          form.setValue('sqd7', language.value);
+                                        }}
+                                      >
+                                        {language.label}
+                                        <CheckIcon
+                                          className={cn(
+                                            'ml-auto h-4 w-4',
+                                            language.value === field.value
+                                              ? 'opacity-100'
+                                              : 'opacity-0'
+                                          )}
+                                        />
+                                      </CommandItem>
+                                    ))}
+                                  </CommandGroup>
+                                </Command>
+                              </PopoverContent>
+                            </Popover>
                           </Command>
                         </PopoverContent>
                       </Popover>
                       <FormDescription>
                         {' '}
-                        <p className='text-yellow-500'>Please Answer to the best of your ability</p>
+                        <p className='text-yellow-500'>
+                          Kindly Choose to the best of your ability please
+                        </p>
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name='comments'
+                  render={({ field }) => (
+                    <FormItem className='flex flex-col gap-3'>
+                      <FormLabel className='text-2xl'>Message or Suggestions - Optional</FormLabel>
+
+                      <FormControl>
+                        <Input placeholder='shadcn' className='text-black' {...field} />
+                      </FormControl>
+
+                      <FormDescription>
+                        {' '}
+                        <p className='text-yellow-500'>Message or Suggestions</p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
