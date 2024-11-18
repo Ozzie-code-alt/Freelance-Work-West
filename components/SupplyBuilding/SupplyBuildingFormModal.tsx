@@ -188,7 +188,7 @@ export const SupplyBuildingFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                             >
                               {field.value
                                 ? criteria.find((language) => language.value === field.value)?.label
-                                : 'Select language'}
+                                : ''}
                               <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                             </Button>
                           </FormControl>
@@ -250,7 +250,7 @@ export const SupplyBuildingFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                             >
                               {field.value
                                 ? criteria.find((language) => language.value === field.value)?.label
-                                : 'Select language'}
+                                : ''}
                               <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                             </Button>
                           </FormControl>
@@ -312,7 +312,7 @@ export const SupplyBuildingFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                             >
                               {field.value
                                 ? criteria.find((language) => language.value === field.value)?.label
-                                : 'Select language'}
+                                : ''}
                               <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                             </Button>
                           </FormControl>
@@ -373,7 +373,7 @@ export const SupplyBuildingFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                             >
                               {field.value
                                 ? criteria.find((language) => language.value === field.value)?.label
-                                : 'Select language'}
+                                : ''}
                               <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                             </Button>
                           </FormControl>
@@ -435,7 +435,7 @@ export const SupplyBuildingFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                             >
                               {field.value
                                 ? criteria.find((language) => language.value === field.value)?.label
-                                : 'Select language'}
+                                : ''}
                               <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                             </Button>
                           </FormControl>
@@ -496,7 +496,7 @@ export const SupplyBuildingFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                             >
                               {field.value
                                 ? criteria.find((language) => language.value === field.value)?.label
-                                : 'Select language'}
+                                : ''}
                               <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                             </Button>
                           </FormControl>
@@ -557,7 +557,7 @@ export const SupplyBuildingFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                             >
                               {field.value
                                 ? criteria.find((language) => language.value === field.value)?.label
-                                : 'Select language'}
+                                : ''}
                               <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                             </Button>
                           </FormControl>
@@ -618,7 +618,7 @@ export const SupplyBuildingFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                             >
                               {field.value
                                 ? criteria.find((language) => language.value === field.value)?.label
-                                : 'Select language'}
+                                : ''}
                               <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                             </Button>
                           </FormControl>
@@ -679,7 +679,7 @@ export const SupplyBuildingFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                             >
                               {field.value
                                 ? criteria.find((language) => language.value === field.value)?.label
-                                : 'Select language'}
+                                : ''}
                               <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                             </Button>
                           </FormControl>
@@ -721,7 +721,7 @@ export const SupplyBuildingFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                                     {field.value
                                       ? criteria.find((language) => language.value === field.value)
                                           ?.label
-                                      : 'Select language'}
+                                      : ''}
                                     <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                                   </Button>
                                 </FormControl>
@@ -767,14 +767,12 @@ export const SupplyBuildingFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
                     </FormItem>
                   )}
                 />
-                                <FormField
+                <FormField
                   control={form.control}
                   name='comments'
                   render={({ field }) => (
                     <FormItem className='flex flex-col gap-3'>
-                      <FormLabel className='text-2xl'>
-                        Message or Suggestions - Optional
-                      </FormLabel>
+                      <FormLabel className='text-2xl'>Message or Suggestions - Optional</FormLabel>
 
                       <FormControl>
                         <Input placeholder='shadcn' className='text-black' {...field} />
@@ -782,9 +780,7 @@ export const SupplyBuildingFormModal = ({ isOpen, setIsOpen, adminProps }: any) 
 
                       <FormDescription>
                         {' '}
-                        <p className='text-yellow-500'>
-                          Message or Suggestions
-                        </p>
+                        <p className='text-yellow-500'>Message or Suggestions</p>
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
