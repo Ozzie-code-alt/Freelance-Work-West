@@ -1,6 +1,11 @@
 'use client';
 import OfficesContianer from '@/components/OfficesContianer';
-import { IconArrowLeft, IconBrandTabler, IconSettings, IconUserBolt } from '@tabler/icons-react';
+import {
+  IconArrowLeft,
+  IconBrandTabler,
+  IconSettings,
+  IconReportAnalytics
+} from '@tabler/icons-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { useEffect, useState, Dispatch, SetStateAction } from 'react';
@@ -27,7 +32,12 @@ const Officepage = () => {
 
     router.push('/AdminPasscode');
   };
+  const routerToSummary = () => {
+    console.log('Clicked Dashboard');
+    console.log(grabRole);
 
+    router.push('/SummaryPage');
+  };
   useEffect(() => {
     const grabUserHEHE = async () => {
       if (!session) {
@@ -58,18 +68,11 @@ const Officepage = () => {
       )
     },
     {
-      label: 'Profile',
-      href: () => {},
-      icon: (
-        <IconUserBolt className='text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0' />
-      )
-    },
-    {
-      label: 'Settings',
-      href: () => {},
+      label: 'Generate Report',
+      href: routerToSummary,
 
       icon: (
-        <IconSettings className='text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0' />
+        <IconReportAnalytics className='text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0' />
       )
     },
     {
