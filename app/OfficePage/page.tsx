@@ -3,7 +3,7 @@ import OfficesContianer from '@/components/OfficesContianer';
 import {
   IconArrowLeft,
   IconBrandTabler,
-  IconSettings,
+  IconTextPlus,
   IconReportAnalytics
 } from '@tabler/icons-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -37,6 +37,12 @@ const Officepage = () => {
     console.log(grabRole);
 
     router.push('/SummaryPage');
+  };
+  const routerToComments = () => {
+    console.log('Clicked Dashboard');
+    console.log(grabRole);
+
+    router.push('/CommentsPage');
   };
   useEffect(() => {
     const grabUserHEHE = async () => {
@@ -73,6 +79,14 @@ const Officepage = () => {
 
       icon: (
         <IconReportAnalytics className='text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0' />
+      )
+    },
+    {
+      label: 'View Comment Summary',
+      href: routerToComments,
+
+      icon: (
+        <IconTextPlus className='text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0' />
       )
     },
     {
