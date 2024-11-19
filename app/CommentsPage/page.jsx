@@ -1,10 +1,12 @@
+"use client"
+
 import React from 'react';
 
 async function fetchComments() {
   const baseUrl =
     process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'; // Use environment variable or fallback to localhost
 
-  const res = await fetch(`${baseUrl}/api/generateComments`);
+  const res = await fetch(`/api/generateComments`);
   if (!res.ok) {
     throw new Error('Failed to fetch comments');
   }
