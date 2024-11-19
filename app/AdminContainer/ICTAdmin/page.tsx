@@ -60,7 +60,7 @@ export default function DemoPage() {
   return (
     <div className='container mx-auto h-auto  flex flex-col gap-5   py-10'>
       <div className='w-full  '>
-        <GradualSpacing text='Bac Admin' className='text-center text-6xl' />
+        <GradualSpacing text='ICT Office Admin' className='text-center text-6xl' />
       </div>
 
       <div className=''>
