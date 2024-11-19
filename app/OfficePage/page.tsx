@@ -39,10 +39,7 @@ const Officepage = () => {
     router.push('/SummaryPage');
   };
   const routerToComments = () => {
-    console.log('Clicked Dashboard');
-    console.log(grabRole);
-
-    router.push('/CommentsPage');
+    router.push('/officeSummaryComment');
   };
   useEffect(() => {
     const grabUserHEHE = async () => {
