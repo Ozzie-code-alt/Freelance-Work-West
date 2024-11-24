@@ -5,6 +5,11 @@ export async function GET(req) {
   await connectMongo();
 
   try {
+    const { searchParams } = new URL(req.url);
+    const year = parseInt(searchParams.get('year'));
+    const month = parseInt(searchParams.get('month'));
+    const week = parseInt(searchParams.get('week'));
+
     const collections = [
       'accountings',
       'affairsoffices',
@@ -69,7 +74,35 @@ export async function GET(req) {
             new mongoose.Schema({}, { collection: collectionName, strict: false })
           );
 
+        // Build the match condition based on the provided year, month, week
+        const matchCondition = {};
+        if (year) {
+          matchCondition.date = {
+            ...matchCondition.date,
+            $gte: new Date(year, 0, 1),
+            $lt: new Date(year + 1, 0, 1),
+          };
+        }
+        if (month) {
+          matchCondition.date = {
+            ...matchCondition.date,
+            $gte: new Date(year, month - 1, 1),
+            $lt: new Date(year, month, 1),
+          };
+        }
+        if (week) {
+          const startOfWeek = new Date(year, 0, 1 + (week - 1) * 7);
+          const endOfWeek = new Date(startOfWeek);
+          endOfWeek.setDate(startOfWeek.getDate() + 7);
+
+          matchCondition.date = {
+            $gte: startOfWeek,
+            $lt: endOfWeek,
+          };
+        }
+
         const collectionSummary = await DynamicModel.aggregate([
+          { $match: matchCondition }, // Apply the time filter here
           {
             $group: {
               _id: null,
