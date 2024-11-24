@@ -4,7 +4,9 @@ import {
   IconArrowLeft,
   IconBrandTabler,
   IconTextPlus,
-  IconReportAnalytics
+  IconReportAnalytics,
+  IconReportSearch
+
 } from '@tabler/icons-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -37,6 +39,12 @@ const Officepage = () => {
     console.log(grabRole);
 
     router.push('/SummaryPage');
+  };
+  const routerToAnnualSummary = () => {
+    console.log('Clicked Dashboard');
+    console.log(grabRole);
+
+    router.push('/GeneratedSummaryPage');
   };
   const routerToComments = () => {
     router.push('/officeSummaryComment');
@@ -71,11 +79,19 @@ const Officepage = () => {
       )
     },
     {
-      label: 'Generate Report',
+      label: 'Overall Generate Report',
       href: routerToSummary,
 
       icon: (
         <IconReportAnalytics className='text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0' />
+      )
+    },
+    {
+      label: 'Annual Generated Report',
+      href: routerToAnnualSummary,
+
+      icon: (
+        <IconReportSearch className='text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0' />
       )
     },
     {
