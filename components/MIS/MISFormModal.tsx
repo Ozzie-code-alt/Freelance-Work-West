@@ -780,7 +780,7 @@ export const MISFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
                   <Puff color='#00BFFF' height={50} width={50} />
                 ) : (
                   <Button type='submit' className='w-fit'>
-                    Next
+                    SUBMIT
                   </Button>
                 )}
               </form>

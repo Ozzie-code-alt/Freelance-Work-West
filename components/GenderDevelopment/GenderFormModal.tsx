@@ -780,7 +780,7 @@ export const GenderDevelopmentFormModal = ({ isOpen, setIsOpen, adminProps }: an
                   <Puff color='#00BFFF' height={50} width={50} />
                 ) : (
                   <Button type='submit' className='w-fit'>
-                    Next
+                    SUBMIT
                   </Button>
                 )}
               </form>
