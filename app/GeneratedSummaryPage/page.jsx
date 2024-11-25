@@ -46,13 +46,38 @@ export default function Dashboard() {
     fetchData();
   };
 
+  const getQuestionLabel = (name) => {
+    switch (name) {
+      case 'sqd0':
+        return 'Responsiveness';
+      case 'sqd1':
+        return 'Reliability';
+      case 'sqd2':
+        return 'Access and Facilities';
+      case 'sqd3':
+        return 'Communication';
+      case 'sqd4':
+        return 'Costs';
+      case 'sqd5':
+        return 'Integrity';
+      case 'sqd6':
+        return 'Assurance';
+      case 'sqd7':
+        return 'Outcome';
+      case 'sqd8':
+        return 'Overall';
+      default:
+        return name;
+    }
+  };
+
   return (
     <div className='container mx-auto p-4'>
       <h1 className='text-2xl font-bold text-center mb-4'>Survey Results</h1>
 
       {/* Form to select time frame */}
       <form onSubmit={handleSubmit} className='mb-4 '>
-        <div className='flex flex-col md:flex-row items-center justify-start  md:space-y-0   gap-10 mb-4'>
+        <div className='flex flex-col md:flex-row items-center justify-start md:space-y-0 gap-10 mb-4'>
           <div className='flex items-center'>
             <label className='mr-2'>Time Frame:</label>
             <select
@@ -106,13 +131,13 @@ export default function Dashboard() {
 
         <button
           type='submit'
-          className=' md:w-auto px-4 py-2 border flex bg-black rounded-md w-fit text-white '
+          className='md:w-auto px-4 py-2 border flex bg-black rounded-md w-fit text-white'
         >
           Generate Report
         </button>
       </form>
 
-      {loading && <p className='text-center mt-9'>Loading / Fetching might take 1 min - 5 mins : Main Factor  Wifi Speed </p>}
+      {loading && <p className='text-center mt-9'>Loading / Fetching might take 1 min - 5 mins : Main Factor Wifi Speed</p>}
       {error && <p className='text-center mt-10 text-red-500'>{error}</p>}
 
       {/* Table to display survey results */}
@@ -139,7 +164,7 @@ export default function Dashboard() {
             <tbody>
               {data.map((item, index) => (
                 <tr key={item.name} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                  <td className='border border-gray-200 px-4 py-2'>{item.name}</td>
+                  <td className='border border-gray-200 px-4 py-2'>{getQuestionLabel(item.name)}</td>
                   <td className='border border-gray-200 px-4 py-2 text-center'>
                     {item.StronglyAgree}
                   </td>
