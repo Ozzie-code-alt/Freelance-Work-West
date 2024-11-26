@@ -60,6 +60,9 @@ import { AffairsOfficeFormModal } from './AffairsOffice';
 
 export const AffairsOfficeCC = ({ isOpen, setIsOpen, adminProps }: any) => {
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+  const [isPopoverOpen1, setIsPopoverOpen1] = useState(false);
+  const [isPopoverOpen2, setIsPopoverOpen2] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -108,10 +111,14 @@ export const AffairsOfficeCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                   render={({ field }) => (
                     <FormItem className='flex flex-col gap-2 sm:gap-5 '>
                       <FormLabel className='text-lg sm:text-5xl'>
-                        {' '}
-                        Which of The Follow best Descibes Your awareness of a CC ?
+                        Which of The Follow best Descibes Your awareness of a CC Affairs ?
                       </FormLabel>
-                      <Popover>
+                      <Popover
+                        open={isPopoverOpen}
+                        onOpenChange={(open) => {
+                          setIsPopoverOpen(open);
+                        }}
+                      >
                         <PopoverTrigger asChild>
                           <FormControl>
                             <Button
@@ -142,6 +149,7 @@ export const AffairsOfficeCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                                   key={language.value}
                                   onSelect={() => {
                                     form.setValue('cc1', language.value);
+                                    setIsPopoverOpen(false); // Close the popover after selecting a value
                                   }}
                                 >
                                   {language.label}
@@ -162,6 +170,7 @@ export const AffairsOfficeCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                     </FormItem>
                   )}
                 />
+
                 <FormField
                   control={form.control}
                   name='cc2'
@@ -171,7 +180,12 @@ export const AffairsOfficeCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                         {' '}
                         <p> if aware of CC, would you say that the CC of this office was ?</p>
                       </FormLabel>
-                      <Popover>
+                      <Popover
+                        open={isPopoverOpen1}
+                        onOpenChange={(open) => {
+                          setIsPopoverOpen1(open);
+                        }}
+                      >
                         <PopoverTrigger asChild>
                           <FormControl>
                             <Button
@@ -202,6 +216,7 @@ export const AffairsOfficeCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                                   key={language.value}
                                   onSelect={() => {
                                     form.setValue('cc2', language.value);
+                                    setIsPopoverOpen1(false); // Close the popover after selecting a value
                                   }}
                                 >
                                   {language.label}
@@ -229,7 +244,12 @@ export const AffairsOfficeCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                       <FormLabel className='text-lg sm:text-5xl'>
                         If aware of CC, how much did the CC help you in your transaction ?
                       </FormLabel>
-                      <Popover>
+                      <Popover
+                        open={isPopoverOpen2}
+                        onOpenChange={(open) => {
+                          setIsPopoverOpen2(open);
+                        }}
+                      >
                         <PopoverTrigger asChild>
                           <FormControl>
                             <Button
@@ -260,6 +280,7 @@ export const AffairsOfficeCC = ({ isOpen, setIsOpen, adminProps }: any) => {
                                   key={language.value}
                                   onSelect={() => {
                                     form.setValue('cc3', language.value);
+                                    setIsPopoverOpen2(false); // Close the popover after selecting a value
                                   }}
                                 >
                                   {language.label}

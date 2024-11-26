@@ -8,47 +8,50 @@ export async function GET(req) {
     const { searchParams } = new URL(req.url);
     const year = parseInt(searchParams.get('year'));
     const month = parseInt(searchParams.get('month'));
-    const week = parseInt(searchParams.get('week'));
+    const quarter = parseInt(searchParams.get('quarter'));
+    const office = searchParams.get('office');
 
-    const collections = [
-      'accountings',
-      'affairsoffices',
-      'alumnis',
-      'awards',
-      'bacs',
-      'budgets',
-      'campusadmins',
-      'cashiers',
-      'culturals',
-      'educes',
-      'genderdevelopments',
-      'generalservices',
-      'guidances',
-      'hrmos',
-      'icts',
-      'industrialteches',
-      'libraries',
-      'medicals',
-      'mis',
-      'nstps',
-      'osas',
-      'pdus',
-      'personalinformations',
-      'physicalplants',
-      'publicaffairs',
-      'qualityassurances',
-      'recordsoffices',
-      'registrars',
-      'researches',
-      'rmos',
-      'sbms',
-      'securities',
-      'sobms',
-      'soicts',
-      'sportsoffices',
-      'studentaffairs',
-      'supplybuildings',
-    ];
+    const collections = office === 'overall'
+      ? [
+          'accountings',
+          'affairsoffices',
+          'alumnis',
+          'awards',
+          'bacs',
+          'budgets',
+          'campusadmins',
+          'cashiers',
+          'culturals',
+          'educes',
+          'genderdevelopments',
+          'generalservices',
+          'guidances',
+          'hrmos',
+          'icts',
+          'industrialteches',
+          'libraries',
+          'medicals',
+          'mis',
+          'nstps',
+          'osas',
+          'pdus',
+          'personalinformations',
+          'physicalplants',
+          'publicaffairs',
+          'qualityassurances',
+          'recordsoffices',
+          'registrars',
+          'researches',
+          'rmos',
+          'sbms',
+          'securities',
+          'sobms',
+          'soicts',
+          'sportsoffices',
+          'studentaffairs',
+          'supplybuildings',
+        ]
+      : [office]; // Select a specific office or use all for overall
 
     const questions = ['sqd0', 'sqd1', 'sqd2', 'sqd3', 'sqd4', 'sqd5', 'sqd6', 'sqd7', 'sqd8'];
     const summaryData = [];
@@ -74,13 +77,21 @@ export async function GET(req) {
             new mongoose.Schema({}, { collection: collectionName, strict: false })
           );
 
-        // Build the match condition based on the provided year, month, week
+        // Build the match condition based on the provided year, quarter, month
         const matchCondition = {};
         if (year) {
           matchCondition.date = {
             ...matchCondition.date,
             $gte: new Date(year, 0, 1),
             $lt: new Date(year + 1, 0, 1),
+          };
+        }
+        if (quarter) {
+          const startMonth = (quarter - 1) * 3;
+          matchCondition.date = {
+            ...matchCondition.date,
+            $gte: new Date(year, startMonth, 1),
+            $lt: new Date(year, startMonth + 3, 1),
           };
         }
         if (month) {
@@ -90,19 +101,9 @@ export async function GET(req) {
             $lt: new Date(year, month, 1),
           };
         }
-        if (week) {
-          const startOfWeek = new Date(year, 0, 1 + (week - 1) * 7);
-          const endOfWeek = new Date(startOfWeek);
-          endOfWeek.setDate(startOfWeek.getDate() + 7);
-
-          matchCondition.date = {
-            $gte: startOfWeek,
-            $lt: endOfWeek,
-          };
-        }
 
         const collectionSummary = await DynamicModel.aggregate([
-          { $match: matchCondition }, // Apply the time filter here
+          { $match: matchCondition },
           {
             $group: {
               _id: null,
@@ -130,10 +131,8 @@ export async function GET(req) {
       }
 
       // Calculate Overall Percentage
-      const validResponses =
-        questionSummary.totalResponses - questionSummary.NA;
-      const positiveResponses =
-        questionSummary.StronglyAgree + questionSummary.Agree;
+      const validResponses = questionSummary.totalResponses - questionSummary.NA;
+      const positiveResponses = questionSummary.StronglyAgree + questionSummary.Agree;
 
       questionSummary.Overall =
         validResponses > 0
