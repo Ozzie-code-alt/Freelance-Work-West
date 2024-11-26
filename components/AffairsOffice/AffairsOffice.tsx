@@ -43,7 +43,6 @@ const formSchema = z.object({
   mean: z.string(),
   comments: z.string()
 });
-
 const criteria = [
   { label: '1 - Very Dissatisfied', value: '1' },
   { label: '2 - Dissatisfied', value: '2' },
@@ -60,6 +59,15 @@ import { FiAlertCircle } from 'react-icons/fi';
   /*Modal Function Here -------------------------------------------- */
 }
 export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) => {
+  const [isPopoverOpen1, setIsPopoverOpen1] = useState(false);
+  const [isPopoverOpen2, setIsPopoverOpen2] = useState(false);
+  const [isPopoverOpen3, setIsPopoverOpen3] = useState(false);
+  const [isPopoverOpen4, setIsPopoverOpen4] = useState(false);
+  const [isPopoverOpen5, setIsPopoverOpen5] = useState(false);
+  const [isPopoverOpen6, setIsPopoverOpen6] = useState(false);
+  const [isPopoverOpen7, setIsPopoverOpen7] = useState(false);
+  const [isPopoverOpen8, setIsPopoverOpen8] = useState(false);
+  const [isPopoverOpen9, setIsPopoverOpen9] = useState(false);
   const { data: session } = useSession();
   const [loading, setLoading] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
@@ -165,7 +173,12 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                         {' '}
                         I am satisfied with the service that i availed
                       </FormLabel>
-                      <Popover>
+                      <Popover
+                        open={isPopoverOpen1}
+                        onOpenChange={(open) => {
+                          setIsPopoverOpen1(open);
+                        }}
+                      >
                         <PopoverTrigger asChild>
                           <FormControl>
                             <Button
@@ -194,6 +207,7 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                                   key={language.value}
                                   onSelect={() => {
                                     form.setValue('sqd0', language.value);
+                                    setIsPopoverOpen1(false); // Close the popover after selecting a value
                                   }}
                                 >
                                   {language.label}
@@ -227,7 +241,12 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                         {' '}
                         <p>I spent a reasonable amont of time for my transaction</p>
                       </FormLabel>
-                      <Popover>
+                      <Popover
+                        open={isPopoverOpen2}
+                        onOpenChange={(open) => {
+                          setIsPopoverOpen2(open);
+                        }}
+                      >
                         <PopoverTrigger asChild>
                           <FormControl>
                             <Button
@@ -256,6 +275,7 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                                   key={language.value}
                                   onSelect={() => {
                                     form.setValue('sqd1', language.value);
+                                    setIsPopoverOpen2(false); // Close the popover after selecting a value
                                   }}
                                 >
                                   {language.label}
@@ -289,7 +309,12 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                         The office followed the transaction requirements and steps based on the
                         information provided
                       </FormLabel>
-                      <Popover>
+                      <Popover
+                        open={isPopoverOpen3}
+                        onOpenChange={(open) => {
+                          setIsPopoverOpen3(open);
+                        }}
+                      >
                         <PopoverTrigger asChild>
                           <FormControl>
                             <Button
@@ -318,6 +343,7 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                                   key={language.value}
                                   onSelect={() => {
                                     form.setValue('sqd2', language.value);
+                                    setIsPopoverOpen3(false); // Close the popover after selecting a value
                                   }}
                                 >
                                   {language.label}
@@ -350,7 +376,12 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                       <FormLabel className='text-2xl'>
                         The steps i needed to do for my transaction were easy and simple
                       </FormLabel>
-                      <Popover>
+                      <Popover
+                        open={isPopoverOpen4}
+                        onOpenChange={(open) => {
+                          setIsPopoverOpen4(open);
+                        }}
+                      >
                         <PopoverTrigger asChild>
                           <FormControl>
                             <Button
@@ -379,6 +410,7 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                                   key={language.value}
                                   onSelect={() => {
                                     form.setValue('sqd3', language.value);
+                                    setIsPopoverOpen4(false); // Close the popover after selecting a value
                                   }}
                                 >
                                   {language.label}
@@ -412,7 +444,12 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                         I easily found information about my tranaction from the office or its
                         website
                       </FormLabel>
-                      <Popover>
+                      <Popover
+                        open={isPopoverOpen5}
+                        onOpenChange={(open) => {
+                          setIsPopoverOpen5(open);
+                        }}
+                      >
                         <PopoverTrigger asChild>
                           <FormControl>
                             <Button
@@ -441,6 +478,7 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                                   key={language.value}
                                   onSelect={() => {
                                     form.setValue('sqd4', language.value);
+                                    setIsPopoverOpen5(false);
                                   }}
                                 >
                                   {language.label}
@@ -473,7 +511,12 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                       <FormLabel className='text-2xl'>
                         I paid a reasonable amount of fees for my transaction
                       </FormLabel>
-                      <Popover>
+                      <Popover
+                        open={isPopoverOpen6}
+                        onOpenChange={(open) => {
+                          setIsPopoverOpen6(open);
+                        }}
+                      >
                         <PopoverTrigger asChild>
                           <FormControl>
                             <Button
@@ -502,6 +545,7 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                                   key={language.value}
                                   onSelect={() => {
                                     form.setValue('sqd5', language.value);
+                                    setIsPopoverOpen6(false);
                                   }}
                                 >
                                   {language.label}
@@ -534,7 +578,12 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                       <FormLabel className='text-2xl'>
                         I feel the office was fair to everyone dring my transaction
                       </FormLabel>
-                      <Popover>
+                      <Popover
+                        open={isPopoverOpen7}
+                        onOpenChange={(open) => {
+                          setIsPopoverOpen7(open);
+                        }}
+                      >
                         <PopoverTrigger asChild>
                           <FormControl>
                             <Button
@@ -563,6 +612,7 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                                   key={language.value}
                                   onSelect={() => {
                                     form.setValue('sqd6', language.value);
+                                    setIsPopoverOpen7(false);
                                   }}
                                 >
                                   {language.label}
@@ -595,7 +645,12 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                       <FormLabel className='text-2xl'>
                         I was treated courteously by the staff and the staff was helpful
                       </FormLabel>
-                      <Popover>
+                      <Popover
+                        open={isPopoverOpen8}
+                        onOpenChange={(open) => {
+                          setIsPopoverOpen8(open);
+                        }}
+                      >
                         <PopoverTrigger asChild>
                           <FormControl>
                             <Button
@@ -624,6 +679,7 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                                   key={language.value}
                                   onSelect={() => {
                                     form.setValue('sqd7', language.value);
+                                    setIsPopoverOpen8(false);
                                   }}
                                 >
                                   {language.label}
@@ -656,7 +712,12 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                       <FormLabel className='text-2xl'>
                         I got what I needed from the goverment office
                       </FormLabel>
-                      <Popover>
+                      <Popover
+                        open={isPopoverOpen9}
+                        onOpenChange={(open) => {
+                          setIsPopoverOpen9(open);
+                        }}
+                      >
                         <PopoverTrigger asChild>
                           <FormControl>
                             <Button
@@ -685,6 +746,7 @@ export const AffairsOfficeFormModal = ({ isOpen, setIsOpen, adminProps }: any) =
                                   key={language.value}
                                   onSelect={() => {
                                     form.setValue('sqd8', language.value);
+                                    setIsPopoverOpen9(false);
                                   }}
                                 >
                                   {language.label}

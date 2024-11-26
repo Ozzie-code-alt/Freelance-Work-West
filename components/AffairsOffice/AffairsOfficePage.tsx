@@ -218,7 +218,8 @@ const AffairsOfficePage = () => {
             render={({ field }) => (
               <FormItem className='flex flex-col w-full'>
                 <FormLabel className='text-2xl'>Client Type</FormLabel>
-                <Popover>
+                <Popover
+                >
                   <PopoverTrigger asChild>
                     <FormControl>
                       <Button
