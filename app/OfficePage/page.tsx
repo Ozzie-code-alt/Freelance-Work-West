@@ -6,7 +6,6 @@ import {
   IconTextPlus,
   IconReportAnalytics,
   IconReportSearch
-
 } from '@tabler/icons-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -78,16 +77,16 @@ const Officepage = () => {
         <IconBrandTabler className='text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0' />
       )
     },
+    // {
+    //   label: 'Overall Generate Report',
+    //   href: routerToSummary,
+
+    //   icon: (
+    //     <IconReportAnalytics className='text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0' />
+    //   )
+    // },
     {
       label: 'Overall Generate Report',
-      href: routerToSummary,
-
-      icon: (
-        <IconReportAnalytics className='text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0' />
-      )
-    },
-    {
-      label: 'Annual Generated Report',
       href: routerToAnnualSummary,
 
       icon: (
@@ -121,7 +120,7 @@ const Officepage = () => {
     >
       {session?.user?.name && (
         <Sidebar open={open} setOpen={setOpen}>
-          <SidebarBody className='justify-between gap-10'>
+          <SidebarBody className='justify-between gap-10 bg-transparent'>
             <div className='flex flex-col  flex-1 overflow-y-auto overflow-x-hidden'>
               {open ? <Logo /> : <LogoIcon />}
               <div className='mt-8 flex flex-col gap-2'>
@@ -150,16 +149,37 @@ const Officepage = () => {
           </SidebarBody>
         </Sidebar>
       )}
-      <div className='w-full h-full flex  flex-col bg-slate-500/10  justify-center items-center'>
-        <div className='pt-3 pb-10 md:pb-0 '>
-          <GradualSpacing
-            className='font-display text-center text-4xl font-bold tracking-[-0.1em] text-[15px] text-black dark:text-white md:text-7xl '
-            text='Client Satisfaction Measurement'
-          />
-        </div>
 
-        <OfficesContianer />
-      </div>
+      {session?.user.name ? (
+        <div className='relative h-screen w-screen flex items-center justify-center overflow-hidden'>
+          <Image
+            src={'/LoginFormBG.png'}
+            alt='Background Image'
+            layout='fill' // Image fills the entire container
+            objectFit='cover' // Ensures the image covers the container
+            objectPosition='center' // Centers the image within the container
+            priority
+          />
+
+          {/* Overlay content */}
+          <div className='z-10 text-white text-4xl'>
+            <h1>Welcome to the App</h1>
+            {/* Additional content goes here */}
+          </div>
+        </div>
+      ) : (
+        <div className='w-full h-full flex  flex-col bg-slate-500/10  justify-center items-center'>
+          <div className='pt-3 pb-10 md:pb-0 '>
+            <GradualSpacing
+              className='font-display text-center text-4xl font-bold tracking-[-0.1em] text-[15px] text-black dark:text-white md:text-7xl '
+              text='Client Satisfaction Measurement'
+            />
+          </div>
+
+          <OfficesContianer />
+        </div>
+      )}
+
       <SpringModal isOpen={isOpen} setIsOpen={setIsOpen} />
     </div>
   );
