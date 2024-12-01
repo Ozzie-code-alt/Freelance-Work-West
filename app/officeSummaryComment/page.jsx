@@ -29,7 +29,7 @@ const CommentsPage = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-screen">
-        <div className="text-xl font-semibold">Loading...</div>
+        <div className="text-xl font-semibold">Loading / Fetching might take 1 min - 5 mins : Main Factor Wifi Speed</div>
       </div>
     );
   }
