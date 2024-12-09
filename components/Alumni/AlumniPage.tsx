@@ -44,22 +44,22 @@ const formSchema = z.object({
   userName: z.string().optional(),
   officeVisited: z.string().min(2, {
     message: 'Office Visited must be at least filled in.'
-  }),
+  }).optional(),
   servicesReceived: z.string().min(2, {
     message: 'Services Received must be at least filled in.'
-  }),
+  }).optional(),
   age: z.string().min(2, {
     message: 'Internal Client must be at least filled in.'
-  }),
+  }).optional(),
   clientType: z.string().min(2, {
     message: 'External Client must be at least filled in.'
-  }),
+  }).optional(),
   sex: z.string().min(2, {
     message: 'Sex must be at least filled in.'
-  }),
+  }).optional(),
   pointOfOrigin: z.string().min(2, {
     message: 'Point Of Origin must be at least filled in.'
-  })
+  }).optional()
 });
 
 const AlumniFormPage = () => {
