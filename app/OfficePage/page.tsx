@@ -119,8 +119,8 @@ const Officepage = () => {
       )}
     >
       {session?.user?.name && (
-        <Sidebar open={open} setOpen={setOpen}>
-          <SidebarBody className='justify-between gap-10 bg-transparent'>
+        <Sidebar open={true} >
+          <SidebarBody className='justify-between gap-10 my-10 md:my-0 bg-transparent'>
             <div className='flex flex-col  flex-1 overflow-y-auto overflow-x-hidden'>
               {open ? <Logo /> : <LogoIcon />}
               <div className='mt-8 flex flex-col gap-2'>
