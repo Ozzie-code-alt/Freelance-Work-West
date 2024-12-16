@@ -119,7 +119,7 @@ const Officepage = () => {
       )}
     >
       {session?.user?.name && (
-        <Sidebar open={true} >
+        <Sidebar open={true}>
           <SidebarBody className='justify-between gap-10 my-10 md:my-0 bg-transparent'>
             <div className='flex flex-col  flex-1 overflow-y-auto overflow-x-hidden'>
               {open ? <Logo /> : <LogoIcon />}
@@ -152,20 +152,50 @@ const Officepage = () => {
 
       {session?.user.name ? (
         <div className='relative h-screen w-screen flex items-center justify-center overflow-hidden'>
-          <Image
-            src={'/LoginFormBG.png'}
-            alt='Background Image'
-            layout='fill' // Image fills the entire container
-            objectFit='cover' // Ensures the image covers the container
-            objectPosition='center' // Centers the image within the container
-            priority
-          />
+          <div className='min-h-screen w-full relative flex items-center justify-center'>
+            <Image
+              src='/WestLogoSplash.png'
+              alt='WVSU Pototan Campus'
+              width={500}
+              height={500}
+              className='object-cover absolute inset-0 m-auto'
+              priority
+            />
+            <div className='absolute inset-0 bg-sky-100/50 backdrop-blur-[2px]' />
 
-          {/* Overlay content */}
-          <div className='z-10 text-white text-4xl'>
-            <h1>Welcome to the App</h1>
-            {/* Additional content goes here */}
+            <div className='relative min-h-screen flex flex-col items-center pt-8 px-4'>
+              <h1 className='text-2xl md:text-3xl font-semibold text-center text-slate-800 mb-8'>
+                West Visayas State University - Pototan Campus
+              </h1>
+
+              <div className='max-w-2xl w-full space-y-8'>
+                <div className='bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-sm'>
+                  <h2 className='text-xl font-semibold text-center mb-3'>Mission</h2>
+                  <p className='text-center text-slate-700'>
+                    WVSU commits to develop life-long learners empowered to generate knowledge and
+                    technology, and transform communities as agents of change
+                  </p>
+                </div>
+
+                <div className='bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-sm'>
+                  <h2 className='text-xl font-semibold text-center mb-3'>Vision</h2>
+                  <p className='text-center text-slate-700'>
+                    A research university advancing quality education towards societal
+                    transformation and global recognition
+                  </p>
+                </div>
+
+                <div className='bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-sm'>
+                  <h2 className='text-xl font-semibold text-center mb-3'>Core Values</h2>
+                  <p className='text-center text-slate-700'>
+                    Excellence Creativity Innovation Service
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
+          
+    
         </div>
       ) : (
         <div className='w-full h-full flex  flex-col bg-slate-500/10  justify-center items-center'>
