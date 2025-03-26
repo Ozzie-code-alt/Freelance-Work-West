@@ -194,18 +194,20 @@ const Officepage = () => {
               </div>
             </div>
           </div>
-          
-    
         </div>
       ) : (
         <div className='w-full h-full flex  flex-col bg-slate-500/10  justify-center items-center'>
-          <div className='pt-3 pb-10 md:pb-0 '>
+          <div className='pt-3 pb-10 md:pb-0 hidden md:block  '>
             <GradualSpacing
-              className='font-display text-center text-4xl font-bold tracking-[-0.1em] text-[15px] text-black dark:text-white md:text-7xl '
+              className='font-display text-center  font-bold  tracking-[-0.1em] text-[26px] text-black dark:text-white md:text-7xl '
               text='Client Satisfaction Measurement'
             />
           </div>
-
+          <div>
+            <p className='font-display text-center  font-bold  text-[36px] mb-10 text-black dark:text-white md:hidden'>
+              Client Satisfaction Measurement
+            </p>
+          </div>
           <OfficesContianer />
         </div>
       )}
